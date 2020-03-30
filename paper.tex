@@ -113,94 +113,30 @@ simply typeset it and hope it is accepted. It is, however, optional
 and may be omitted.
 \end{preface}
 
-% Your fancy acks here. Keep in mind you need to ack each paper you
-% use. See the examples here. In addition, each chapter ack needs to
-% be repeated at the end of the relevant chapter.
-\begin{acknowledgements}
-I would like to acknowledge Professor Eta Theta for his support as the
-chair of my committee. Through multiple drafts and many long nights,
-his guidance has proved to be invaluable.
-
-I would also like to acknowledge the ``Smith Clan'' of lab~28, without
-whom my research would have no doubt taken fives times as long. It is
-their support that helped me in an immeasureable way.
-
-Chapter 2, in full, is a reprint of the material as it appears in
-Numerical Grid Generational in Computational Fluid Mechanics~2009.
-Smith, Laura; Smith, Jane~D., Pineridge Press,~2009. The dissertation
-author was the primary investigator and author of this paper.
-
-Chapter 3, in part, has been submitted for publication of the material
-as it may appear in Education Mechanics,~2009, Smith, Laura; Smith,
-Jane~D., Trailor Press,~2009. The dissertation author was the primary
-investigator and author of this paper.
-
-Chapter 5, in part is currently being prepared for submission for
-publication of the material. Smith, Laura; Smith, Jane~D\@. The
-dissertation author was the primary investigator and author of this
-material.
-\end{acknowledgements}
+\input{acknowledgement.tex}
 
 % Stupid vita goes next
 \begin{vita}
 \noindent
 \begin{cv}{}
 \begin{cvlist}{}
-\item[1996] Bachelor of Arts, University of California, Berkeley
-\item[1996--2000] U.S. Marines
-\item[2000--2002] Teaching Assistant, Department of Mechanical
-Engineering\\University of California, San Diego
-\item[2002--2006] Research Assistant, University of California, San
-Diego
-\item[2010] Doctor of Philosophy, University of California, San Diego
+\item[2014] Bachelor of Science, Peking University
+\item[2014--2020] Research Assistant, University of California, San Diego
+\item[2017] Master of Science in Computer Science, University of California, San Diego
+\item[2020] Doctor of Philosophy in Computer Science, University of California, San Diego
 \end{cvlist}
 \end{cv}
-
-% This puts in the PUBLICATIONS header. Note that it appears inside
-% the vita environment. It is optional.
-\publications
-\noindent``Distributions of Control Points in a System for Analysis of Stress
-Distribution'' IRE Transactions of the I.R.E\@. Professional Group on
-Automatic Control, vol. AC-7, pp 272--289, September 2005
-
-% This puts in the FIELDS OF STUDY. Also inside vita and also
-% optional.
-\fieldsofstudy
-\noindent Major Field: Engineering (Specialization or Focused Studies)
-\vskip\baselineskip
-Studies in Applied Mathematics\par
-Professors Alpha Beta and Gamma Delta
-\vskip\baselineskip
-Studies in Mechanices\par
-Professors Epsilon Zeta and Eta Theta
-\vskip\baselineskip
-Studies in Electromagnetism\par
-Professors Iota Kappa and Lambda Mu
 \end{vita}
 
 % Put your maximum 350 word abstract here.
-\begin{dissertationabstract}
-The Abstract begins here. The abstract is limited to 350 words for a
-doctoral dissertation. It should consist of a short statement of the
-problem, a brief explanation of the methods and procedures employed in
-generating the data, and a condensed summary of the findings of the
-study. The abstract may continute onto a second page if necessary. The
-text of the abstract must be double spaced.
-\end{dissertationabstract}
+\input{abstract.tex}
 
 % This is where the main body of your dissertation goes!
 \mainmatter
 
 % Optional Introduction
-\begin{dissertationintroduction}
-This optional section is barely described in the OGS manual other than
-saying it is optional and that it appears in the table of contents
-between the Abstract and the first chapter.
-
-No formatting guidelines appear so presumably, it should be formatted
-like an ordinary chapter. It should appear after the
-\verb!\mainmatter! macro because it should start on page~1.
-\end{dissertationintroduction}
+\input{introduction.tex}
+\input{background/background.tex}
 
 \chapter{An ordinary page}
 The purpose of this page is to illustrate an ordinary page of text in
