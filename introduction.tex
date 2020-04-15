@@ -1,10 +1,40 @@
 % Optional Introduction
 \begin{dissertationintroduction}
-This optional section is barely described in the OGS manual other than
-saying it is optional and that it appears in the table of contents
-between the Abstract and the first chapter.
+Computer security is an inherently adversarial discipline in which
+each ``side'' seeks to exploit the assumptions and limitations of the
+other.  Attackers rely on exploiting knowledge of vulnerabilities,
+configuration errors or operational lapses in order to penetrate
+targeted systems, while defenders in turn seek to improve their
+resistance to such attacks by better understanding the nature of
+contemporary threats and the technical fingerprints left by attacker's
+craft.  Invariably, this means that attackers are driven to innovate
+and diversify while defenders, in response, must continually monitor
+for such changes and update their operational security practices
+accordingly.  This dynamic is present in virtually every aspect of the
+operational security landscape, from anti-virus signatures to the
+configuration of firewalls and intrusion detection systems to incident
+response and triage.  Common to all such reifications, however, is the
+process of monitoring for new data on attacker behavior and using that
+data to update defenses and security practices. Indeed, the extent to
+which a defender is able to gather and analyze such data effectively
+defines a de facto window of vulnerability---the time during which an
+organization is less effective in addressing attacks due to ignorance
+of current attacker behaviors.
 
-No formatting guidelines appear so presumably, it should be formatted
-like an ordinary chapter. It should appear after the
+This abstract problem has given rise to a concrete demand for
+contemporary threat data sources that are frequently collectively
+referred to as \emph{threat intelligence} (\ti).  By far the most
+common form of such data are so-called \emph{indicators of
+  compromise:} simple observable behaviors that signal that a host or
+network may be compromised.  These include both network indicators
+such as IP addresses (e.g., addresses known to launch particular
+attacks or host command-and-control sites, etc.) and file hashes
+(e.g., indicating a file or executable known to be associated with a
+particular variety of malware).  The presence of such indicators is a
+symptom that alerts an organization to a problem, and part of an
+organization's defenses might reasonably include monitoring its assets
+for such indicators to detect and mitigate potential compromises as
+they occur.
+
 \verb!\mainmatter! macro because it should start on page~1.
 \end{dissertationintroduction}
