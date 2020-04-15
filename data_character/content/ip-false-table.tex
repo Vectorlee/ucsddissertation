@@ -1,0 +1,90 @@
+\newcolumntype{H}{>{\setbox0=\hbox\bgroup}c<{\egroup}@{}}
+
+\begin{table}[t!]
+\centering
+\caption{IP \ti\ feeds accuracy overview. \colname{Unrt} is fraction of unroutable addresses in each feed (Section~\ref{sec:ip-accuracy}).
+\colname{Alexa Top} is the number of IPs intersected with top Alexa domain IP addresses, and
+\colname{CDNs} is the number of IPs intersected with top CDN provider IP addresses.}
+\label{tab:accuracy-overview-1}
+\scriptsize
+ \begin{tabular}{l r r r r}
+ \toprule
+ \colname{Feed} & \colname{Added} & \colname{Unrt} & \colname{Alexa} &  \colname{CDNs} \\ %& \colname{Unrt} \\
+  \midrule
+  \textbf{Scan Feeds} \\
+  %\cline{1-1}
+{\feedTSAlienVault}  & 313,175 	& 0.0\% 	& 1  & 0 \\
+{\feeddshield}       & 339,805 	& 0.03\% 	& 68 & 62\\
+{\feedTSramnode}     & 200,568 	& <0.01\% 	& 0  & 0 \\
+{\feedpacketmail}    & 211,081 	& 0.0\% 	& 0  & 0 \\
+{\feedetiprep}       & 200,915 	& 1.65\% 	& 6  & 21\\
+{\feedTSLabScan}     & 169,037 	& <0.01\% 	& 0  & 0 \\
+{\feedTSSnort}       & 12,957 	& 0.42\% 	& 1  & 0 \\
+{\feedFBBasecamp}    & 5,601 	& 0.0\% 	& 0  & 0 \\
+{\feedTSAnalyst}     & 1,451 	& 0.41\% 	& 0  & 0 \\
+
+
+  %\midrule
+  \textbf{Botnet Feeds} \\
+  %\cline{1-1}
+{\feedTSAnalyst}     & 180,034 	& <0.01\% 	& 0  & 0 \\
+{\feedTSCI}          & 76,125 	& <0.01\% 	& 0  & 0 \\
+{\feedetiprep}       & 73,710 	& 1.66\% 	& 6  & 74\\
+{\feedTSBotscout}    & 18,638 	& 0.09\% 	& 1  & 0 \\
+{\feedTSVoIP}        & 9,290   	& 0.32\% 	& 0  & 0 \\
+{\feedTSCompr}       & 4,883 	    & 0.0\% 	& 0  & 0 \\
+{\feedTSBots}        & 3,594 	    & 0.0\% 	& 0  & 0 \\
+{\feedTSHoneypot}    & 1,947 	    & 0.0\% 	& 0  & 0 \\
+
+
+  %\midrule
+  \textbf{Brute-force Feeds} \\
+  %\cline{1-1}
+{\feedbadipssh}     & 456,605 	& 0.19\% 	& 217  & 1\\
+{\feedbadipbot}     & 91,553 	& 1.04\% 	& 46   & 1,251\\
+{\feedetiprep}      & 87,524 	& 0.03\% 	& 0  & 10\\
+{\feedTSBrute}      & 31,555 	& 0.0\% 	& 0  & 0\\
+{\feedusername}     & 37,198 	& 0.53\% 	& 4  & 0\\
+{\feeddisco}        & 8,784 	& 0.03\% 	& 0  & 0\\
+{\feedFBZendesk}    & 17,779 	& 0.0\% 	& 0  & 0\\
+{\feednothink}      & 20,325 	& 1.51\% 	& 2  & 0\\
+{\feeddangerrule}   & 8,247 	& 0.0\% 	& 0  & 0\\
+
+
+  %\midrule
+  \textbf{Malware Feeds} \\
+  %\cline{1-1}
+
+{\feedetiprep}       & 217,073 	& 0.13\% 	& 291  & 3,489\\
+{\feedFBAdmin}       & 29,840 	& 2.14\% 	& 2    & 0\\
+{\feedfeodo}         & 296 	& 0.0\% 	& 0   & 0\\
+{\feedTSLabMalware}  & 806 	& 2.85\% 	& 0   & 0\\
+{\feedmalcode}       & 668 	& 0.0\% 	& 8   & 11\\
+{\feedTSBambenek}    & 777 	& 9.13\% 	& 0   & 0\\
+{\feedTSSSL}         & 674 	& 0.0\% 	& 0   & 0\\
+{\feedTSAnalyst}     & 486 	& 0.0\% 	& 0   & 0\\
+{\feedTSAbusech}     & 256 	& 3.12\% 	& 0   & 0\\
+{\feedTSMalTraffic}  & 193 	& 0.51\% 	& 0   & 0\\
+{\feedzeus}          & 67 	& 0.0\% 	& 1   & 0\\
+
+  %\midrule
+  \textbf{Exploit Feeds} \\
+{\feedbadiphttp}    & 305,020 	& 0.67\% 	& 16  & 2,590\\
+{\feedbadipftp}     & 285,329 	& 1.33\% 	& 14  & 2\\
+{\feedbadipdns}     & 46,813 	& 0.50\% 	& 119 & 244 \\
+{\feedbadiprfi}     & 3,642 	& 2.22\% 	& 0   & 0\\
+{\feedbadipsql}     & 737 	& 1.89\% 	& 0   & 1\\
+
+  \textbf{Spam Feeds} \\
+  %\cline{1-1}
+{\feedetiprep}      & 543,546 	& 78.7\% 	& 1	& 0 \\
+{\feedbadipspam}    & 302,105 	& 0.02\% 	& 19	& 0 \\
+{\feedbadippostfix} & 193,674 	& 1.29\% 	& 18	& 1 \\
+{\feedTSBotscout}   & 11,358 	& 0.06\% 	& 0  	& 0 \\
+{\feedalienvault}   & 10,414 	& 0.07\% 	& 63	& 1,040 \\
+
+\bottomrule
+\end{tabular}
+\end{table}
+
+%\footnotetext{}

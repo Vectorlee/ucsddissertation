@@ -1,0 +1,81 @@
+\subsection{Volume}
+\label{sec:ip-volume}
+
+%\noteby{KL}{Change this to Size and Rate.}
+Volume is one of the oldest and simplest \ti\ metrics representing how informative
+each data source is. Table~\ref{tab:volume-overview-1} shows the total number of unique IP addresses
+collected from each feed during the measurement period, under column \emph{Volume}.
+Feeds are listed in order of decreasing volume, grouped by category.
+The numbers we show are after the removal of invalid entries identified
+by the sources themselves. Column \emph{Avg. Rate} shows the average number of
+new IPs we received per day, and \emph{Avg. Size} lists the average daily
+working set size of each feed, that is, the average size of the snapshot.
+
+\finding\ Feeds vary dramatically in volume. Within every category, big feeds can contain
+orders of magnitude more data than small feeds. For example, in the scan category, we saw
+over 361,004 unique IP addresses in \feeddshield\ but only 1,572 unique addresses
+in \feedTSAnalyst\ in the same time period. Clearly, volume is a major differentiator
+for feeds. %In Section~\ref{sec:ip-overlap} and~\ref{sec:ip-unique}, we will examine which
+%feeds duplicate each other and which feeds contribute unique indicators.
+
+\input{content/ip-volume-table}
+
+
+Average daily rate represents the amount of new indicators collected from a feed each day.
+Some feeds may have large volume but low daily rates, like {\feedfeodo} in the malware
+category. This means most indicators we get from that feed are old data present in the feed before our
+measurement started. On the other hand, the average rate of a feed could be
+greater than the volume would suggest, like {\feednothink} in the brute-force category.
+This is due to the fact that indicators can be added and removed multiple times in a
+feed. In general, IP indicators tend to be added in a feed only once: 37 among \numipfeeds\
+IP feeds have over 80\% of their indicators appearing only once, and 30 of them have this rate over 90\%.
+One reason is that some snapshot feeds maintain a valid period for each indicator, as
+we found in all \emph{PA} feeds where the expiration date of each indicator is explicitly
+recorded. When the same indicator is discovered again by a feed before its expiration time,
+the feed will just extend its expiration date, so this occurrence will not be captured
+if we simply subtract the old data from the newly collected data to derive what is added on a day.
+For event feeds and snapshot feeds in \emph{PA} where we can precisely track every occurrence
+of each indicator, we further examed data occurrence frequency and still found that the vast
+majority of IPs in feeds only occurred once---an observation that relates to the dynamics
+of cyber threats themselves.
+
+\feednothink, as we mentioned above, is a notable exception. It has over 64\% of its
+indicators appearing 7 times in our data set. After investigating, we
+found that this feed posts all its previous data at the end of every month, behavior very likely
+due to the feed provider instead of the underlying threats.
+% {\feedusername}, {\feedbadipftp}, {\feedbadipdns} and {\feedbadipsql}
+% all have a large percent of IPs appeared twice, and we found
+% that all 4 feeds reported a abnormally large amount of same IPs on 2018 July 1st and July 13th.
+% We will discuss more about this in Section~\ref{sec:ip-accuracy}.
+
+The working set size defines the daily average amount of indicators users need to store in their
+system to use a feed (the storage cost of using a feed). The average
+working set size is largely decided by the valid period length
+of the indicators, controlled either
+by the feed (snapshot feeds) or the user (event feeds). The longer the valid period is,
+the larger the working set will be. Different snapshoot feeds have different choices for this
+valid period: {\feedTSAlienVault} in the scan category sets a 90-day valid period for
+every indicator added to the feed, while {\feedTSAbusech} uses a 30-day period. Although we do not
+know the data expiration mechanism used by snapshot feeds other than \emph{PA} feeds, as
+there is no related information recorded, we can still roughly estimate this by checking the
+\emph{durations} of their indicators---the time between an indicator being added and being removed.
+Four {\feedetiprep} feeds have more than 85\% of durations shorter than 10 days, while the one in
+the malware category has more than 40\% that span longer than 20 days. {\feedfeodo} has over 99\% of
+its indicators valid for our entire measurement period, while over 70\% of durations in the
+{\feedzeus} are less than 6 days. We did not observe a clear pattern regarding how each snapshot
+feed handles the expiration of indicators.
+
+%The column \emph{Occurred} presents the number of unique IPs added in a \ti\ source after our
+%measurement period started. We differentiate \emph{Volume} and \emph{Occurred} since IP
+%indicators are time sensitive: They are added, removed and could be added again in a feed over
+%time. When we pull data from a snapshot feed on a day, some IPs are actually added
+%on previous days and are still kept by the feed. \emph{Occurred} only captures the IPs that
+%are newly added after the measurement period started, while \emph{Volume} includes legacy data in
+%a feed when we collect indicators on the first day of our analysis. At a high level,
+%\emph{Volume} represents the number of IPs that a feed \emph{considers} as malicious during
+%a period of time, and \emph{Occurred} represents the number of newly discovered indicators by the
+%feed during that time.
+
+%For delta feeds, we calculated their \emph{Volume} by tracking the expiration dates of the
+%indicators we collected before (The expiration dates are provided in the metadata) and included
+%the indicators whose expiration dates are after January 1st, 2016.

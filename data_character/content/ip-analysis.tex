@@ -1,0 +1,70 @@
+\section{IP Threat Intelligence}
+\label{sec:ip-analysis}
+
+One of the most common forms of \ti\ are feeds of IP addresses considered malicious,
+suspicious, or otherwise untrustworthy. This type of threat intelligence dates back
+at least to the early spam and intrusion detection blacklists, many of which are
+still active today such as SpamhausSBL~\cite{SpamhausSBL}, CBL~\cite{CBL} and
+SORBS~\cite{SORBS}. Here, we apply the metrics described above to quantify the
+differences between \numipfeeds\ different IP address \ti\ feeds.
+%The overview of the these feeds is summarized in Table~\ref{tab:volume-overview-1}.
+
+
+\subsection{Feed Categorization}
+IP address \ti\ feeds have different meanings, and, therefore, purposes. To
+meaningfully compare feeds to each other, we first group feeds into
+\emph{categories} of feeds whose indicators have the same intended meaning.
+Unfortunately, there is no standard or widely accepted taxonomy of IP \ti\ feeds.
+To group feeds into semantic categories, we use metadata associated with the
+feed as well as descriptions of the feed provided by the producer, as described below.
+
+\emphpar{Metadata} Some feeds provide category information with each indicator as
+metadata. More specifically, all of the {Paid Aggregator} feeds, {\feedalienvault}
+and {\feedetiprep} include this category metadata. In this case, we use its pre-assigned
+category in the feed. Facebook ThreatExchange feeds do not include category
+information in the metadata, but instead provide a descriptive phrase with each indicator.
+We then derive its category based on the description.
+
+\emphpar{Feed description} For feeds without metadata, we rely on online descriptions
+of each feed, where available, to determine its semantic category. For example, the
+website of feed {\feednothink}~\cite{Nothink} describes that the feed reports brute-force
+login attempts on its corresponding honeypot, which indicates the feed belongs to
+brute-force category.
+
+We grouped our IP feeds into categories derived from the information
+above. In this work, we analyze six of the most prominent categories:
+%, listed below.
+%
+\begin{categorylist}\small
+\item[Scan] Hosts doing port or vulnerability scans.
+\item[Brute-force] Hosts making brute force login attempts.
+\item[Malware] Malware C\&C and distribution servers.
+\item[Exploit] Hosts trying to remotely exploit vulnerabilities.
+\item[Botnet] Compromised hosts belonging to a botnet.
+\item[Spam] Hosts that sent spam or should not originate email.
+\end{categorylist}
+%
+Table~\ref{tab:volume-overview-1} lists the feeds, grouped by category, used in the
+rest of this section. The symbols \snapfeedsym\ and \deltafeedsym\ before the feed
+name indicate whether the feed is a snapshot feed or an event feed, respectively
+(see Section~\ref{sec:feed-structure}).
+All data was collected during our measurement period,
+\veryemph{December 1st, 2017} to \veryemph{July 20th, 2018}. Note that a few
+feeds, like {\feedetiprep}, appear in multiple categories. In these feeds, indicators
+are associated with different categories via attached metadata. We split these feeds
+into multiple virtual feeds each containing indicators belonging to the same category.
+
+\input{content/ip-volume}
+\input{content/ip-overlap}
+\input{content/ip-unique}
+\input{content/ip-timing}
+\input{content/ip-accuracy}
+\input{content/ip-compl}
+
+
+
+%\subsection{Inter-Category}
+%\input{content/inter_category.tex}
+%Pick three or four categories of feeds, analyze their \textit{overlap}, \textit{uniquness} and \textit{time attributes}
+%\label{sec:analysis}
+%\input{content/analysis_scan.tex}

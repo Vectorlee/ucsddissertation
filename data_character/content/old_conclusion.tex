@@ -1,0 +1,83 @@
+\section{Conclusion}
+\label{sec:old_conclusion}
+
+This paper has focused on the simplest, yet fundamental, metrics about
+\ti\ data---effectively investigating the extent to which disparate
+sources are measuring the same underlying empirical phenomena and can
+be meaningfully used to directly anticipate future attacks.  Thus far
+the evidence for this goal is spartan at best.
+
+First, it has become clear to us that \ti\ feeds, far from containing
+homogeneous samples of some underlying truth, vary tremendously in the
+kinds of data they capture based on the particularities of their
+collection approach.  Unfortunately, few \ti\ vendors explain the
+mechanism and methodology by which their data are collected and thus
+\ti\ consumers must make do with qualitative labels such as
+``malicious'' or ``scanners'', coupled with inferences about the
+likely mode of collection.  Moreover, we have found little evidence
+that ``larger'' feeds contain better data, or even that there are
+crisp quality distinctions between feeds across different categories
+or metrics (i.e., that a \ti\ provider whose feed performs well on one
+metric will perform well on another, or that these rankings will hold
+across threat categories).  Thus, there are few ``rules of thumb'' in
+selecting among \ti\ feeds and consumers will need to demand
+empirical metrics such as those we describe to meaningfully
+differentiate among data sources.
+
+However, underlying these problems are more fundamental data quality
+issues.  Most IP-based \ti\ data sources are collections of
+singletons (i.e., that each IP address appears in at most one source)
+and even the higher-correlating data sources frequently have
+intersection rates of only 10\%.  Moreover, when comparing with broad
+sensor data in known categories with broad effect (e.g., random
+scanning) fewer than 2\% of ``known bad'' addresses appear in most of
+the data sources we analyzed; indeed, even when focused on the largest
+and most prolific scanners, coverage is still limited to 10\%.  There
+are similar results for file hash-based sources with little overlap
+among them.
+
+Taken together these suggest several non-exclusive possibilities.
+First is that the underlying space of indicators (both IP addresses
+and malicious file hashes) is large and each individual data source
+can at best sample a small fraction thereof.  It is almost certain
+that this is true to some extent.  Second, different collection
+methodologies---even for the same threat category---will select for
+different sub distributions of the underlying ``ground truth'' data.
+Third, this last effect is likely exacerbated by the fact that not all
+threats are experienced uniformly across the Internet and, thus,
+different methodologies will skew to either favor or disfavor targeted
+attacks.
+
+While resolving this question is of academic interest, it seems clear
+that blindly using \ti\ data---even if one could afford to acquire
+many such sources---is unlikely to be effective.  Proactive defenses,
+such as blocking network connections or file executions that match
+\ti\ indicators, are predicated on knowing, in advance, a large
+fraction of the universe of future indicators; the evidence is that
+this is not currently possible.  While there may be some utility in
+doing this even for the small percentage of malicious traffic that may
+be identified, this must be balanced against the costs of obtaining
+and managing \ti\ data as well as the risks associated with false
+positives.
+
+However, this is only one potential use of threat intelligence data.
+Instead, \ti\ data can be used to \emph{enrich} other information
+(e.g., for investigating potential explanations of a security
+incident), as a probabilistic canary (i.e., identifying an overall
+site vulnerability via a single matching indicator may have value even
+if other attacks of the same kind are not detected) and in providing a
+useful source of ``ground truth'' data for supervised machine learning
+systems (noting that such systems sensitive to data quality may face
+challenges with many existing \ti\ data sources).  However, even given
+such a purpose, organizations need some way to prioritize which
+\ti\ sources to invest in.  Our metrics provide some direction for
+such choices, although highly dependent on the use case. For example,
+an analyst who expects to use \ti\ interactively during incident
+response would be better served by feeds with higher coverage, but can
+accomodate poor accuracy, while an organization trying to
+automatically label malicious instances for training purposes (e.g.,
+brute force attacks) will be better served by the converse.  Thus, if
+there is hope for demonstrating that threat intelligence can
+materially impact operational security practices, we believe it will
+be found in these more complex uses cases and that is where future
+research will be most productive.

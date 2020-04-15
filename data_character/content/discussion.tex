@@ -1,0 +1,156 @@
+\section{Discussion}
+\label{sec:discussion}
+
+\subsection{Metrics Usage}
+Threat intelligence has many different potential uses. For example,
+analysts may consume threat data interactively during manual
+incident investigations, or may use it to automate the detection of
+suspicious activity and/or blacklisting.  When not itself
+determinative, such information may also be used to \emph{enrich}
+other data sources, informing investigations or aiding in automatic
+algorithmic interventions. We have introduced a set of basic threat
+intelligence metrics---volume, intersection, unique contribution,
+latency, coverage and accuracy---that can inform and quantify each of
+those uses.  Depending on a number of factors, such as the intended
+use case and the cost of false positives and negatives, some of
+these metrics will become more or less important when evaluating a
+\ti\ source. For example, a feed with poor accuracy but
+high coverage might be ideal when an analyst is using a \ti\ source
+interactively during manually incident investigations (since in this
+case, the analyst, as a domain expert, can provide additional filtering
+of false positives). Similarly, latency might not be a critical metric
+in a retrospective use case (e.g., post-discovery breach
+investigation).  However, if an organization is looking for a
+\ti\ source where the IPs are intended to be added to a firewall's
+blacklist then accuracy and latency should likely be weighted over
+coverage, assuming that blocking benign activity is more costly.
+
+Another common real-world scenario is that a company has a limited
+budget to purchase \ti\ sources and has a specific set of threats (\ie
+botnet, brute-force) they are focused on mitigating. In such cases,
+the metrics we have described can be used directly in evaluating \ti\
+options, biasing twoards sources that maximize coverage of the most
+relevant threats while limiting intersection.
+
+
+\subsection{Data Labeling}
+Threat intelligence IP data carries different meanings. To properly use this
+data, it is critical to know what the indicators actually mean: whether
+they are Internet scanners, members of a botnet or malicious actors who
+had attacked other places before. We have attempted to group feeds by their
+intended meaning in our analysis.
+
+However, this category information, which primarily comes from \ti\ sources
+themselves, is not always available. Feeds such as {\feedalienvault} and
+Facebook Threat Exchange sources contain a significant number
+of indicators labeled ``Malicious'' or ``Suspicious.'' The meanings of
+these indicators are unclear, making it difficult for consumers to decide
+how to use the data and the possible consequences.
+
+For feeds that provide category information, it is sometimes too broad
+to be meaningful. For example, multiple feeds in our collection
+simply label their indicators as ``Scanner.'' Network scanning can
+represent port scanning (by sending SYN packets), or a vulnerability scan (by
+probing host for known vulnerabilities). The ambiguity here, as a result of
+ad-hoc data labeling, again poses challenges for security experts when using
+\ti\ data.
+
+Recently, standard \ti\ formats have been proposed and developed, notably
+IODEF~\cite{IODEF}, CybOX~\cite{CybOX} and STIX~\cite{STIX}, that try to
+standardize the threat intelligence presentation and sharing. But these
+standards focus largely on the data format. There is room
+to improve these standards by designing a standard \emph{semantics} for threat
+intelligence data.
+
+%Even if we just use it to block traffic, it is very difficult to justify the
+%performance of this feed, let alone to use it during a threat forensic analysis.
+
+% wrong categorization.
+%Sometimes the categorization provided by the provider might not be acurrate. For example, the
+%\feedTSSnort\ is labelled as scanners by the PA, however, we found little intersection between
+%this source and other scan sources, also little intersectio with the scanners collected
+%by the Internet telescope. We suspect the data provided by this feed is not real Internet scanners.
+
+\subsection{Limitations}
+There are several questions that our study does not address. We attempted to collect data from a diverse set of
+sources, including public feeds, commercial feeds and industrial exchange feeds,
+but it is inherently not comprehensive. There are some prohibitively expensive or
+publication-restricted data sources that are not available to us. More specialized measurement
+work should be done in the future to further analyze the performance of these
+expensive and exclusive data sources.
+
+%Future work might be to obtain access to a larger more diverse set of \ti\
+%sources or incentives \ti\ providers to allow a neutral third-party to
+%replicate our metrics.
+
+A second limitation is our visibility into how different companies use threat
+intelligence operationally. For a company, perhaps the most useful kind of metric
+measures how a threat intelligence source affects its main performance indicators
+as well as its exposure to risk. Such metrics would require a deep integration
+into security workflows at enterprises to measure the operation effect of decisions
+made using threat intelligence. This would allow CIOs and CSOs to better understand
+exactly what a particular threat intelligence product contributes to a company. As
+researchers, we do not use \ti\ operationally. A better understanding of operational
+needs would help refine our metrics to maximize their utility for operations-driven consumers.
+
+The third limitation is the lack of ground truth, a limitation shared
+by all the similar measurement work. It is simply very difficult to obtain the full picture
+of a certain category of threat, making it very challenging to precisely determine accuracy and coverage of feeds. In this
+study, we used data from an Internet telescope and VirusTotal as a close approximation.
+There are also a handful of cases where a security incident has been comprehensively studied by
+researchers, such as the Mirai study~\cite{antonakakis2017understanding}, and such efforts
+can be used to evaluate certain types of \ti\ data. But such studies are few in number.
+One alternative is to try to establish the ground truth for a specific network.
+For example, a company can record all the network traffic going in and out of its own network,
+and identify security incidents either through its IDS system or manual forensic analysis.
+Then it can evaluate the accuracy and coverage of a \ti\ feed under the context of its
+own network. This can provide a customized view of \ti\ feeds.
+
+
+%Our metrics can be used as a starting point and refined as needed based on an
+%improved understanding of how \ti\ is currently used operationally and metrics
+%that might improve the quality of \ti\ so that it could be used for additional tasks.
+
+
+%%
+%% Below are comments
+%%
+\begin{comment}
+\subsection{Independence between Metrics}
+We evaluated a large range of \ti\ sources using six metrics, it is
+interesting to see if there is any correlation between these metrics.
+We already compared the relation of between volume and latency of IP feeds
+in Section~\ref{sec:ip-timing} and showed that there is not a strong correlation. Similar cases
+can also be observed, for example, between volume and accuracy that neither high or low
+volume implies high accuracy in our feeds collection. Also, both IP and MD5 feeds show
+that the exclusive rate is irrelevant with the feeds' size.
+
+To formally address this question, we check the correlation coefficient between
+\emph{Volume}, \emph{Exclusive Contribution}, \emph{Latency} and \emph{Accuracy}
+in IP and MD5 feeds(when available). The result shows a low(below 0.5) correlation across all comparison.
+This means when choosing between different \ti\ sources, we need to evaluate them comprehensively
+on multiple perspectives, as different perspective does not imply each other.
+
+Coverage correlate with volume in our scan feeds, which is not a surprise since volume naturally
+implies coverage when the accuracy are close.
+
+
+\subsection{Limited Coverage}
+Most \ti\ indicators are exclusive to each feed, for both IP and MD5 sources.
+Moreover, when comparing with broad sensor data in known categories like Internet scanning,
+fewer than 2\% of ``known bad'' addresses appear in all the data sources we
+analyzed. These suggest several non-exclusive possibilities. First is that the
+underlying space of indicators (both IP addresses and malicious file hashes) is
+large and each individual data sources can at best sample a small fraction
+thereof. Second, different measurement methodologies---even for the same threat
+category---will select for different sub distributions of the
+underlying ``ground truth'' data.  Third, this last effect is likely
+exacerbated by the fact that not all threats are experienced uniformly
+across the Internet and thus, some kinds of methodologies, will skew
+to either favor or disfavor targeted attacks.
+
+This implies that \ti\ consumers should focus more on how the feeds related to the
+specific threat that the consumers are mostly exposed to, instead of blindly trying to maximize
+coverage or to find the ``best'' feed. Future work would be to correlate \ti\ feeds' data
+with the companies or organizations' network traffic and evaluate feeds under specific environments.
+\end{comment}

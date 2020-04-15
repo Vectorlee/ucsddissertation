@@ -1,0 +1,41 @@
+\subsection{Intersection and Exclusive Contribution}
+\label{sec:hash-overlap}
+
+As we mentioned earlier, to conduct intersection and exclusive
+analysis of file hash feeds, we need to convert indicators into the
+same hash type. Here we convert non-MD5 hashes into MD5s, using either
+metadata in the indicator itself (i.e., if it reports values for
+multiple hash functions) or by querying the source hash from
+VirusTotal~\cite{VirusTotal} which reports the full suite of hashes
+for all files in its dataset.  However, for a small fraction of hashes
+we are unable to find aliases to conver them to the MD5 representation
+and must exclude them from the analysis in this section.  This filtering is
+reflected in Table~\ref{tab:md5-volume}, in which the Volume column
+represents the number of unique hashes found in each feed and the Converted
+column is the subset that we have been able to normalize to a MD5
+representation.
+
+\finding\ The intersections between hash feeds are minimal,
+even among the feeds that have multiple orders of magnitude differences in size.
+Across all feeds, only PA Analyst has relatively high intersections: PA Analyst
+shares 27\% of PA OSINT's MD5s and 13\% of PA Twitter Emotet's MD5s. PA Malware
+Indicators has a small intersection also with these two feeds. All other
+intersections are around or less than 1\%. Consequently, the vast majority of
+MD5s are unique to one feed, as recorded in column \textit{Exclusive} in
+Table~\ref{tab:md5-volume}. The ``lowest'' exclusivity belongs to PA Twitter
+Emotet and PA OSINT (still 77.29\% and 71.65\%, respectively). All other feeds
+showcase an over 95\% exclusive percentage, demonstrating that most file hash feeds
+are distinct from each other.
+
+Due to the different sources of malware between feeds, a low intersection is to
+be expected in some cases. For example, PA Twitter Emotet and PA Zeus Tracker
+should have no intersection, since they are tracking different malware strains.
+The other, more general feeds could expect some overlap, but mostly exhibit
+little to no intersection. Considering the sheer volume of the FB Malware feed,
+one might expect it would encapsulate many of the smaller feeds or at least
+parts of them. This is not the case, however, as FB Malware has a negligible
+intersection with all other feeds.
+
+Due to the lack of intersection among the feeds, we omit the latency analysis
+of the hash feeds, as there is simply not enough intersecting data to conclude
+which feeds perform better with regards to latency.

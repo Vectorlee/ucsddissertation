@@ -1,0 +1,49 @@
+\section{Longitudinal Comparison}
+\label{sec:new_vs_old}
+
+In addition to the measurement period considered so far (December 1, 2017 to July 20, 2018), we also analyzed data from the same IP feeds from January 1, 2016 to August 31, 2016. These two measurement periods, 23 months apart, allow us to measure how these IP feeds have changed in two years. Table~\ref{tab:old-volume-overview} summarizes the differences between these two measurement periods. In the table, \colname{2018} represents the current measurement period and \colname{2016} the period  January 1, 2016 to August 31, 2016.
+\input{content/longitudinal_table}
+
+\noindent\textbf{Volume.}
+As shown in Table~\ref{tab:old-volume-overview}, feed volume has definitely changed after two years. Among 43 IP feeds that overlap both time periods,
+21 have a higher daily rate compared with 2 years ago, 15 feeds
+have a lower rate, and 7 feeds do not change substantially (the difference is below 20\%).
+Volume can change dramatically over time, such as {\feedTSAlienVault}
+in the scan category which is 13 times larger than before. On the other hand, a feed like {\feedTSBots} is now over 90\% smaller.
+
+\noindent\textbf{Intersection and Exclusive Contribution.}
+Despite the volume differences, the intersection statistics between feeds are largely the same across two years,
+with feeds in scan and brute-force having high pairwise intersections and
+feeds in other categories being mostly unique. Certain specific pairwise relations also did not change.
+For example, {\feedbadipssh} still shared over 90\% of data in {\feeddangerrule} back in 2016, and {\feedetiprep} in malware
+was still the only feed that has a non-trivial intersection with multiple small feeds.
+Again, most data was exclusive to each feed two years ago: Across all
+six categories more than 90\% of the indicators are not shared between feeds.
+
+\noindent\textbf{Latency.}
+The latency relationship between feeds was also similar:
+timely feeds today were also timely two years ago, and the same with tardy feeds.
+%The latency difference between feeds are bigger then compared with data, but small feeds
+%still report a significant portion of their shared data.
+
+\noindent\textbf{Accuracy.}
+Feeds have more unroutable IPs now than before as shown in Table~\ref{tab:old-volume-overview}:
+In 2016, 22 of the 43 IP feeds had at least 1 unroutable IP; four feeds had unroutable rates over 1\%.
+When checking the intersection with popular CDNs,
+the feeds that contain IPs in CDN ranges two years ago are also the ones that have these IPs today.
+
+\noindent\textbf{Shared indicators 2016--2018.}
+We compared the data we collected from each feed in the two time periods, and found that 30
+out of 43 feeds in 2018 intersect with their data from two years ago, and 9 feeds have
+an intersection rate over 10\%. Three feeds in malware category, namely {\feedfeodo},
+{\feedTSAbusech} and {\feedzeus}, have over 40\% of their data shared with the past feed,
+meaning a large percent of C\&C indicators two years ago are still
+identified by the feeds as threats today. Feeds in the botnet category, however, are very distinct from the
+past, with all feeds having no intersection with the past except {\feedetiprep}.
+
+%This ``now and past'' intersection between feeds could potentially introduce bias
+%when comparing the high-level characteristic of two datasets. Therefore, we excluded the
+%old data from each feed and redid the volume, intersection and accuracy analyses.
+%The results are essentially unchanged, indicating that the overlapping data was not
+%the cause of the consistency of our analyses over time.
+%The comparison above show the changes between feeds over the time, yet the high level characteristic

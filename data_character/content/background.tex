@@ -1,0 +1,41 @@
+\section{Related Work}
+\label{sec:background}
+
+Several studies have examined the effectiveness of blacklist-based threat
+intelligence~\cite{kuhrer2014paint, ramachandran2006revealing, ramachandran2007filtering, sheng2009empirical, sinha2008shades}.
+Ramachandran~\etal~\cite{ramachandran2007filtering} showed that spam blacklists
+are both incomplete (missing 35\% of the source IPs of spam emails captured in
+two spam traps), and slow in responding (20\% of the spammers remain unlisted
+after 30 days). Sinha~\etal~\cite{sinha2008shades} further confirmed this
+result by showing that four major spam blacklists have very high false negative
+rates, and analyzed the possible causes of the low coverage.
+Sheng~\etal~\cite{sheng2009empirical} studied the effectiveness of
+phishing blacklists, showing the lists are slow in reacting to
+highly transient phishing campaigns. These studies focused on specific
+types of threat intelligence sources, and only evaluated their operational
+performance rather than producing empirical evaluation metrics for
+threat intelligence data sources.
+
+Other studies have analyzed the general attributes of threat
+intelligence data.  Pitsillidis~\etal~\cite{tasters:imc12} studied the
+characteristics of spam domain feeds, showing different perspectives
+of spam feeds, and demonstrated that different feeds are suitable for
+answering different questions.  Thomas~\etal~\cite{thomas2016abuse}
+constructed their own threat intelligence by aggregating the abuse
+traffic received from six Google services, showing a lack of
+intersection and correlation among these different sources.  While
+focusing on broader threat intelligence uses, these studies did not
+focus on generalizable threat metrics that can be extended beyond the work.
+
+Little work exists that defines a general measurement methodology to
+examine threat intelligence across a broad set of types and categories.
+Metcalf~\etal~\cite{metcalf2015blacklist} collected and measured IP
+and domain blacklists from multiple sources, but only focused on volume
+and intersection analysis. In contrast, we formally define a set of threat intelligence
+metrics and conduct a broad and comprehensive study over a rich variety of
+threat intelligence data. We conducted our measurement from the
+perspective of consumers of \ti\ data
+to offer guidance on choosing between different sources.
+Our study also demonstrated the limitation of threat intelligence more thoroughly,
+providing comprehensive characteristics of cyber threat intelligence that no work had
+addressed previously.
