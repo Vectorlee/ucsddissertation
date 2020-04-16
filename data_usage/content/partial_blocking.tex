@@ -1,0 +1,256 @@
+\section{Partial Blocking}
+\label{sec:partial-blocking}
+
+%% In Section~\ref{sec:perfect-blocking}, we looked into {\reflectors} that
+%% consistently block all blacklist IPs sampled for a blacklist. We further
+%% confirm this by re-running the measurement three times with three different
+%% set of blacklist IPs sampled from the blacklist at different times. However,
+%% our measurement also discovers blocking behavior that is not ``perfect''.
+%% Every time we sample blacklist IPs and test, many {\reflectors} only block
+%% some of the IPs we sampled, while leaving the rest of IPs unblocked. We refer
+%% to these cases as \textit{partial blocking}. In this section, we dive deeper
+%% into these cases of partial blocking. Specifically, we look at different reasons
+%% one may see partial blocking and then look in more detail at {\reflectors}
+%% that show consistent, and significant partial blocking.
+
+When performing our experimental runs we noticed that a small
+percentage of reflectors consistently blocked a significant subset of
+blacklist IPs, but not all, in \textit{every experiment}.
+This consistency suggests that, while the
+{\reflector} may not use the exact blacklist, there is a large overlap
+between the blacklist and the blocking policy of the {\reflector}.  We
+refer to such reflectors as exhibiting \textit{significant partial blocking}
+behavior.  Figure~\ref{fig:reflector-breakdown} shows these reflectors
+are just 0.4\% of all reflectors that we tested, but they still
+correspond to 21\% of the number of reflectors that perfectly block at
+least one blacklist and therefore motivate further investigation.  As
+a result, in this section we characterize this partial blocking
+behavior in more detail.
+
+%% Therefore, if a {\reflector} only blocks a small portion of the IPs we
+%% sampled from a blacklist, it could not give us much insight about the
+%% host's behavior regarding that blacklist.
+
+%% However, we observe that many of these {\reflectors} show partial
+%% blocking behavior consistently: Every time we test with a certain
+%% blacklist, they always block a significant portion of the IPs we
+%% sampled from that list.
+
+%% However, before we dive deeper into these {\reflectors} we briefly touch upon
+%% geo-blocking -- a significant contributor to partial blocking and how we try and
+%% reduce the effects that geo-blocking may have on our results.
+%\textcolor{red}{Show the table about the breakdown between >75\% and >50\%}.
+
+\subsection{Geo-Blocking}
+\label{sec:geo-blocking}
+
+%% Geo-blocking is the case where the {\reflector} blocks all the traffic from a
+%% certain country. Some sites apply this blocking either for policy reason
+%% (e.g. block GDPR countries~\cite{bbcnews}.), or for security reasons (e.g.
+%% block countries where recent attacks originated from, like Russia or China).
+%% Although during blacklist IP sampling, we go the extra mile to increase the
+%% geo diversity of IPs, we might still end up with sampled IPs largely from a
+%% few countries. Primarily, this is because the blacklist itself can have a
+%% disproportionate amount of IPs from only a few countries. For example,
+%% {\dshieldtop} on Jan. 25th had over 50\% of its IPs coming from Netherlands.
+%% If a host blocks traffic from Netherlands, then we would miss conclude that
+%% host is partially blocking {\dshieldtop}.
+
+%% To eliminate the effects of geo-blocking, we conducted an additional
+%% experiment to identify the geo-blocking hosts among our {\reflectors}. For
+%% each country the blacklist IPs had covered, we randomly select 20 IPs from
+%% that country, and test against all {\reflectors}, using the same IP ID
+%% technique, to identify if the hosts that are blocking these IPs. Here we
+%% acquire IP address prefixes of each country from 4 location services:
+%% MaxMind~\cite{maxmind}, IP2Location~\cite{ip2location}, IPDeny~\cite{ipdeny}
+%% and IPIP.net~\cite{ipip}, and we only sample IPs from the intersection of the
+%% prefixes provided by each service. Put differently, for each country we test,
+%% we only sample from the IPs where all 4 location services are agree they are
+%% from that country. We further make sure the sampled IPs are not overlapped
+%% with any of the blacklists we have, and they are BGP routable. We tested 20
+%% countries in total, from big countries like Russia and China, to small island
+%% countries like Singapore and Seychelles.
+
+%% In total, we identify 677 {\reflectors} that at least block one country we
+%% tested, and 473 {\reflectors} that block at least two countries. 549
+%% {\reflectors} block IPs from China, making it the most popular target of
+%% geo-blocking in our collection. Russia is the second most blocked country,
+%% where we found 414 hosts blocking Russian IPs, followed by Hong Kong and
+%% Vietnam, for which there are 196 and 193 {\reflectors} blocking their IPs
+%% respectively. European countries like Belgium, Netherlands and France also
+%% have over 60 hosts blocking them.
+
+%% Note that what we discovered here is network layer geo-blocking, and there
+%% can be other forms of geo-blocking, like application layer blocking (e.g.
+%% HTTP 403 Forbidden). We do not try to comprehensively cover all possible
+%% geo-blocking cases since this experiment was only to help us identify the
+%% potential side-effects of geo-blocking in our experiment, so we could better
+%% distinguish the blacklist related blocking behavior in our experiment.
+
+%% One potential cause of partial blocking is geo-blocking.
+
+Geo-blocking is one type of blocking we identified that contributes to
+this partial blocking.  A {\reflector} using geo-blocking will
+drop all traffic from a particular country.  Organizations typically
+use geo-blocking either for policy reason (e.g., block GDPR
+countries~\cite{bbcnews}), or for security reasons (e.g., block
+countries that are sources of attacks, such as Russia or China).  If a
+reflector uses geo-blocking, we will observe it blocking IPs on a
+blacklist if those IPs happen to be located in a blocked country.  Although
+we take extra efforts to increase the geo diversity when sampling IPs(Section~\ref{sec:methtarg}),
+this kind of overlap can still be exacerbated if a blacklist happens to have
+concentrations of IPs from particular countries.  For example,
+{\dshieldtop} on January 25, 2020 had over 50\% of its IPs geo-located
+in the Netherlands.  If a reflector blocks traffic from the
+Netherlands, then we would observe that the reflector is partially
+blocking {\dshieldtop}.
+
+%% Recall that Although during blacklist IP sampling, we go the extra
+%% mile to increase the geo diversity of IPs, we might still end up with
+%% sampled IPs largely from a few countries. Primarily, this is because
+%% the blacklist itself can have a disproportionate amount of IPs from
+%% only a few countries.
+
+To identify whether a {\reflector} uses geo-blocking, we test whether
+the {\reflector} consistently blocks a set of IPs from a particular
+country.  For all countries related to blacklist IPs that we test, we
+first enumerate the IP address prefixes for those countries using four
+IP-based location services: MaxMind~\cite{maxmind},
+IP2Location~\cite{ip2location}, IPDeny~\cite{ipdeny}, and
+IPIP.net~\cite{ipip}.  For each country, we then randomly select 20 IP
+addresses from those prefixes such that: (1) all four location
+services agree on the country label for the IPs, (2) the IPs do not
+appear on a blacklist, and (3) the IPs are BGP routable.  Then for all
+{\reflectors}, we test whether it blocks all of the randomly-chosen
+IPs for each country.  If it does, then we conclude that it uses
+geo-blocking.
+
+We tested our {\reflectors} against 20 countries in total, ranging
+from large countries like Russia and China to small island countries
+like Singapore and Seychelles.  Overall, only a small number of
+{\reflectors}, 614 (0.28\%), block at least one country, and 432 block
+at least two.  China is blocked most often, with 501 of the 614
+{\reflectors} blocking random IPs in China.  Russia is second at 376,
+followed by Hong Kong (177) and Vietnam (175).  European countries
+including Belgium, Netherlands, and France also have over 60
+{\reflectors} blocking them.
+
+Note that our methodology identifies geo-blocking at the network
+layer.  Other forms of geo-blocking exist, such as application-layer
+blocking (e.g., HTTP 403 Forbidden).  We do not explore all possible
+geo-blocking mechanisms since our goal was to identify {\reflectors}
+using geo-blocking at the network layer.
+
+%% \noteby{GV}{Thinking about it more, if we had more time we could turn
+%%   geo-blocking into a result instead of treating it as error.  The
+%%   challenge with fitting it into the current framing is that it is not
+%%   always significant partial blocking.}
+
+%% , as they could introduce noise
+%% when determining network-level blocking based upon blacklists.
+
+\subsection{Significant Partial Blocking}
+
+\begin{table}[t]
+\centering
+\small
+%\begin{adjustbox}{width=\columnwidth}
+\begin{tabular}{l r r r | r r r }
+ \toprule
+ \textbf{}           &\multicolumn{3}{c}{\textbf{Blocked over 75\%}}    &\multicolumn{3}{c}{\textbf{Blocked over 50\%}} \\
+ \textbf{Blacklist}  &\textbf{Hosts}   &\textbf{/24s}   &\textbf{ASes}  &\textbf{Hosts}   &\textbf{/24s}   &\textbf{ASes} \\
+ \midrule
+ DROP      & 28      & 18     & 3   &  23      & 21    & 3\\
+ eDROP     & 96      & 60     & 32  &  49      & 27    & 18\\
+ DTop        & 157     & 66     & 19  &  319     & 165   & 72\\
+ ET     & 13      & 7      & 6   &  31      & 19    & 17\\
+ BDS           & 8       & 5      & 5   &  7       & 7     & 7\\
+ Feodo             & 65      & 30     & 19  &  23      & 17    & 15\\
+ Snort       & 11      & 9      & 7   &  34      & 20    & 17\\
+ DE       & 148     & 38     & 1   &  13      & 11    & 4\\
+ Tor             & 63      & 35     & 26  &  31      & 19    & 16\\
+ %% {\spamhausdrop}      & 28      & 18     & 3   &  23      & 21    & 3\\
+ %% {\spamhausedrop}     & 96      & 60     & 32  &  49      & 27    & 18\\
+ %% {\dshieldtop}        & 157     & 66     & 19  &  319     & 165   & 72\\
+ %% {\etcompromised}     & 13      & 7      & 6   &  31      & 19    & 17\\
+ %% {\bdsatif}           & 8       & 5      & 5   &  7       & 7     & 7\\
+ %% {\feodo}             & 65      & 30     & 19  &  23      & 17    & 15\\
+ %% {\snortfilter}       & 11      & 9      & 7   &  34      & 20    & 17\\
+ %% {\blocklistde}       & 148     & 38     & 1   &  13      & 11    & 4\\
+ %% {\ettor}             & 63      & 35     & 26  &  31      & 19    & 16\\
+ \midrule
+ \textbf{Total}              & 492     & 207    & 71  & 459      & 257   & 108\\
+ \bottomrule
+\end{tabular}
+%\end{adjustbox}
+\caption{Number of reflectors exhibiting significant partial blocking on each blacklist.}
+\label{tab:partial-blocking-reflectors}
+\end{table}
+
+%\noteby{GV}{At what point in the workflow are geo-blocking reflectors
+%  removed?}
+
+%% Recall that we selected all {\reflectors} exclusively within the US to
+%% minimize blocking behavior caused by censorship
+%% (Section~\ref{sec:methrefl}).
+
+In addition to geo-blocking, there are reasons why a {\reflector} may
+block a blacklist IP that is not due to the reflector using that
+blacklist.  A host may have internal policies that deny access from
+some network providers, or network administrators may add IPs into
+their firewall on an ad-hoc basis based on an organization's internal
+strategies or policies.  These alternate blocking behaviors could
+overlap with the blacklist IPs we sampled, leading to partial blocking
+behavior in our results.
+
+%% We go through all partial blocking we observed, and remove the ones
+%% that caused by geo-blocking.
+
+Having identified reflectors using geo-blocking, we remove these
+reflectors from further consideration.  We then calculate two groups of
+{\reflectors}: for each blacklist, we identify {\reflectors} that
+partially block over 75\% of our sampled IPs \textit{every time} we
+test them, and another group where they partially block over 50\% of
+our sampled IPs.
+%We exclude the cases where we fail to conclude the blocking behavior of a
+%few {\reflectors} and blacklist IP pairs (after 15 trials)
+%\noteby{GV}{Not clear on this?}.
+
+%Every time we test, we sample IPs from the exclusive part of that blacklist,
+%where we check against over 100 public IP blacklist (including some obsolete
+%ones). Therefore,
+
+For each blacklist, Table~\ref{tab:partial-blocking-reflectors}
+summarizes the number of {\reflectors} that fall into each category.
+If a {\reflector} is blocking more than 75\% of our sampled IPs every
+time, it is plausible that the {\reflector} is using a source that is
+very similar to the blacklist we tested.  For instance, there could be
+other blacklists where the data collection methodology is similar to
+the method used by the public blacklists in our study.  Previous work
+has shown that commercial products can aggregate data from public
+blacklists, and that they potentially conduct post-processing to
+eliminate some content~\cite{li2019reading}.
+
+We suspect that the partial blocking behavior in
+Table~\ref{tab:partial-blocking-reflectors} likely results from such
+cases.  In particular, the number of {\reflectors} that are partial
+blocking {\dshieldtop} is relatively high compared with other
+blacklists---it covers over 30\% of all {\reflectors} in the first
+group and over 69\% in the second group, suggesting that this list may
+be relatively frequently included into other lists.
+
+%% Looking into the organizations related to these partial blocking hosts
+%% (Section~\ref{sec:perfect-blocking}), {\feodo} is again covered by the
+%% most diverse set of organizations, showing its popularity among
+%% different sectors.  \noteby{GV}{Keep in mind that the next section
+%%   claims that we cannot map to organizations...}
+
+%% Overall, though, only a small number of {\reflectors} show significant
+%% partial blocking, which is consistent with the finding in the previous
+%% section.
+
+%% (Less is More)
+%% One interesting fact is that there are 253 {\reflectors} from
+%% the two partial blocking groups overlap with the {\reflectors} we
+%% identified previously that use a blacklist, which is because some
+%% {\reflectors} use one blacklist but only partially block another.

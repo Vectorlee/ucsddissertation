@@ -1,0 +1,37 @@
+\section{Discussion}
+
+
+\subsection{Limitation}
+%Our measurement took the first step to understand how threat intelligence
+%blacklists are used on the Internet.
+Our experiment took the first to unveil how threat intelligence blacklists are
+used on the Internet, by measuring over 220K hosts on the Internet. One
+limitation of our measurement, however, is the hosts we selected. We select
+these hosts primarily based on the present of IP ID side channel, and low
+network traffic. This might affect our candidate selection, provide us a biased
+set of sample set. We provide a lower bound for the threat intelligence usage
+online.
+
+Another limitation is our limited access to the commercial threat intelligence
+products. All the experiment in this paper is conducted with public threat
+intelligence feeds. As we see from Section~\ref{sec:partial-blocking} and
+Section~\ref{sec:large-scale}, the potential number of hosts that are using
+some threat intelligence products is much higher. In this paper, we took the
+best effort to peer into the commercial space, relying on the fact that some
+commercial products share content with public feeds. Future work should explore
+more the commercial threat intelligence.
+
+
+\subsection{Future Work}
+Our work try to understand the usage of threat intelligence products. We utilize
+the IP ID side channel and measured one specific type of usage: network layer
+traffic blocking. But as we mentioned earlier, there are many different ways
+people can use the threat intelligence, future work should focusing more on
+unveiling other type of usage, for example, application layer access deny.
+
+Another thing regarding the IP ID side channel is that although the global
+shared IP ID counter is regarded as old implemention, and more recent system
+have switched to more modern implementions. But as pointed out by~\cite{klein2019ip},
+even the most recent IP ID implementation still consist of exploitable side
+channels. Future work could explore the possibility to using these side channels,
+to create more vantage points for this type of measurement.

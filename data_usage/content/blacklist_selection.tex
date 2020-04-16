@@ -1,0 +1,87 @@
+\section{Target Blacklist Selection}
+
+%A large scale breadth study to get a sense for which are the most popular
+%free blacklists that are being used.
+By far we have demonstrated the methodology and the requirements for selecting
+measurement candidates. One question we have not addressed is what IP blacklists
+we choose to test against. Section~\ref{sec:methodology} described the criteria
+for sampling blacklist IPs from a given blacklist, but we still need to pick
+the blacklist in the first place.
+
+Since we do not have access to commercial IP blacklists, we choose our
+candidates from public blacklists. The FireHOL IP blacklist collection, as we
+mentioned earlier, aggregates a comprehensive list of public IP blacklists, so
+we will conduct our measurement against these blacklists. However, it would be
+too expensive for us to test against all these blacklists. Furthermore, some
+blacklists might not be used by many hosts to block traffic, which then would
+not give us much insight about blocking behavior on the Internet.
+
+In this paper, we would like choose the most popular public IP blacklists,
+and conduct our measurement and analysis in detail regarding these
+blacklists. To choose the most popular blacklist, we conduct our measurement
+over 61 public IP blacklists from the FireHOL collection, and for each
+blacklist, we sample 5 IPs from that list using the criteria specified
+before. Here we only test 61 blacklists since some lists are obsolete now,
+and we only focus on the currently active blacklists. 5 sample points from
+one list is not a strong enough indicator to conclude whether a host is using
+that blacklist or not, but the goal of the experiment is not to identify the
+exact hosts that use a blacklist. Rather, it is to get a close estimation so
+we can figure out the most widely used blacklists for later measurements. We
+repeat this experiment twice and select the top {\blacklistnum} blacklists
+\footnote{We initially selected 10 blacklists, but one blacklist, abuse.ch
+Ransomware List, was discontinued by the provider during our experiments, so
+we discard that list.}, as listed in Table~\ref{tab:target-blacklists}.
+
+\begin{table}
+\centering
+\caption{Selected {\blacklistnum} popular public IP blacklist. {\ettor} here is
+the combination of three Tor blacklists, as they are having mostly the same
+content.}
+\label{tab:target-blacklists}
+\footnotesize
+\begin{tabular}{l r}
+ \toprule
+ Blacklist   & \quad\quad\quad\quad\quad Average Number of IPs \\
+ \midrule
+ \textbf{\spamhausdrop}                 & $\sim$ 20,000,000       \\
+    \multicolumn{2}{l}{    Spamhaus Don't Route Or Peer Lists}  \\
+    %\hspace{0.2cm}    https://www.spamhaus.org/drop/drop.txt \\
+
+ \textbf{\spamhausedrop}                &  $\sim$ 900,000          \\
+    \multicolumn{2}{l}{    An extension of the Spamhaus DROP list} \\
+    %\hspace{0.2cm}    https://www.spamhaus.org/drop/edrop.txt \\
+
+ \textbf{\dshieldtop}                   &  5,120            \\
+    \multicolumn{2}{l}{    DShield.org recommended top 20 /24s to block} \\
+    %\hspace{0.2cm}    https://www.dshield.org/block.txt \\
+
+%\textbf{\ciarmy}                       & 15,000            \\
+    %\multicolumn{2}{l}{    Collective Intelligence Network Security(CINS) blacklist} \\
+    %\hspace{0.2cm}    http://www.ciarmy.com/list/ci-badguys.txt \\
+
+ \textbf{\etcompromised}                & $\sim$ 400               \\
+    \multicolumn{2}{l}{    EmergingThreats.net recorded compromised hosts} \\
+    %\multicolumn{2}{l}{\hspace{0.2cm} https://rules.emergingthreats.net/blockrules/compromised-ips.txt} \\
+
+ \textbf{\snortfilter}                  & $\sim$ 1,500             \\
+    \multicolumn{2}{l}{    labs.snort.org supplied IP blacklist}  \\
+    %\hspace{0.2cm}    http://labs.snort.org/feeds/ip-filter.blf \\
+
+ \textbf{\bdsatif}                      & $\sim$ 6,000             \\
+    \multicolumn{2}{l}{    Binary Defense System ban list} \\
+    %\hspace{0.2cm}    https://www.binarydefense.com/banlist.txt \\
+
+ \textbf{\feodo}                        & $\sim$ 700              \\
+    \multicolumn{2}{l}{    Abuse.ch Feodo tracking list}  \\
+    %\hspace{0.2cm}    https://feodotracker.abuse.ch/downloads/ipblocklist.txt \\
+
+ \textbf{\blocklistde}                  & $\sim$ 30,000           \\
+    \multicolumn{2}{l}{    Blocklist.de blacklist IPs} \\
+    %\hspace{0.2cm}    http://lists.blocklist.de/lists/all.txt\\
+
+ \textbf{\ettor}                        & $\sim$ 6,000             \\
+       \multicolumn{2}{l}{ IPs that are belong to Tor network(not just exits node)}  \\
+       %\multicolumn{2}{l}{\hspace{0.2cm}    https://rules.emergingthreats.net/blockrules/emerging-tor.rules} \\
+ \bottomrule
+\end{tabular}
+\end{table}

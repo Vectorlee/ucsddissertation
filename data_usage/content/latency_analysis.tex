@@ -1,0 +1,130 @@
+\subsection{Reflector Update Latency}
+\label{sec:latency-analysis}
+
+The objective of IP blacklists is to capture the most up-to-date IPs
+associated with malicious activities. As new threats come and go on
+the Internet, the content on the lists keeps changing. This dynamic
+nature of underlying threats and thus the IPs on the blacklists
+underscores the importance of {\reflectors} keeping their blacklists
+recent.
+%% Thus far, we focused on the stable portion of the blacklist,
+%% in order to infer usage.
+The goal of our next experiment is to estimate the delay between when
+new IPs appear on a blacklist and when reflectors start blocking them.
+
+%% However, to infer update behavior of
+%% {\reflectors} we use IPs that are newly added to the blacklist so as
+%% to measure how long it takes for {\reflectors} to start blocking the
+%% new IPs. We refer this analysis as \textit{latency} analysis.
+
+%% The latency analysis is time sensitive and to get fine granularity
+%% we would need to determine the blocking behavior quickly. However,
+%% our inference technique is not an instant test. The measurement
+%% infrastructure and ethical considerations constrains how quickly
+%% we finish the experiment. Typically, the measurement lasts
+%% in the order of hours -- allowing us to measure ``latency'' at a
+%% day granularity.
+
+%Furthermore, when testing mulitple blacklist IPs against one host, these
+%experiments have to be run sequentially, one after another. Otherwise, the
+%effects of probing packets on the IP ID field will be mixed together. Also,
+%we need to have some gap between each experiment, ensuring different
+%experiments will not interfere with each other. All these requirements can
+%make one measurement to take hours to finish, making it insufficient to be
+%used to reason fine-granularity latency. Therefore, in this experiment we
+%focus on day-granularity latency, where we %check how many days do it take
+%for each {\reflector} to start blocking newly added IPs %in blacklists.
+
+Because a single pass of the full set of {\reflectors} takes hours, we
+examine the blacklist update behavior of {\reflectors} at the
+granularity of a day.  For each blacklist we identify newly added IPs
+between two consecutive days, and consider only those new IPs that
+were not on the blacklist in the prior two weeks.  For this
+measurement, the blacklist IPs do not need to be exclusive, but still
+need to be routable.  One day after the new IPs appear on a blacklist,
+we then test whether the {\reflectors} using that blacklist now block
+these IPs, we repeat the experiment daily afterward if necessary.
+We also conduct this latency experiment twice to ensure consistent
+results(Since {\ettor} is a synthesized list, we did not measure
+the update latency regarding this blacklist).
+
+%% After curating this list of blacklist IPs to measure we wait
+%% for 24 hours and check if the {\reflectors} we identified in the
+%% previous section block these IPs. If no blocking behavior is
+%% identified we keep repeating the experiment every day till we see
+%% blocking. We repeat this experiment at a later date to ensure
+%% consistent results.
+
+%Here we wait for 24 hours because some hosts could update their blacklist
+%daily on a fix time (One university we checked update their blacklists every
+%day on 6am), then our experiments time might miss the timing.
+
+%% {\dshieldtop},
+%% {\etcompromised}, {\bdsatif}, {\bdsatif}, {\feodo}, {\snortfilter},
+%% {\blocklistde}, start blocking the newly added IPs on our first measurement
+%% indicating that {\reflectors} update their blacklist in a timely manner.
+
+Aside from one outlier, we find that \textit{all} reflectors track
+updates to the blacklists. The {\reflectors} that use the six
+non-Spamhaus blacklists all update within the one-day period. The
+outlier is a group of reflectors using {\spamhausdrop} that stop updating
+after late October 2019 (We observed this by testing with the newly added IPs
+in {\spamhausdrop} in the past), all the other {\reflectors} that block
+{\spamhausdrop} update within one-day period. After investigating, we found that
+all these outlier {\reflectors} are located in one organization (a hosting
+provider). We suspect this organization stops updating their list after that
+October.
+
+For {\spamhausedrop}, it hasn't added new IPs since Dec 17, 2019 as of Feb 14,
+2020. We tested all the corresponding {\reflectors} with the newly added IPs
+in {\spamhausedrop} back on Dec 17, 2019 and before, and found all the
+{\reflectors} are update to date.
+
+%% Thus, in this case we construct lists of ``newly added IPs'' of two
+%% list in the past, and check if the {\reflectors} are up to date on
+%% these lists.  We find that all {\reflectors} that use {\spamhausedrop}
+%% block the set of newly added IPs on December 17th, indicating that
+%% these reflectors are up to date. However, in the case of
+%% {\spamhausdrop} while most {\reflectors} block the latest newly added
+%% IPs, for 2,772 {\reflectors} we find that we need to go before Nov
+%% 2019 to find ``newly added IPs'' that are blocked. Mapping the
+%% {\reflectors} IPs to an AS and then to an organization using the CAIDA
+%% AS to Organization~\cite{caida_as_org} dataset we find that all 2,772
+%% {\reflectors} belong to one organization. We suspect this organization
+%% included the {\spamhausdrop} on late October 2019 and never updated
+%% the list afterwards.
+
+% and strongly
+%indicates the use of network level blocking using {\spamhausdrop} by the
+%organization.
+
+%, it is a little bit challenging since
+%these two lists do not update frequently---only a few times per mont. Worse,
+%these new IPs are often unroutable, making them unsuitable for our measurement.
+%Therefore, we calculate the newly added IPs in these two lists in the past,
+%using the data we collected, and test against the corresponding {\reflectors}.
+%We found that all {\reflectors} that use {\spamhausedrop} are blocking the
+%latest IPs(added on Dec 17th). While for {\spamhausdrop}, there are 2,772
+%{\reflectors} that only blocks IPs that are added earlier than Nov 2019, and
+%all the other {\reflectors} are blocking the latest IPs(added on Feb 4th 2020).
+%And all these IPs are from the one organization. We suspect this organization
+%included the {\spamhausdrop} on late October 2019 and never updated their list.
+
+\subsection{Validation}
+
+We are able to infer the use of blacklists for various hosts from our
+measurement. Ideally, we would also want to validate our findings.
+After checking the organizations where our {\reflectors} are from, we
+reached out to 2 universities that we conclude are using blacklists.
+We got the ground truth regarding the exact blacklists they are using, and
+successfully validated our findings. More specifically, University $A$
+confirmed our findings that they use \bdsatif, \etcompromised,
+\spamhausdrop\ and \spamhausedrop. University $B$ confirmed our finding that
+they use \spamhausdrop\ and \spamhausedrop.
+
+%For the Tor list blocking, we check the reverse DNS of the {\reflectors},
+%and for the ones that we can find the reverse DNS record, we access the website
+%from a normal browser and at the same time, from a TOR browser. We observed
+%that for all these reflectors, we can access them from a normal browser, but can not
+%establish a connection from the Tor browser, proving that they are
+%blocking connections from Tor.

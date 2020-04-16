@@ -1,0 +1,115 @@
+\section{Background}
+\label{sec:background}
+
+%\textcolor{red}{Industrial survey about threat intelligence usage}
+\subsection{Threat Intelligence Study}
+
+There is a large literature concerning the the use of various kinds of
+``threat intelligence'' (not always using that term). One popular focus among
+these is evaluating their effectiveness, including Sinha et
+al.~\cite{sinha2008shades} who analyze coverage and accuracy of spam
+blacklists and Pitsillidis et al.~\cite{tasters:imc12} who characterize and
+compare a range of such popular lists. Sheng et al. perform similar analyses
+on the effectiveness of phishing blacklists~\cite{sheng2009empirical} and
+Kuhrer et al. explore this approach for malware
+domains~\cite{kuhrer2014paint}. Still others have explored techniques to
+better populate such lists, including Ramachandran et al's work on inferring
+botnet IP addresses from DNSBL lookups~\cite{ramachandran2006revealing},
+their subsequent work building ``behavioral'' spam
+blacklists~\cite{ramachandran2007filtering} or the work of Hao et al. for
+predicting future domain abuse~\cite{hao2016predator,hao2013understanding}
+(among others). More recently, Thomas et al. explored the value of sharing
+threat intelligence data across functional areas (e.g., mail spam, account
+abuse, search abuse) and found limited overlap and significant numbers of
+false positives when used in this manner~\cite{thomas2016abuse}. Many of
+these results are echoed by Li et al. who empirically evaluated threat
+intelligence feeds of same type for factors such as coverage and
+accuracy~\cite{li2019reading}. Finally, there is also a literature focused on
+meta issues in threat information sharing, including standardizing data
+formats and associated sharing protocols~\cite{barnum2012standardizing,
+wagner2016misp, mavroeidis2017cyber, burger2014taxonomy}.
+
+However, there is comparatively little work focused on understanding how
+threat intelligence data is being used in practice. Indeed, the literature
+that exists is primary driven by
+surveys~\cite{ponemon2018cti,shackleford2017cyber} and not validated by any
+empirical measurement. It is this gap that drives our efforts in this paper.
+
+\subsection{Internet Connection Blocking}
+There has been significant empirical exploration of
+Internet connection blocking in the setting of Internet freedom and access.
+Indeed, there are a range of studies that measure connection block in the
+context of Internet censorship~\cite{aryan2013internet,
+park2010empirical,anderson2012splinternet,zittrain2003internet,clayton2006ignoring},
+geo-blocking~\cite{opennetsurvey, mcdonald2018403,afroz2018exploring}, and
+Tor blocking~\cite{singh2017characterizing, khattak2016you}.
+
+Most of these studies rely on vantage points sited in the target
+networks being studied, and so are not directly helpful in our work.
+However, recent work by Ensafi et al~\cite{ensafi2014detecting} and
+Pearce et al~\cite{pearce2017augur} has removed this requirement using
+an indirect side channel technique to test connectivity between pairs
+of remote hosts.  While our approach differs in a number of ways from
+theirs, it is based on the same idea of using IP ID to infer remote
+traffic sending.
+
+%In these cases, countries or organizations block network access mostly out of
+%policy reasons. In the censorship case, countries like China and Iran primarily
+%targets on pornography sites, news sites, social media and politically sensitive
+%sites~\cite{china2news, greatfire, aryan2013internet}. In the geo-blocking case,
+%websites often block access from other countries because of legal restrictions~\cite{mcdonald2018403}.
+%For example, U.S. export controls limit both physical and intellectual property
+%that U.S.-based entities can transfer to some nationalities without explicit
+%authorization~\cite{exportcontrol}, and GDPR has triggered several major
+%U.S.-based news sites block access from Europe entirely~\cite{bbcnews}.
+
+% First Paragraph: Explain what is IP ID
+\subsection{IP ID Side Channel}
+\label{sec:ipidchannel}
+The IP ID traffic side channel has been well-known since at least the
+mid 1990s.  In particular, the Identification (ID) field of an IPv4
+packet is a 16-bit value in the IP packet header, designed to support
+fragmentation by providing a unique value that can be used to group
+packet fragments belonging to the same IP
+datagram.~\cite{postel1981rfc0791}.  An easy way to ensure
+``uniqueness'' is to populate the IP ID field using a per-host global
+counter that increments after each packet is sent.  However, this
+implementation choice has a side effect that the \emph{number} of
+packets being sent is implicitly encoded in the \emph{change} in IP ID
+over time.  Thus, by probing a host multiple times one can use the
+value of the returned IP ID to infer how many packets have been sent
+by the remote host \emph{between} the two probes.  This side channel
+has been employed for a wide variety of measurement purposes,
+including anonymous port scanning\cite{antirez1998}, host alias
+detection~\cite{spring2002measuring} and enumerating hosts behind
+NATs~\cite{bellovin2002technique} among others.  While most operating
+systems no longer use such a simple approach, it is still reasonably
+common across the Internet since all versions of Windows up to version
+7 used the global increment algorithm.\footnote{In recent work, Klein
+  and Pinkas reverse engineer the contemporary Windows IP ID algorithm
+  and develop an attack to create collisions among a set of
+  counters~\cite{klein2019ip}.  We did not explore using this attack
+  in our pilot study.}
+
+% Second paragraph: how a lot of people are implementing it.
+%One easy way to implement the IP ID field for networking is to use a global
+%counter. In this case, a system uses one 16-bit variable to set the IP ID
+%value for all the IP packets it sends out, and increments the variable by 1
+%after every packet. This simple solution ensures the IP ID value of all
+%packets are unique, and it is how many early systems implemented their
+%IP ID mechanisms~\cite{klein2019ip}.
+
+%This implementation create a side channel that allows anyone without
+%access to a host to observe the traffic volume from that host. An observer,
+%by probing the host twice separated by some time interval and checking the
+%corresponding IP ID increase, can learn about the number of packets the host
+%sent out during this period. This side channel can be used to observe many
+%different network effects, like
+
+%In order to eliminate this side channel, new systems implement the IP ID
+%generation by using different counters for different traffic, so different
+%observers will see a different IP ID sequences from the same host. However,
+%there are still a significant number of hosts on the Internet that still use
+%the global counter implementation. For example, Windows 8 and older still use
+%this implementation~\cite{klein2019ip}. These hosts give us sizable amount of
+%candidates to conduct our measurement.
