@@ -1,0 +1,92 @@
+\chapter{Threat Intelligence Usage}
+
+Over the last decade, the use of threat information sharing ---
+commonly labeled ``threat intelligence'' --- has become a staple
+in any discussion of network defense.  The premise is that by broadly
+sharing information about known threats, organizations can better
+protect themselves in advance of a future attack.  From this basic
+idea, a burgeoning industry has emerged to collect, aggregate, curate
+and distribute such information~\cite{tipredict2018, tounsi2018survey},
+largely consisting of lists of IP
+addresses, domain names or URLs thought to be associated with
+particular classes of threats (a.k.a., \textit{indicators of
+  compromise} or IOCs).
+
+In turn, threat intelligence data of this sort can be used in a number
+of distinct ways.  It can be used forensically during incident response
+(i.e., to better understand and attribute a threat after it has gained
+purchase in a network), it can be used reactively to generate alerts
+of suspicious activity (i.e., to raise awareness of a potential threat
+that is currently active), or it can be used proactively to block
+traffic (and hence block the associated threats).  This last category
+of action, traditionally called ``blacklisting'', is uniquely
+attractive to a defender since, if effective, it can foreclose certain
+threats without requiring individualized attention from a human
+analyst.  Indeed, it is common to see such precisely scenarios
+highlighted in the marketing materials for virtually all threat
+intelligence offerings.
+
+%However, it far from clear if this promise of threat intelligence in
+%the abstract is matched by its implementation in practice.
+However, despite all the promises, it is far from clear how people adopt
+threat intelligence data, especially for proactive traffic blocking.
+Proactively blocking traffic based on threat intelligence data is a strong
+action, and recent work by Li et al.~\cite{li2019reading} has shown that
+threat intelligence feeds can be far from comprehensive and may include
+significant numbers of false positives. This could cause an organization
+to inadvertently block benign Internet sites. Moreover, on a broader scale,
+a mistakenly added IP in a threat intelligence feed can
+effectively be denied service from all organizations using that feed
+to block traffic. Given this, it is important to understand the extent
+to which network administrators are willing to use such third-party data to
+block network traffic.
+
+%Exploring this question is the focus of this paper.
+In this paper, we take the first look into this question. In particular,
+we seek to better understand the extent to which network administrators
+make use of threat intelligence IP feeds(more commonly known as IP blacklists)
+to proactively block network traffic and, if they do, which kinds of data
+sources are they using for that purpose.
+
+The principal challenge in pursuing this question is that such
+decisions are largely invisible: a network choosing to block IP
+address x, is indistinguishable from one that does not, except to the
+owner of IP address x.  Moreover, for operational security reasons,
+few organizations are willing to publicly document the details of
+their network defenses.  Thus, there is no crisp mechanism to
+determine if a network blocks certain traffic, let alone a means to
+determine the data source driving such a decision.
+
+In this paper, we explore this question via a combination of inference
+and careful testing, resulting in three primary contributions.
+First, building on prior work designed to detect
+censorship~\cite{ensafi2014detecting, pearce2017augur}, we develop,
+test and validate an inference technique using the IP ID side-channel to
+detect network-layer blacklisting.  Second, by using this technique with a
+carefully chosen set of IP addresses, we are able to attribute
+blocking actions to the use of particular blacklists.  Finally, we conduct a
+large-scale pilot study covering over {\reflroughnum} U.S. hosts
+to explore the diversity in blacklisting behaviors. Together, we
+uncover the use of {\blacklistnum} popular public IP blacklists among
+the hosts we surveyed, and demonstrate relations between these hosts
+and their update pattern on blacklists. We further investigate a broader
+use of blacklists among our hosts, and discovered over 73K hosts has
+shown blacklist related blocking behavior.
+
+
+\input{data_usage/content/background.tex}
+\input{data_usage/content/methodology.tex}
+\input{data_usage/content/experiment_design.tex}
+%\input{content/requirements.tex}
+%\input{content/implementation.tex}
+%\input{content/blacklist_selection.tex}
+\input{data_usage/content/perfect_blocking.tex}
+\input{data_usage/content/latency_analysis.tex}
+
+\input{data_usage/content/partial_blocking.tex}
+\input{data_usage/content/large_scale_study.tex}
+\input{data_usage/content/consistency_analysis.tex}
+
+
+%\input{content/discuss.tex}
+\input{data_usage/content/conclusion.tex}

@@ -44,12 +44,8 @@ reflector will receive the entire packet train.
 
 \begin{figure}[t]
     \centering
-    \includegraphics[width=0.98\columnwidth]{images/cropped_method_protocol_v2.pdf}
-    \caption{The basic method to detect network packet blocking using the IP ID side channel.
-    When there is no blocking in place (left), the measurement machine will see
-    an IP ID gap in two RST responses: the second IP ID will increase by two. Whereas
-    if there is network blocking (right), then the two IP IDs will not have a gap:
-    the second IP ID will only increase by one.}
+    \includegraphics[width=0.98\columnwidth]{data_usage/images/cropped_method_protocol_v2.pdf}
+    \caption{The basic method to detect network packet blocking using the IP ID side channel.}
     \label{fig:coreidea}
 \end{figure}
 
@@ -75,7 +71,11 @@ Figure~\ref{fig:coreidea}).
 These two cases, illustrated in Figure~\ref{fig:coreidea}, allow us to
 determine whether a particular blacklist IP is blocked by some network
 device, such as a firewall, somewhere between the measurement host and
-the reflector.
+the reflector. When there is no blocking in place (left), the measurement
+machine will see an IP ID gap in two RST responses: the second IP ID will
+increase by two. Whereas if there is network blocking (right), then the
+two IP IDs will not have a gap: the second IP ID will only increase by
+one.
 %and this gap should equal the number of RST
 %packets sent to the blacklisted addresses, which, in turn, should equal the
 %number of SYN-ACK packets received by the reflected with the blacklisted
@@ -85,6 +85,8 @@ This measurement technique is inspired by the method proposed in previous
 work~\cite{ensafi2014detecting, pearce2017augur}.  However, to make it work for
 our objective we need to handle a few more important issues, as we will
 see in the rest of this section.
+
+\input{data_usage/content/method_comparison}
 
 \subsection{Finding Suitable Reflectors}
 \label{sec:methrefl}
@@ -190,7 +192,8 @@ Table~\ref{tab:target-hosts}.
 
 \begin{table}[t]
 \centering
-\small
+\caption{The number of {\reflectors} (IP addresses) identified in the United States, and the
+corresponding count of /24 prefixes and Autonomous Systems.}
 \begin{tabular}{l >{\hfill}p{4.5cm}}
  \toprule
  Category                    &  Count    \\
@@ -201,8 +204,6 @@ Table~\ref{tab:target-hosts}.
 %% \textbf{Organizations}      &  3,321    \\
  \bottomrule
 \end{tabular}
-\caption{The number of {\reflectors} (IP addresses) identified in the United States, and the
-corresponding count of /24 prefixes and Autonomous Systems.}
 %% and organizations (One organization can have multiple ASes)}
 \label{tab:target-hosts}
 \end{table}
@@ -217,7 +218,7 @@ corresponding count of /24 prefixes and Autonomous Systems.}
 
 \begin{table}[t]
 \centering
-\small
+\caption{Top {\blacklistnum} popular public IP blacklists.}
 \begin{tabular}{l r}
  \toprule
 \textbf{Blacklist}   & \quad\quad \textbf{Average Number of IPs} \\
@@ -263,7 +264,6 @@ corresponding count of /24 prefixes and Autonomous Systems.}
        %\multicolumn{2}{l}{\hspace{0.2cm}    https://rules.emergingthreats.net/blockrules/emerging-tor.rules} \\
  \bottomrule
 \end{tabular}
-\caption{Top {\blacklistnum} popular public IP blacklists.}
 \label{tab:target-blacklists}
 \end{table}
 

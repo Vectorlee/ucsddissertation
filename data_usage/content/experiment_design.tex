@@ -24,7 +24,13 @@ limitations on our measurement machine side and reduce impact on
 
 We define a \textit{trial} as a single measurement that tests if a
 {\reflector} blocks a blacklist IP. Figure~\ref{fig:design_implementation}
-shows the process of one trial in detail. For each trial, the measurement
+shows the process of one trial in detail. 
+The solid blue lines are the \textit{probe
+packets}. Dashed red lines are the \textit{spoofed packets}. The spoofed
+packets impersonating blacklist IPs trigger the increase of the
+{\reflectors}' IP ID. The IP ID of responses to probe packets are used to
+determine blocking behavior.
+For each trial, the measurement
 machine sends five consecutive \textit{probe packets} to the {\reflector},
 with each packet being sent one second apart. In our experiment, the probe
 packets are TCP SYN-ACK packets and we get IP IDs from response RST packets.
@@ -37,12 +43,8 @@ window between two IP ID probes.
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=0.85\columnwidth]{images/croped_design_implementation.pdf}
-\caption{Blocking detection methodology. The solid blue lines are the \textit{probe
-packets}. Dashed red lines are the \textit{spoofed packets}. The spoofed
-packets impersonating blacklist IPs trigger the increase of the
-{\reflectors}' IP ID. The IP ID of responses to probe packets are used to
-determine blocking behavior.}
+\includegraphics[width=0.85\columnwidth]{data_usage/images/croped_design_implementation.pdf}
+\caption{Blocking detection methodology.}
 \label{fig:design_implementation}
 \end{figure}
 
@@ -164,11 +166,8 @@ results are shown in Figure~\ref{fig:fp_fn_analysis}.
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=0.85\columnwidth]{images/false_positive_negative.pdf}
-\caption{False positive rates and false negative rates of the technique when
-spoofing different amount of packets. We choose number 5 as a trade-off
-between low false positive and negative rates, and as few packets being sent
-to reflectors as possible.}
+\includegraphics[width=0.85\columnwidth]{data_usage/images/false_positive_negative.pdf}
+\caption{False positive rates and false negative rates of the technique when spoofing different amount of packets.}
 \label{fig:fp_fn_analysis}
 \end{figure}
 

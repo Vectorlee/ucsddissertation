@@ -34,10 +34,9 @@
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=1.0\columnwidth]{images/large_scale_rcdf_v2.pdf}
+\includegraphics[width=0.8\columnwidth]{data_usage/images/large_scale_rcdf_v2.pdf}
 \caption{Number of {\reflectors} ($y$-axis) that block at least
-  some number of blacklist IPs ($x$-axis).  5,412 reflectors,
-  for instance, block 10 or more ``Shared'' IPs.}
+  some number of blacklist IPs ($x$-axis)}
 \label{fig:large_scale_rcdf}
 \end{figure}
 
@@ -109,7 +108,8 @@ larger than just the ones that use the public blacklists we study.
 %% Uses a larger font size
 \begin{table}[t]
 \centering
-\small
+\caption{Blocking behavior of reflectors with the top 12 most-blocked
+  blacklist IPs.}
 \begin{tabular}{r  r  r  r}
  \toprule
                          & \multicolumn{3}{c}{\textbf{Granularity}} \\
@@ -129,12 +129,7 @@ larger than just the ones that use the public blacklists we study.
  62.210.37.82               & 4,058                  & 528       & 300      \\
  \bottomrule
 \end{tabular}
-\caption{Blocking behavior of reflectors with the top 12 most-blocked
-  blacklist IPs.  The second column shows the number of {\reflectors}
-  that block the particular IP, the third column shows the
-  \textit{maximum} number of {\reflectors} that block IPs from the
-  same /24, and the last column shows the maximum number of
-  {\reflectors} that block IPs sampled from the same AS.}
+
 \label{tab:super-malicious-ips}
 \end{table}
 
@@ -142,7 +137,7 @@ larger than just the ones that use the public blacklists we study.
 % (probably should have the %s in separate columns for more convenient column space control)
 \begin{table*}[t]
 	\centering
-	\small
+    \caption{The blocking consistency of the reflectors in /24 prefixes with more than one reflector.}
 	\begin{tabular}{l|rr|r|r} \toprule
 		\multicolumn{1}{c}{\textbf{}} & \multicolumn{2}{c}{\textbf{Consistent}}                                                      & \multicolumn{1}{c}{\textbf{Almost Consistent}} & \multicolumn{1}{c}{\textbf{Inconsistent}}      \\
 		\textbf{Blacklist}            & \multicolumn{1}{c}{\textbf{No Blocking (\%)}} & \multicolumn{1}{c|}{\textbf{Consistent (\%)}} & \multicolumn{1}{c|}{\textbf{Off By One (\%)}}   & \multicolumn{1}{c}{\textbf{Inconsistent (\%)}} \\
@@ -162,7 +157,6 @@ larger than just the ones that use the public blacklists we study.
 \textbf{Control Group} & 40,255 \hspace*{2pt} (99.89\%)	& 3 \hspace*{2pt} (0.01\%) & 37 \hspace*{2pt} (0.09\%) & 5 \hspace*{2pt} (0.01\%) \\
 \bottomrule
 	\end{tabular}
-	\caption{The blocking consistency of the reflectors in /24 prefixes with more than one reflector.  Multiple reflectors in most /24 prefixes do not block, and as such are consistent.  But when multiple reflectors in /24 prefixes do block, there is substantial inconsistency.  }
 	\label{tab:consistency-breakdown}
 \end{table*}
 
@@ -215,9 +209,12 @@ IPs from the same AS.  For all of these IPs, we then measure how many
 
 Table~\ref{tab:super-malicious-ips} shows the number of {\reflectors}
 that block the top 12 blacklist IPs, the random IPs from the same
-/24 as the blacklist IPs, and the random IPs from the same AS (For the
-/24 test and AS test, we listed the maximum number of {\reflectors} that
-block IPs in two tests). These
+/24 as the blacklist IPs, and the random IPs from the same AS ( The second column shows the number of {\reflectors}
+  that block the particular IP, the third column shows the
+  \textit{maximum} number of {\reflectors} that block IPs from the
+  same /24, and the last column shows the maximum number of
+  {\reflectors} that block IPs sampled from the same AS.). 
+These
 results confirm that {\reflectors} exhibit blocking behavior targeting
 specific IPs rather than larger network blocks.  Indeed, searching the
 Web based on these blacklist IPs returns reports linking these IPs to

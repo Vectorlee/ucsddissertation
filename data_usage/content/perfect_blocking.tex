@@ -38,16 +38,9 @@ behaviors in more detail.
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=0.95\columnwidth]{images/reflector_breakdown_v2.pdf}
+\includegraphics[width=0.95\columnwidth]{data_usage/images/reflector_breakdown_v2.pdf}
 \caption{Breakdown of {\reflector} blocking based on three
-  experimental runs.  We identified 4,253 {\reflectors} that use at
-  least one blacklist (Section~\ref{sec:blacklist-use}).  We also
-  discovered reflectors that block a significant fraction of blacklist
-  IPs, due in part to geo-blocking
-  (Section~\ref{sec:partial-blocking}).  Finally, we identified a
-  large number of reflectors blocking at least one IP, suggesting
-  wider use of a much larger set of blacklists
-  (Section~\ref{sec:large-scale}).}
+  experimental runs.}
 \label{fig:reflector-breakdown}
 \end{figure}
 
@@ -117,7 +110,14 @@ blacklists (1.9\%), reflectors that block a large fraction of IPs on
 at least one blacklist in every experiment(0.4\%, see more in
 Section~\ref{sec:partial-blocking}), remaining reflectors that block at
 least one blacklist IP (20.8\%), and reflectors that do not block any
-blacklist IPs (76.9\%).  Note that given the requirements for hosts to
+blacklist IPs (76.9\%). (We identified 4,253 {\reflectors} that use at
+  least one blacklist (Section~\ref{sec:blacklist-use}).  We also
+  discovered reflectors that block a significant fraction of blacklist
+  IPs, due in part to geo-blocking
+  (Section~\ref{sec:partial-blocking}).  Finally, we identified a
+  large number of reflectors blocking at least one IP, suggesting
+  wider use of a much larger set of blacklists
+  (Section~\ref{sec:large-scale}).) Note that given the requirements for hosts to
 be reflectors, such as running old OS versions, it is not surprising a
 large percentage shows no blocking of the blacklist IPs: they already
 have attributes anti-correlated with high degrees of security hygiene.
@@ -142,7 +142,9 @@ granularity.
 \begin{table}
 \setlength{\tabcolsep}{4pt}
 \centering
-\small
+\caption{The number of {\reflectors} we conclude using each of the nine different
+  blacklists, as well as the number of unique /24s and ASes those
+  reflectors appear in.}
 \begin{tabular}{l r r r}
  \toprule
  \textbf{Blacklist} (abbr.)   & \textbf{Reflectors}  & \textbf{/24s}   & \textbf{ASes}\\
@@ -161,9 +163,7 @@ granularity.
  \textbf{Total Unique}                   & 4,253         & 1,827  & 77  \\
  \bottomrule
 \end{tabular}
-\caption{The number of {\reflectors} we conclude using each of the nine different
-  blacklists, as well as the number of unique /24s and ASes those
-  reflectors appear in.}
+
 \label{tab:perfect-blocking-reflectors}
 \end{table}
 
@@ -284,7 +284,7 @@ IPs on these blacklists.
 
 \begin{figure}[t]
   \centering
-  \includegraphics[width=0.8\linewidth]{images/perfect_shared_cdf_v2.pdf}
+  \includegraphics[width=0.8\linewidth]{data_usage/images/perfect_shared_cdf_v2.pdf}
   \caption{CDF of the number of blacklists used by {\reflectors}}
 %%    \noteby{VG}{we should remove this figure}
 %%    \noteby{GV}{My vote is to keep it...I think it usefully sets up the heatmap.}
@@ -303,7 +303,8 @@ we see in our study.
 
 For these {\reflectors}, though, there are interesting patterns to the
 multiple blacklists used.  Figure~\ref{fig:perfect-heatmap} shows the
-use of multiple blacklists with a heatmap.  Rows and columns
+use of multiple blacklists with a heatmap.  Each cell shows the fraction of the {\reflectors} using the blacklist in the
+   row $R$ that are also using the blacklist in the column $C$: $|R \cap C| / |R|$. Rows and columns
 correspond to blacklists, and each cell of the heatmap shows the
 fraction of the {\reflectors} using the blacklist in row $R$ that are
 also using the blacklist in column $C$.  For example, the first cell
@@ -377,9 +378,7 @@ uses {\spamhausdrop}.
 
 \begin{figure}[t]
   \centering
-  \includegraphics[width=0.85\linewidth]{images/perfect_blocking_heatmap.pdf}
-  \caption{Pair-wise overlap of {\reflectors} using the different blacklists.
-   Each cell shows the fraction of the {\reflectors} using the blacklist in the
-   row $R$ that are also using the blacklist in the column $C$: $|R \cap C| / |R|$.}
+  \includegraphics[width=0.85\linewidth]{data_usage/images/perfect_blocking_heatmap.pdf}
+  \caption{Pair-wise overlap of {\reflectors} using the different blacklists.}
   \label{fig:perfect-heatmap}
 \end{figure}
