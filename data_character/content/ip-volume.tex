@@ -3,8 +3,13 @@
 
 %\noteby{KL}{Change this to Size and Rate.}
 Volume is one of the oldest and simplest \ti\ metrics representing how informative
-each data source is. Table~\ref{tab:volume-overview-1} shows the total number of unique IP addresses
-collected from each feed during the measurement period, under column \emph{Volume}.
+each data source is. Table~\ref{tab:volume-overview-1} and Table~\ref{tab:volume-overview-2} shows the total number of unique IP addresses
+collected from each feed during the measurement period, under column \emph{Volume}. A \snapfeedsym\ denotes a \textit{snapshot feed}
+and \deltafeedsym\ indicates an \textit{event feed} (Section~\ref{sec:feed-structure}).
+\colname{Volume} is the total number of IPs collected during our measurement period.
+\colname{Exclusive} is the exclusive contribution of each feed (Section~\ref{sec:ip-unique}).
+\colname{Avg. Rate} is the number of average daily new IPs added in the feed (Section~\ref{sec:ip-accuracy}), and
+\colname{Avg. Size} is the average working set size of each feed (Section~\ref{sec:ip-volume}).
 Feeds are listed in order of decreasing volume, grouped by category.
 The numbers we show are after the removal of invalid entries identified
 by the sources themselves. Column \emph{Avg. Rate} shows the average number of

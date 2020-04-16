@@ -15,17 +15,13 @@ its appearance in that feed and the first seen among all the feeds.
 \centering
 \subfloat[Latency distribution in scan feeds]{
 	\label{fig:scan_firstseen}
-	\includegraphics[width=0.45\textwidth, right]{images/scan_latency_new.pdf}}
+	\includegraphics[width=0.8\textwidth]{data_character/images/scan_latency_new.pdf}}
 
 \subfloat[Latency distribution in brute-force feeds]{
 	\label{fig:brute_firstseen}
-	\includegraphics[width=0.44\textwidth, right]{images/brute_latency_new.pdf}}
+	\includegraphics[width=0.8\textwidth]{data_character/images/brute_latency_new.pdf}}
 
-\caption{Distribution of indicators' latency in scan and brute-force feeds.
-Each box shows the latency distribution of shared IPs in the feed calculated in hours
-from 25 percentile to 75 percentile, with the middle line indicating the median.
-(``Badips Username*'' here is the abbreviation for feed name Badips
-Username Notfound; ``PA Packetmail Ram*'' for PA Packetmail Ramnode) }
+\caption{Distribution of indicators' latency in scan and brute-force feeds.}
 \label{fig:firstseen}
 \end{figure}
 
@@ -50,7 +46,11 @@ multiple occurrence of indicators and different valid periods used among feeds.
 %We also used other time windows for the latency calculation and the results are very similar.
 
 Figures~\ref{fig:scan_firstseen} and~\ref{fig:brute_firstseen} show the relative
-latency distribution among feeds in the scan and brute-force categories, in hours. We focus on just those feeds that have
+latency distribution among feeds in the scan and brute-force categories, in hours. Each box shows the latency distribution of shared IPs in the feed calculated in hours
+from 25 percentile to 75 percentile, with the middle line indicating the median.
+(``Badips Username*'' here is the abbreviation for feed name Badips
+Username Notfound; ``PA Packetmail Ram*'' for PA Packetmail Ramnode)
+We focus on just those feeds that have
 over 10\% of their data shared with others to ensure the analysis can represent the latency
 distribution of the overall feed. There is one feed in each category ({\feedTSSnort}
 in scan and {\feedTSBrute} in brute-force) that is excluded from the figure.

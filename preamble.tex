@@ -17,7 +17,7 @@
 \usepackage[htt]{hyphenat}
 \usepackage{verbatim}
 %\usepackage[explicit]{titlesec}
-\usepackage[font=footnotesize,labelfont=bf,labelsep=period]{caption}
+%\usepackage[font=footnotesize,labelfont=bf,labelsep=period]{caption}
 
 %\usepackage[captionskip=5pt]{floatrow}
 %\floatsetup[table]{style=plain}
@@ -194,16 +194,16 @@
 
 % Some kind of bibliography sorcery.
 
-\let\oldthebibliography=\thebibliography
-  \let\endoldthebibliography=\endthebibliography
-  \renewenvironment{thebibliography}[1]{%
-    \begin{oldthebibliography}{#1}%
-      \setlength{\parskip}{0ex}%
-      \setlength{\itemsep}{0ex}%
-  }%
-  {%
-    \end{oldthebibliography}%
-  }
+%\let\oldthebibliography=\thebibliography
+%  \let\endoldthebibliography=\endthebibliography
+%  \renewenvironment{thebibliography}[1]{%
+%    \begin{oldthebibliography}{#1}%
+%      \setlength{\parskip}{0ex}%
+%      \setlength{\itemsep}{0ex}%
+%  }%
+%  {%
+%    \end{oldthebibliography}%
+%  }
 
 % During paper preparation, "draft" should be set to true using the
 % \drafttrue command in proposal.tex. For submission, set \draftfalse.
@@ -235,6 +235,7 @@
 \newcommand{\et}{{et~al.}\xspace}
 
 \def\ti{\textbf{\textsc{ti}}}
+\newcolumntype{H}{>{\setbox0=\hbox\bgroup}c<{\egroup}@{}}
 
 \newcommand\snapfeedsym{$\Circle$}
 \newcommand\deltafeedsym{$\triangle$}

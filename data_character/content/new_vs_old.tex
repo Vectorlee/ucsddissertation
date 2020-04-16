@@ -1,11 +1,13 @@
 \section{Longitudinal Comparison}
 \label{sec:new_vs_old}
 
-In addition to the measurement period considered so far (December 1, 2017 to July 20, 2018), we also analyzed data from the same IP feeds from January 1, 2016 to August 31, 2016. These two measurement periods, 23 months apart, allow us to measure how these IP feeds have changed in two years. Table~\ref{tab:old-volume-overview} summarizes the differences between these two measurement periods. In the table, \colname{2018} represents the current measurement period and \colname{2016} the period  January 1, 2016 to August 31, 2016.
-\input{content/longitudinal_table}
+In addition to the measurement period considered so far (December 1, 2017 to July 20, 2018), we also analyzed data from the same IP feeds from January 1, 2016 to August 31, 2016. These two measurement periods, 23 months apart, allow us to measure how these IP feeds have changed in two years. Table~\ref{tab:old-volume-overview-1} and
+Table~\ref{tab:old-volume-overview-2} summarizes the differences between these two measurement periods. \colname{Avg. Rate} shows the percentage of daily rate changed over the old feeds.
+The two columns under \colname{Unrt} show the unroutable rates of feeds in 2016 and 2018 separately. The two columns under \colname{CDN} present the number of IPs fall in CDN IP ranges in old and new data. In the table, \colname{2018} represents the current measurement period and \colname{2016} the period  January 1, 2016 to August 31, 2016.
+\input{data_character/content/longitudinal_table}
 
 \noindent\textbf{Volume.}
-As shown in Table~\ref{tab:old-volume-overview}, feed volume has definitely changed after two years. Among 43 IP feeds that overlap both time periods,
+As shown in Table~\ref{tab:old-volume-overview-1} and ~\ref{tab:old-volume-overview-2}, feed volume has definitely changed after two years. Among 43 IP feeds that overlap both time periods,
 21 have a higher daily rate compared with 2 years ago, 15 feeds
 have a lower rate, and 7 feeds do not change substantially (the difference is below 20\%).
 Volume can change dramatically over time, such as {\feedTSAlienVault}
@@ -27,7 +29,7 @@ timely feeds today were also timely two years ago, and the same with tardy feeds
 %still report a significant portion of their shared data.
 
 \noindent\textbf{Accuracy.}
-Feeds have more unroutable IPs now than before as shown in Table~\ref{tab:old-volume-overview}:
+Feeds have more unroutable IPs now than before as shown in Table~\ref{tab:old-volume-overview-1} and~\ref{tab:old-volume-overview-2}:
 In 2016, 22 of the 43 IP feeds had at least 1 unroutable IP; four feeds had unroutable rates over 1\%.
 When checking the intersection with popular CDNs,
 the feeds that contain IPs in CDN ranges two years ago are also the ones that have these IPs today.

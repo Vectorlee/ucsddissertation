@@ -1,12 +1,9 @@
-\newcolumntype{H}{>{\setbox0=\hbox\bgroup}c<{\egroup}@{}}
 
 \begin{table}[t!]
 \centering
-\caption{IP \ti\ feeds accuracy overview. \colname{Unrt} is fraction of unroutable addresses in each feed (Section~\ref{sec:ip-accuracy}).
-\colname{Alexa Top} is the number of IPs intersected with top Alexa domain IP addresses, and
-\colname{CDNs} is the number of IPs intersected with top CDN provider IP addresses.}
+\caption{IP \ti\ feeds accuracy overview part I}
 \label{tab:accuracy-overview-1}
-\scriptsize
+\small
  \begin{tabular}{l r r r r}
  \toprule
  \colname{Feed} & \colname{Added} & \colname{Unrt} & \colname{Alexa} &  \colname{CDNs} \\ %& \colname{Unrt} \\
@@ -66,7 +63,20 @@
 {\feedTSAbusech}     & 256 	& 3.12\% 	& 0   & 0\\
 {\feedTSMalTraffic}  & 193 	& 0.51\% 	& 0   & 0\\
 {\feedzeus}          & 67 	& 0.0\% 	& 1   & 0\\
+\bottomrule
+\end{tabular}
+\end{table}
 
+
+\begin{table}[t!]
+\centering
+\caption{IP \ti\ feeds accuracy overview part II}
+\label{tab:accuracy-overview-2}
+\small
+ \begin{tabular}{l r r r r}
+ \toprule
+ \colname{Feed} & \colname{Added} & \colname{Unrt} & \colname{Alexa} &  \colname{CDNs} \\ %& \colname{Unrt} \\
+  \midrule
   %\midrule
   \textbf{Exploit Feeds} \\
 {\feedbadiphttp}    & 305,020 	& 0.67\% 	& 16  & 2,590\\

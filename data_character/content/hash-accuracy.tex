@@ -20,7 +20,8 @@ recorded them. Due to the high volume of the FB Malware feed and the query
 rate limit of VirusTotal, we randomly sampled 80,000 hashes from the feed for
 this analysis.
 
-Table~\ref{tab:md5-volume} shows a breakdown of the base detection rates for
+Table~\ref{tab:md5-volume-2} shows a breakdown of the base detection rates 
+for
 each feed from VirusTotal. As the PA feeds decrease in volume, the rates at
 which they are found in VirusTotal also decreases. The larger PA feeds have a
 much higher detection rate than their smaller counterparts. On the other hand,
@@ -33,14 +34,14 @@ This might undermine the limited coverage of VirusTotal as an oracle to detect
 targeted threats that are not of broader interest.
 
 \begin{figure}[t]
-\includegraphics[width=0.95\columnwidth]{images/hash_vt_cdf.pdf}
-\caption{VirusTotal detection distribution. Each point means the proportion of indicators (Y value) in a feed that is detected by \textit{over} X number of AV scanners in VirusTotal.}
+\includegraphics[width=0.8\columnwidth]{data_character/images/hash_vt_cdf.pdf}
+\caption{VirusTotal detection distribution.}
 \label{fig:vt-cdf}
 \end{figure}
 
 To further understand how the scanners in VirusTotal report the feed's data,
 we plot a graph of what percentage of hashes in each feed are detected by how many
-VirusTotal scanners. As seen in Figure~\ref{fig:vt-cdf}, four feeds have more
+VirusTotal scanners. As seen in Figure~\ref{fig:vt-cdf}, each point means the proportion of indicators (Y value) in a feed that is detected by \textit{over} X number of AV scanners in VirusTotal. Four feeds have more
 than 50\% of their samples detected by over 20 scanners. PA Malware Indicators
 and PA Twitter Emotet did not experience a large detection drop before 35 scanners,
 indicating that most indicators in the two feeds are popular malicious files
@@ -54,7 +55,7 @@ To more fully gauge the accuracy of the file hash feeds,
 we also examined how each feed measured against Shadowserver's Bin Check
 Service~\cite{shadowserver}. The service checks file hashes against NIST's
 National Software Registry List (NSRL) in addition to Shadowserver's own repository of
-known software. Table~\ref{tab:md5-volume} details how each feed compares with
+known software. Table~\ref{tab:md5-volume-2} details how each feed compares with
 Shadowserver's Bin Check service.
 
 It might be expected that there would be no hash found with Shadowserver's Bin

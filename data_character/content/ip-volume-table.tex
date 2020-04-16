@@ -1,15 +1,10 @@
-\newcolumntype{H}{>{\setbox0=\hbox\bgroup}c<{\egroup}@{}}
+%\newcolumntype{H}{>{\setbox0=\hbox\bgroup}c<{\egroup}@{}}
 
 \begin{table}[t!]
 \centering
-\caption{IP \ti\ feeds used in the study. A \snapfeedsym\ denotes a \textit{snapshot feed}
-and \deltafeedsym\ indicates an \textit{event feed} (Section~\ref{sec:feed-structure}).
-\colname{Volume} is the total number of IPs collected during our measurement period.
-\colname{Exclusive} is the exclusive contribution of each feed (Section~\ref{sec:ip-unique}).
-\colname{Avg. Rate} is the number of average daily new IPs added in the feed (Section~\ref{sec:ip-accuracy}), and
-\colname{Avg. Size} is the average working set size of each feed (Section~\ref{sec:ip-volume}).}
+\caption{IP \ti\ feeds used in the study part I}
 \label{tab:volume-overview-1}
-\scriptsize
+\small
  \begin{tabular}{l@{}r r r r}
  \toprule
  \colname{Feed} & \colname{Volume} & \colname{Exclusive} & \colname{Avg. Rate} &  \colname{Avg. Size} \\ %& \colname{Unrt} \\
@@ -72,8 +67,20 @@ and \deltafeedsym\ indicates an \textit{event feed} (Section~\ref{sec:feed-struc
 \snapfeedsym\  {\feedTSAbusech}      & 256 	    & 7.03\% 	& 1.6 	    & 117 \\
 \snapfeedsym\  {\feedTSMalTraffic}   & 251 	    & 60.5\% 	& 0.9 	    & 72 \\
 \snapfeedsym\  {\feedzeus}           & 185 	    & 49.1\% 	& 0.5 	    & 101 \\
+\bottomrule
+\end{tabular}
+\end{table}
 
 
+\begin{table}[t!]
+\centering
+\caption{IP \ti\ feeds used in the study part II}
+\label{tab:volume-overview-2}
+\small
+ \begin{tabular}{l@{}r r r r}
+ \toprule
+ \colname{Feed} & \colname{Volume} & \colname{Exclusive} & \colname{Avg. Rate} &  \colname{Avg. Size} \\ %& \colname{Unrt} \\
+  \midrule
   %\midrule
   \textbf{Exploit Feeds} \\
 

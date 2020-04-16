@@ -21,16 +21,30 @@ feeds and the VirusTotal service to identify hash aliases for known
 malicious files (i.e., which MD5 corresponds to a particualr SHA256
 value).  
 
+I showed the detail result of the hash feeds analysis in 
+Table~\ref{tab:md5-volume-1} and Table~\ref{tab:md5-volume-2}. The second column group presents feed 
+volume, average daily rate, the number of converted MD5s 
+(Section~\ref{sec:hash-overlap}) and exclusive proportion.
+\textit{Not in VT} is fraction of hashes that are not found in 
+VirusTotal, \textit{Not det.} the fraction of hashes that are found
+in VirusTotal but are not labeled as malicious by any products, and
+\textit{Detected} the fraction that are found in VirusTotal and are
+labeled malicious by at least one product. Column \textit{Not in
+SD} shows the fraction of hashes in a feed that are not in
+Shadowserver Bin Check. \textit{In NSRL} and \textit{In AppInfo}
+show the absolute number of hashes found in Shadowserver
+(Section~\ref{sec:hash-accuracy}). \textit{Exclusive} is based on
+the MD5-normalized hashes counted under \textit{Converted}. All the
+other percentages in the table are based on \textit{Volume}. I
+will explain about these result in detail in the followin sections.
+
 
 \begin{table*}[htt]
 \footnotesize \tabcolsep=0.11cm
-\caption{File hash feeds overview.
-The second column group presents feed volume, average daily rate, the number of converted MD5s (Section~\ref{sec:hash-overlap}) and exclusive proportion.
-\textit{Not in VT} is fraction of hashes that are not found in VirusTotal, \textit{Not det.} the fraction of hashes that are found in VirusTotal but are not labeled as malicious by any products, and \textit{Detected} the fraction that are found in VirusTotal and are labeled malicious by at least one product. Column \textit{Not in SD} shows the fraction of hashes in a feed that are not in Shadowserver Bin Check. \textit{In NSRL} and \textit{In AppInfo} show the absolute number of hashes found in Shadowserver (Section~\ref{sec:hash-accuracy}). \textit{Exclusive} is based on the MD5-normalized hashes counted under \textit{Converted}. All the other percentages in the table are based on \textit{Volume}.
-}
+\caption{File hash feeds overview Part I}
 \centering
 \small
-\begin{tabular}{l | r r r r| r r r | r r r }
+\begin{tabular}{l | r r r r H H H H H H }
 \toprule
  Feed         &   Volume  &  Avg. Rate  & Converted &   Exclusive  &   Not in VT    &  Not det.  &   Detected   &   Not in SD &   In NSRL   &  In AppInfo  \\
 \midrule
@@ -44,10 +58,33 @@ The second column group presents feed volume, average daily rate, the number of 
  PA Zeus Tracker         &    17       &  0.07     & 17        &       100\%    &     88.24\%    &     5.88\%      &      5.88\%          &    100\% &         0 &             0  \\
 \bottomrule
 \end{tabular}
-\label{tab:md5-volume}
+\label{tab:md5-volume-1}
 \end{table*}
 
-\input{content/hash-volume.tex}
-\input{content/hash-overlap.tex}
+
+\begin{table*}[htt]
+\footnotesize \tabcolsep=0.11cm
+\caption{File hash feeds overview Part II}
+\centering
+\small
+\begin{tabular}{l H H H H | r r r | r r r }
+\toprule
+ Feed         &   Volume  &  Avg. Rate  & Converted &   Exclusive  &   Not in VT    &  Not det.  &   Detected   &   Not in SD &   In NSRL   &  In AppInfo  \\
+\midrule
+ FB Malware              &    944,257  &  4,070    & 944,257   &    >99.99\%    &     37.41\%    &    50.50\%      &     12.09\%          &    99.89\% &     442 &             706 \\
+ PA Malware Indicators   &    39,702   &  171      & 39,702    &     98.73\%    &      0.02\%    &     0.04\%      &     99.94\%          &   >99.99\% &       2 &             0  \\
+ PA Analyst              &    38,586   &  166      & 37,665    &     97.97\%    &      4.26\%    &     2.82\%      &     92.92\%          &    99.95\% &       8 &             19 \\
+ PA Twitter Emotet       &    1,031    &  4.44     & 960       &     77.29\%    &     11.74\%    &     0.78\%      &     87.49\%          &    99.81\% &       0 &             2  \\
+ PA OSINT                &    829      &  3.57     & 783       &     71.65\%    &     19.06\%    &     0.84\%      &     80.10\%          &    99.88\% &       1 &             0  \\
+ PA Sandbox              &    298      &  1.28     & 115       &     95.65\%    &     72.81\%    &     0.34\%      &     26.85\%          &    100\% &         0 &             0  \\
+ PA Abuse.ch             &    267      &  1.15     & 3         &       100\%    &     98.88\%    &     0.75\%      &      0.37\%          &    100\% &         0 &             0  \\
+ PA Zeus Tracker         &    17       &  0.07     & 17        &       100\%    &     88.24\%    &     5.88\%      &      5.88\%          &    100\% &         0 &             0  \\
+\bottomrule
+\end{tabular}
+\label{tab:md5-volume-2}
+\end{table*}
+
+\input{data_character/content/hash-volume.tex}
+\input{data_character/content/hash-overlap.tex}
 %\input{content/hash-timing.tex}
-\input{content/hash-accuracy.tex}
+\input{data_character/content/hash-accuracy.tex}

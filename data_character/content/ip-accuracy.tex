@@ -1,6 +1,6 @@
 \subsection{Accuracy}
 \label{sec:ip-accuracy}
-\input{content/ip-false-table}
+\input{data_character/content/ip-false-table}
 
 Accuracy measures the rate of false positives in a feed. A false
 positive is an indicator that data is labeled with a category to which
@@ -31,7 +31,14 @@ disruption. We argue that the presence of such IPs in a feed are
 clearly false positives and thus define an upper bound on a feed's
 accuracy.  We populate our list from three sources: unroutable IPs,
 IPs associated with top Alexa domains, and IPs of major content
-distribution networks (CDNs).
+distribution networks (CDNs). The detail result for our accuracy analysis 
+is presented in Table~\ref{tab:accuracy-overview-1} and 
+Table~\ref{tab:accuracy-overview-2}.
+\colname{Unrt} is fraction of unroutable addresses in each feed
+(Section~\ref{sec:ip-accuracy}).
+\colname{Alexa Top} is the number of IPs intersected with top Alexa domain 
+IP addresses, and \colname{CDNs} is the number of IPs intersected with 
+top CDN provider IP addresses. I will explain more about each column in below.
 
 \noindent\textbf{Unroutable IPs.} Unroutable IPs are IP addresses that
 were not BGP-routable \emph{when they first appeared} in a feed, as
