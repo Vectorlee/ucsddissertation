@@ -1,69 +1,54 @@
 \section{Blocking Consistency}
 \label{sec:consistency}
-% TODO: Location of the Table! :(
-% GEOFF: Link to the breakdown by AS Type
-% https://docs.google.com/spreadsheets/d/1QAWr1qb01reJVAmhvl-ukOJjDl5E_1kr_uIQrAOwWyo/edit#gid=691238820
-%
-%% \begin{table*}[t]
-%% 	\centering
-%% 	\small
-%% 	\begin{tabular}{l|rr|r|r} \toprule
-%% 		\multicolumn{1}{c}{\textbf{}} & \multicolumn{2}{c}{\textbf{Consistent}}                                                      & \multicolumn{1}{c}{\textbf{Almost Consistent}} & \multicolumn{1}{c}{\textbf{Inconsistent}}      \\
-%% 		\textbf{Blacklist}            & \multicolumn{1}{c}{\textbf{No Blocking (\%)}} & \multicolumn{1}{c}{\textbf{Consistent (\%)}} & \multicolumn{1}{c}{\textbf{Off By One (\%)}}   & \multicolumn{1}{c}{\textbf{Inconsistent (\%)}} \\ \hline
-%% 		\textbf{\bdsatif}              & 35540 (88.19\%)                               & 398 (0.99\%)                                 & 2332 (5.79\%)                                  & 2030 (5.03\%)                                  \\
-%% 		\textbf{\blocklistde}          & 40228 (99.82\%)                               & 24 (0.06\%)                                  & 13 (0.03\%)                                    & 35 (0.09\%)                                    \\
-%% 		\textbf{\dshieldtop}           & 39603 (98.27\%)                               & 393 (0.98\%)                                 & 138 (0.34\%)                                   & 166 (0.41\%)                                   \\
-%% 		\textbf{\etcompromised}        & 39535 (98.10\%)                               & 298 (0.74\%)                                 & 102 (0.25\%)                                   & 365 (0.91\%)                                   \\
-%% 		\textbf{\feodo}                & 39943 (99.11\%)                               & 195 (0.48\%)                                 & 42 (0.10\%)                                    & 120 (0.31\%)                                   \\
-%% 		\textbf{\snortfilter}          & 39830 (98.83\%)                               & 250 (0.62\%)                                 & 88 (0.22\%)                                    & 132 (0.33\%)                                   \\
-%% 		\textbf{\spamhausdrop}         & 39320 (97.57\%)                               & 750 (1.86\%)                                 & 30 (0.07\%)                                    & 200 (0.50\%)                                   \\
-%% 		\textbf{\spamhausedrop}        & 39792 (98.73\%)                               & 349 (0.87\%)                                 & 36 (0.09\%)                                    & 123 (0.31\%)                                   \\
-%% 		\textbf{\ettor}                & 40000 (99.25\%)                               & 165 (0.41\%)                                 & 43 (0.11\%)                                    & 92 (0.23\%)                                    \\
-%% 		\midrule
-%% 		\textbf{Overall} 			   & 353791 (97.54\%)   & 2822	(0.78\%) & 2824 (0.78\%) & 3263 (0.90\%) \\
-%% 		\midrule
-%% 		\textbf{Control Group}  	   & 40255  (99.89\%)	& 3	(0.01\%)	& 37 (0.09\%)	 & 5 (0.01\%)	   \\
-%% 		\bottomrule
-%% 	\end{tabular}
-%% 	\caption{Consistency Breakdown}
-%% 	\label{tab:consistency-breakdown}
-%% \end{table*}
 
-As a final analysis, we explore the consistency of reflector blocking
+\begin{table*}[t]
+	\centering
+    \caption{The blocking consistency of the reflectors in /24 prefixes with more than one reflector.}
+	\begin{tabular}{l|rr|r|r} \toprule
+		\multicolumn{1}{c}{\textbf{}} & \multicolumn{2}{c}{\textbf{Consistent}}                                                      & \multicolumn{1}{c}{\textbf{Almost Consistent}} & \multicolumn{1}{c}{\textbf{Inconsistent}}      \\
+		\textbf{Blacklist}            & \multicolumn{1}{c}{\textbf{No Blocking (\%)}} & \multicolumn{1}{c|}{\textbf{Consistent (\%)}} & \multicolumn{1}{c|}{\textbf{Off By One (\%)}}   & \multicolumn{1}{c}{\textbf{Inconsistent (\%)}} \\
+\midrule
+{\bdsatif} & 35,540 \hspace*{2pt} (88.19\%) & 398 \hspace*{2pt} (0.99\%) & 2,332 \hspace*{2pt} (5.79\%) & 2,030 \hspace*{2pt} (5.03\%) \\
+{\blocklistde} & 40,228 \hspace*{2pt} (99.82\%) & 24 \hspace*{2pt} (0.06\%) & 13 \hspace*{2pt} (0.03\%) & 35 \hspace*{2pt} (0.09\%) \\
+{\dshieldtop} & 39,603 \hspace*{2pt} (98.27\%) & 393 \hspace*{2pt} (0.98\%) & 138 \hspace*{2pt} (0.34\%) & 166 \hspace*{2pt} (0.41\%) \\
+{\etcompromised} & 39,535 \hspace*{2pt} (98.10\%) & 298 \hspace*{2pt} (0.74\%) & 102 \hspace*{2pt} (0.25\%) & 365 \hspace*{2pt} (0.91\%) \\
+{\feodo} & 39,943 \hspace*{2pt} (99.11\%) & 195 \hspace*{2pt} (0.48\%) & 42 \hspace*{2pt} (0.10\%) & 120 \hspace*{2pt} (0.31\%) \\
+{\snortfilter} & 39,830 \hspace*{2pt} (98.83\%) & 250 \hspace*{2pt} (0.62\%) & 88 \hspace*{2pt} (0.22\%) & 132 \hspace*{2pt} (0.33\%) \\
+{\spamhausdrop} & 39,320 \hspace*{2pt} (97.57\%) & 750 \hspace*{2pt} (1.86\%) & 30 \hspace*{2pt} (0.07\%) & 200 \hspace*{2pt} (0.50\%) \\
+{\spamhausedrop} & 39,792 \hspace*{2pt} (98.73\%) & 349 \hspace*{2pt} (0.87\%) & 36 \hspace*{2pt} (0.09\%) & 123 \hspace*{2pt} (0.31\%) \\
+{\ettor} & 40,000 \hspace*{2pt} (99.25\%) & 165 \hspace*{2pt} (0.41\%) & 43 \hspace*{2pt} (0.11\%) & 92 \hspace*{2pt} (0.23\%) \\
+\midrule
+\textbf{Overall} & 353,791 \hspace*{2pt} (97.54\%) & 2,822 \hspace*{2pt} (0.78\%) & 2,824 \hspace*{2pt} (0.78\%) & 3,263 \hspace*{2pt} (0.90\%) \\
+\midrule
+\textbf{Control Group} & 40,255 \hspace*{2pt} (99.89\%)	& 3 \hspace*{2pt} (0.01\%) & 37 \hspace*{2pt} (0.09\%) & 5 \hspace*{2pt} (0.01\%) \\
+\bottomrule
+	\end{tabular}
+	\label{tab:consistency-breakdown}
+\end{table*}
+
+As a final analysis, I explore the consistency of reflector blocking
 behavior at a coarser granularity.  A common use case of blacklists is
 at the granularity of an organization, often via some kind of network
-appliance.  In such a scenario, we would expect the blocking behavior
+appliance.  In such a scenario, I would expect the blocking behavior
 of {\reflectors} to be consistent across an organization: if one
 {\reflector} blocks a blacklist IP, then other {\reflectors} in the
 same organization should also block it.
 
-Ideally we would like to map reflectors to organizations to answer
+Ideally I would like to map reflectors to organizations to answer
 this question.  However, mapping an IP to an organization is a
 challenging problem, particularly with the increasing use of WHOIS
-anonymization.  Instead, we use the common, more tractable technique
+anonymization.  Instead, I use the common, more tractable technique
 of aggregating reflectors by their /24 prefix.  As a result, in this
-section we answer a methodological question: If we aggregate
+section I answer a methodological question: If I aggregate
 reflectors by their /24 prefix, do the aggregated reflectors exhibit
 consistent blocking behavior?  Is the /24 prefix aggregation a useful
 proxy for expected consistent blocking by organizations?
 
-%% However, mapping an IP to an organization is a
-%% challenging problem, particularly with the increasing use of WHOIS
-%% anonymization.  Further, multiple ``organizations'' could potentially
-%% map to a single AS, as with transit and access ASes. Thus, we use the
-%% common method of assuming hosts on the same /24 prefix are part of the
-%% same network and, as such, the same organization.
-
-%% Specifically, for each /24 with more than one {\reflector}, we check
-%% if the {\reflectors} block the exact same set of sampled blacklist IPs.
-
-%\subsection{Consistency Methodology}
-
-Our data set has 134,370 {\reflectors} that are part of /24s with more
-than one {\reflector}.  For each blacklist, we categorize the blocking
+My data set has 134,370 {\reflectors} that are part of /24s with more
+than one {\reflector}.  For each blacklist, I categorize the blocking
 behavior of multiple {\reflectors} in the same /24 into one of three
 categories: \textit{consistent}, \textit{almost consistent}, and
-\textit{inconsistent}.  We define a /24 to be ``consistent'' for a
+\textit{inconsistent}.  I define a /24 to be ``consistent'' for a
 blacklist if \textit{all} the individual {\reflectors} in that /24
 block the \textit{exact same} blacklist IPs.
 %
@@ -72,33 +57,20 @@ A /24 is ``almost consistent'' if the blocking behavior of the
 ``almost consistent'' if it has four {\reflectors}, three of which
 block the same 21 IPs from a blacklist, and the fourth {\reflector}
 blocks 20 out the same 21 IPs.
-%% since if we had tried more than 15 times we could have potentially
-%% found them to be consistent.
-%
-Finally, we consider all other /24s ``inconsistent''.
+Finally, I consider all other /24s ``inconsistent''.
 
-%% any /24 that does not fall into the aforementioned two categories,
-%% we consider them as ``inconsistent''.
-
-%there is the case of missed blacklist IPs -- blacklist IPs for which we could
-%not get a good signal for blocking behavior. In the specific instance, where
-%the sum of ``perfect'' and ``missed'' blacklist IPs is exactly the same for
-%all individual {\reflectors} in a /24 we carve out that /24 as unknown since
-%had we persisted beyond 15 tries we could have found it as consistent.
-
-%\subsection{Consistency Results}
 
 Using these definitions, Table~\ref{tab:consistency-breakdown} shows
 the consistency results for all the /24s that have more than one
 {\reflector}. The results are dominated by /24s that do not show any
-blocking behavior.  We consider such /24s consistent since all the
+blocking behavior.  I consider such /24s consistent since all the
 hosts under these /24s block the same number (zero) of blacklist IPs,
 but these cases also do not provide much insight.
 
 Excluding the ``no blocking'' cases, then in the presence of any
 blocking, consistency of blocking behavior at a /24 granularity is far
 from guaranteed.  As discussed in Section~\ref{subsec:fpfn_analysis},
-our measurement technique has very low false positive and false
+the measurement technique has very low false positive and false
 negative rates.  Measurement error can potentially explain some
 ``almost consistent'' cases and perhaps some ``inconsistent'' cases,
 too.  However, the consistency results for the control group,
@@ -112,10 +84,10 @@ One situation that could lead to inconsistent blocking behavior within
 a /24 is when the network belongs to a cloud or hosting provider, and
 the IPs within the same /24 are used by distinct entities.  For
 instance, when manually examining the inconsistent /24s for {\bdsatif}
-(which has the highest inconsistency), we found more than 60\% of
+(which has the highest inconsistency), I found more than 60\% of
 these /24s belong to cloud or hosting providers.  Another situation
 leading to inconsistent block behavior is when a /24 belongs to an ISP
 which sub-allocates IP addresses to different customers.
 
-In summary, our results indicate that we cannot assume consistent
+In summary, the results indicate that one cannot assume consistent
 blocking behavior for {\reflectors} in the same /24 network.

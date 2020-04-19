@@ -1,18 +1,18 @@
 \subsection{Intersection and Exclusive Contribution}
 \label{sec:hash-overlap}
 
-As we mentioned earlier, to conduct intersection and exclusive
-analysis of file hash feeds, we need to convert indicators into the
-same hash type. Here we convert non-MD5 hashes into MD5s, using either
+As I mentioned earlier, to conduct intersection and exclusive
+analysis of file hash feeds, I need to convert indicators into the
+same hash type. Here I convert non-MD5 hashes into MD5s, using either
 metadata in the indicator itself (i.e., if it reports values for
 multiple hash functions) or by querying the source hash from
 VirusTotal~\cite{VirusTotal} which reports the full suite of hashes
 for all files in its dataset.  However, for a small fraction of hashes
-we are unable to find aliases to conver them to the MD5 representation
+I am unable to find aliases to conver them to the MD5 representation
 and must exclude them from the analysis in this section.  This filtering is
 reflected in Table~\ref{tab:md5-volume-1}, in which the Volume column
 represents the number of unique hashes found in each feed and the Converted
-column is the subset that we have been able to normalize to a MD5
+column is the subset that I have been able to normalize to a MD5
 representation.
 
 \finding\ The intersections between hash feeds are minimal,
@@ -36,6 +36,6 @@ one might expect it would encapsulate many of the smaller feeds or at least
 parts of them. This is not the case, however, as FB Malware has a negligible
 intersection with all other feeds.
 
-Due to the lack of intersection among the feeds, we omit the latency analysis
+Due to the lack of intersection among the feeds, I omit the latency analysis
 of the hash feeds, as there is simply not enough intersecting data to conclude
 which feeds perform better with regards to latency.

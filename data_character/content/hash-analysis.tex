@@ -7,16 +7,16 @@ suspicious. One can incorporate this data to block malicious
 downloads, malicious email attachments, and malware. Likewise, file
 hashes can be used to whitelist applications and these feeds can be
 used to ensure malicious files do not appear in a customer's
-whitelist. In this section we present our analysis on
+whitelist. In this section, I present the analysis on
 eight file hash feeds, also collected from December 1st, 2017
-to July 20th, 2018. We use the same metrics defined in
+to July 20th, 2018. I use the same metrics defined in
 Section~\ref{sec:metrics}.
 
-The file hash feeds we collected use a range of different hash
+The file hash feeds I collected use a range of different hash
 functions to specify malicious files, including MD5, SHA1, SHA256 and
 SHA512 (and some feeds provided values for multiple different hash
 functions to support interoperability).  Since most indicators in our
-dataset are MD5s, we have normalized to this representation by using other
+dataset are MD5s, I have normalized to this representation by using other
 feeds and the VirusTotal service to identify hash aliases for known
 malicious files (i.e., which MD5 corresponds to a particualr SHA256
 value).  

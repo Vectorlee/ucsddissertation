@@ -8,7 +8,7 @@ incident investigations, or may use it to automate the detection of
 suspicious activity and/or blacklisting.  When not itself
 determinative, such information may also be used to \emph{enrich}
 other data sources, informing investigations or aiding in automatic
-algorithmic interventions. We have introduced a set of basic threat
+algorithmic interventions. I have introduced a set of basic threat
 intelligence metrics---volume, intersection, unique contribution,
 latency, coverage and accuracy---that can inform and quantify each of
 those uses.  Depending on a number of factors, such as the intended
@@ -28,7 +28,7 @@ coverage, assuming that blocking benign activity is more costly.
 Another common real-world scenario is that a company has a limited
 budget to purchase \ti\ sources and has a specific set of threats (\ie
 botnet, brute-force) they are focused on mitigating. In such cases,
-the metrics we have described can be used directly in evaluating \ti\
+the metrics I have described can be used directly in evaluating \ti\
 options, biasing twoards sources that maximize coverage of the most
 relevant threats while limiting intersection.
 
@@ -37,8 +37,8 @@ relevant threats while limiting intersection.
 Threat intelligence IP data carries different meanings. To properly use this
 data, it is critical to know what the indicators actually mean: whether
 they are Internet scanners, members of a botnet or malicious actors who
-had attacked other places before. We have attempted to group feeds by their
-intended meaning in our analysis.
+had attacked other places before. I have attempted to group feeds by their
+intended meaning in my analysis.
 
 However, this category information, which primarily comes from \ti\ sources
 themselves, is not always available. Feeds such as {\feedalienvault} and
@@ -48,7 +48,7 @@ these indicators are unclear, making it difficult for consumers to decide
 how to use the data and the possible consequences.
 
 For feeds that provide category information, it is sometimes too broad
-to be meaningful. For example, multiple feeds in our collection
+to be meaningful. For example, multiple feeds in my collection
 simply label their indicators as ``Scanner.'' Network scanning can
 represent port scanning (by sending SYN packets), or a vulnerability scan (by
 probing host for known vulnerabilities). The ambiguity here, as a result of
@@ -62,41 +62,28 @@ standards focus largely on the data format. There is room
 to improve these standards by designing a standard \emph{semantics} for threat
 intelligence data.
 
-%Even if we just use it to block traffic, it is very difficult to justify the
-%performance of this feed, let alone to use it during a threat forensic analysis.
-
-% wrong categorization.
-%Sometimes the categorization provided by the provider might not be acurrate. For example, the
-%\feedTSSnort\ is labelled as scanners by the PA, however, we found little intersection between
-%this source and other scan sources, also little intersectio with the scanners collected
-%by the Internet telescope. We suspect the data provided by this feed is not real Internet scanners.
-
 \subsection{Limitations}
-There are several questions that our study does not address. We attempted to collect data from a diverse set of
+There are several questions that this study does not address. I attempted to collect data from a diverse set of
 sources, including public feeds, commercial feeds and industrial exchange feeds,
 but it is inherently not comprehensive. There are some prohibitively expensive or
 publication-restricted data sources that are not available to us. More specialized measurement
 work should be done in the future to further analyze the performance of these
 expensive and exclusive data sources.
 
-%Future work might be to obtain access to a larger more diverse set of \ti\
-%sources or incentives \ti\ providers to allow a neutral third-party to
-%replicate our metrics.
-
-A second limitation is our visibility into how different companies use threat
+A second limitation is my visibility into how different companies use threat
 intelligence operationally. For a company, perhaps the most useful kind of metric
 measures how a threat intelligence source affects its main performance indicators
 as well as its exposure to risk. Such metrics would require a deep integration
 into security workflows at enterprises to measure the operation effect of decisions
 made using threat intelligence. This would allow CIOs and CSOs to better understand
-exactly what a particular threat intelligence product contributes to a company. As
-researchers, we do not use \ti\ operationally. A better understanding of operational
-needs would help refine our metrics to maximize their utility for operations-driven consumers.
+exactly what a particular threat intelligence product contributes to a company. As a
+researcher, I do not use \ti\ operationally. A better understanding of operational
+needs would help refine my metrics to maximize their utility for operations-driven consumers.
 
 The third limitation is the lack of ground truth, a limitation shared
 by all the similar measurement work. It is simply very difficult to obtain the full picture
 of a certain category of threat, making it very challenging to precisely determine accuracy and coverage of feeds. In this
-study, we used data from an Internet telescope and VirusTotal as a close approximation.
+study, I used data from an Internet telescope and VirusTotal as a close approximation.
 There are also a handful of cases where a security incident has been comprehensively studied by
 researchers, such as the Mirai study~\cite{antonakakis2017understanding}, and such efforts
 can be used to evaluate certain types of \ti\ data. But such studies are few in number.
@@ -107,31 +94,27 @@ Then it can evaluate the accuracy and coverage of a \ti\ feed under the context 
 own network. This can provide a customized view of \ti\ feeds.
 
 
-%Our metrics can be used as a starting point and refined as needed based on an
-%improved understanding of how \ti\ is currently used operationally and metrics
-%that might improve the quality of \ti\ so that it could be used for additional tasks.
-
 
 %%
 %% Below are comments
 %%
 \begin{comment}
 \subsection{Independence between Metrics}
-We evaluated a large range of \ti\ sources using six metrics, it is
+I evaluated a large range of \ti\ sources using six metrics, it is
 interesting to see if there is any correlation between these metrics.
-We already compared the relation of between volume and latency of IP feeds
+I already compared the relation of between volume and latency of IP feeds
 in Section~\ref{sec:ip-timing} and showed that there is not a strong correlation. Similar cases
 can also be observed, for example, between volume and accuracy that neither high or low
-volume implies high accuracy in our feeds collection. Also, both IP and MD5 feeds show
+volume implies high accuracy in my feeds collection. Also, both IP and MD5 feeds show
 that the exclusive rate is irrelevant with the feeds' size.
 
-To formally address this question, we check the correlation coefficient between
+To formally address this question, I check the correlation coefficient between
 \emph{Volume}, \emph{Exclusive Contribution}, \emph{Latency} and \emph{Accuracy}
 in IP and MD5 feeds(when available). The result shows a low(below 0.5) correlation across all comparison.
-This means when choosing between different \ti\ sources, we need to evaluate them comprehensively
+This means when choosing between different \ti\ sources, I need to evaluate them comprehensively
 on multiple perspectives, as different perspective does not imply each other.
 
-Coverage correlate with volume in our scan feeds, which is not a surprise since volume naturally
+Coverage correlate with volume in the scan feeds, which is not a surprise since volume naturally
 implies coverage when the accuracy are close.
 
 

@@ -1,22 +1,23 @@
 \section{Overview}
 \label{sec:overview}
 
-The threat intelligence data collected for our study was obtained by
-subscribing to and pulling from numerous public and private intelligence sources.
-These sources ranged from simple blacklists of bad IPs/domains and file hashes,
-to rich threat intelligence exchanges with well labeled and structured data.
-We call each item (\eg IP address or file hash) an \emph{indicator}
+The threat intelligence data collected for this study was obtained by
+subscribing to and pulling from numerous public and private 
+intelligence sources. These sources ranged from simple blacklists of 
+bad IPs/domains and file hashes, to rich threat intelligence exchanges 
+with well labeled and structured data.
+I refer each item (\eg IP address or file hash) an \emph{indicator}
 (after \emph{indicator of compromise}, the industry term for such data items).
 
-In this section we enumerate our threat intelligence sources, describe
-each source's structure and how we collected it, and then define our
+In this section, I enumerate the threat intelligence sources, describe
+each source's structure and how I collected it, and then define our
 measurement metrics for empirically measuring these sources.  When the
-source of the data is public, or when we have an explicit agreement to
-identify the provider, we have done so.  However, in other cases, the
-data was provided on the condition of anonymity and we restrict
-ourself to describing the nature of the provider, but not their
-identity.  All of our private data providers were appraised of the
-nature of our research, its goals and the methodology that we planned
+source of the data is public, or when I have an explicit agreement to
+identify the provider, I have done so.  However, in other cases, the
+data was provided on the condition of anonymity and I restrict
+myself to only describe the nature of the provider, but not their
+identity.  All of the private data providers were appraised of the
+nature of my research, its goals and the methodology that I planned
 to employ.
 
 
@@ -25,24 +26,12 @@ to employ.
 
 \subsection{Data Set and Collection}
 
-%\pp{For camera ready, we need a dataset section. See comment in latex below this.}
-% A dataset table that looks like:
-%
-% source         start        stop      whatwasit   pub/priv    #things
-% a
-% b
-% c
-% Also category info.
-
-We use several sources of \ti\ data for our analysis:
-%\note{We need to state why our dataset is representative? It is one of my big
-%concern. For example, our spam data doesn't include the popular spam blacklist
-%like CBL, Spamhaus, SORBS}
+I use several sources of \ti\ data for my analysis:
 
 \emphpar{Facebook ThreatExchange (FB)~\cite{FBThreatExchange}}
     This is a closed-community platform that allows hundreds of companies and
     organizations to share and interact with various types of labeled threat data.
-    As part of an agreement with Facebook, we collected all its data that it shared broadly.
+    As part of an agreement with Facebook, I collected all its data that it shared broadly.
     In subsequent analyses, sources with
     prefix ``FB'' indicate a unique contributor on the Facebook ThreatExchange.
 
@@ -54,28 +43,25 @@ We use several sources of \ti\ data for our analysis:
 
 \emphpar{\feedetiprep\ Service} This commercial service provides an
     hourly-updated blacklist of known bad IP addresses across different attack categories.
-    %Each IP indicator
-    %includes information on the associated attack, attack category, and timing
-    %info. %We collected this source hourly during our collection window.
 
-\emphpar{Public Blacklists and Reputation Feeds} We collected indicators from public
+\emphpar{Public Blacklists and Reputation Feeds} I collected indicators from public
     blacklists and reputation data sources, including well-known
     sources such as AlienVault~\cite{Alienvault}, Badips~\cite{Badips}, Abuse.ch~\cite{Abuse-ch}
     and Packetmail~\cite{Packetmail}.
 
 Threat Intelligence indicators include different types of data, such as IP address, malicious file hash, Domain,
-URL, etc. In this paper, we focus our analysis on sources that provide IP addresses and file hashes,
-as they are the most prevalent data types in our collection.
+URL, etc. In this chapter, I focus the analysis on sources that provide IP addresses and file hashes,
+as they are the most prevalent data types in my collection.
 
-We collect data from all sources on an hourly basis. However, both the Facebook
+I collect data from all sources on an hourly basis. However, both the Facebook
 ThreatExchange and the Paid Feed Aggregator change their members and contributions
 over time, creating irregular collection periods for several of the sub-data sources.
 Similarly, public threat feeds had varying degrees of reliability, resulting in
-collection gaps. In this paper, we use the time window from \veryemph{December 1, 2017}
-to \veryemph{July 20, 2018} for most of the analyses, as we have the largest number
-of active sources during this period. We eliminated duplicates sources (e.g., sources
+collection gaps. In this chapter, I use the time window from \veryemph{December 1, 2017}
+to \veryemph{July 20, 2018} for most of the analyses, as I have the largest number
+of active sources during this period. I eliminated duplicates sources (e.g., sources
 we collected individually and also found in the {Paid Aggregator}) and
-sub-sources (a source that is a branch of another source). We further break IP
+sub-sources (a source that is a branch of another source). I further break IP
 sources into separate categories and treat them as individual feeds, as shown in
 Section~\ref{sec:ip-analysis}. This filtering leaves us with \numipfeeds\ IP feeds and
 \numhashfeeds\ malware file hash feeds.
@@ -91,18 +77,13 @@ aggregation the precise collection methodologies and data
 providence can be lost.
 
 
-
-%One limitation of our study is that, while some of our data arises from
-%commercial sources, much of it is public data. Our results will be of interest to
-%commercial threat intelligence users to the extent their specific \ti\ sources have the same %characteristics as the sources we use.
-
 \subsection{Data Source Structure}
 \label{sec:feed-structure}
 
-\ti\ sources in our corpus structure and present data in different ways.
+\ti\ sources in my corpus structure and present data in different ways.
 Part of the challenge in producing cross-dataset metrics is normalizing both
 the structure of the data as well as its \emph{meaning}. A major structural
-difference that influences our analysis occurs between data sources that
+difference that influences my analysis occurs between data sources that
 provide data in \emph{snapshots} and data sources that provide \emph{events}.
 
 \emphpar{Snapshot}
@@ -127,16 +108,16 @@ For example, a user might, once a day, request the set of indicators that appear
 in the last 24 hours.
 
 This structural difference is a major challenge when evaluating feeds comparatively.
-We need to normalize the difference to make a fair comparison, especially for IP feeds. From a \ti\
+I need to normalize the difference to make a fair comparison, especially for IP feeds. From a \ti\
 consumer's perspective, an \emph{event} feed does not indicate when an indicator will
 expire, so it is up to the consumer to act on the age of indicators. Put another way,
 the expiration dates of indicators are decided by how users query the feed:
 if a user asks for the indicators seen in the last 30 days
 when quering data, then there is an implicit 30-day valid time window for these indicators.
 
-In this paper, we choose a 30-day valid period for all the indicators we collected from event feeds---the same valid period
+In this chapter, I choose a 30-day valid period for all the indicators I collected from event feeds---the same valid period
 used in several snapshot feeds, and also a common query window option offered by event feeds.
-We then convert these event feeds into snapshot feeds and evaluate all of them in a unified fashion.
+I then convert these event feeds into snapshot feeds and evaluate all of them in a unified fashion.
 
 
 \begin{comment}
@@ -153,9 +134,6 @@ discovered recently. One example of this type of source is {\feednothink}\cite{N
 Upon request, it returns the source IPs they collected that have conducted SSH
 brute-force attack in the last day, last week or last year, depending on the specified
 query option.
-%One can think of an event feed as a snapshot feed with every indicators
-%having a minimum expiration time: at a certain moment there is no members in
-%the feed, we only ask for data in a time window.
 
 This structural difference doesn't concern file hash feeds, since file hashes are time
 insensitive---a malicious file hash won't change to benign in the future. One can

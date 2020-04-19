@@ -5,15 +5,9 @@ point, if a {\reflector} blocks a blacklist IP. The blocking behavior that we
 want to measure is \textit{inbound blocking} -- that is the incoming traffic
 is blocked and as a result traffic does not reach the intended host. A
 typical example is a network firewall, where it can stop certain network
-packets from reaching hosts behind the firewall. Here we abstract the
+packets from reaching hosts behind the firewall. Here I abstract the
 {\reflector} as $Host_A$, blacklist IP as $Host_B$, and the problem is to
 detect the connectivity between two hosts on the Internet.
-
-%Another type of blocking is %\textit{outbound blocking}, where the outgoing
-%traffic to a ``blocked host'' from a host within the network is blocked. %A
-%typical example is network censorship. Our measurement in this paper only
-%focuses on inbound blocking, %and we will explain more about this in the
-%following sections.
 
 \begin{figure}[t]
 \centering
@@ -24,7 +18,7 @@ detect the connectivity between two hosts on the Internet.
 
 In previous works~\cite{pearce2017augur, ensafi2014detecting}, to measure
 the connectivity between two hosts from a third party, they send spoofed packets
-to impersonate one of the hosts. This methodology -- one we refer
+to impersonate one of the hosts. This methodology -- one I refer
 to as the \textit{triangle measurement} takes advantage of the TCP 3-way
 handshake protocol, as shown in Figure~\ref{fig:old_method}.
 
@@ -39,10 +33,10 @@ to respond with a RST packet (Step 3), and increment its IP ID counter by 1.
 Finally, the measurement machine probe $Host_A$ again and get the second IP ID
 $IP\mhyphen ID_2$ (Step 4).
 
-Now we can infer whether $Host_A$ is inbound blocking traffic from $Host_B$ by
+Now I can infer whether $Host_A$ is inbound blocking traffic from $Host_B$ by
 observing the difference between $IP\mhyphen ID_1$ and $IP\mhyphen ID_2$.
 Assuming there is no packet loss, and that $Host_A$ does not have any extra
-traffic besides our measurement traffic, then
+traffic besides my measurement traffic, then
 $IP\mhyphen ID_2 = IP\mhyphen ID_1 + 2$ implies there is no inbound blocking,
 since it indicates that $Host_A$ received both packets in step 3 and step 4,
 while $IP\mhyphen ID_2 = IP\mhyphen ID_1 + 1$ means there is blocking.
@@ -56,53 +50,36 @@ SYN probe. This is not an issue for censorship measurement, as $Host_B$ in this
 case are popular sites (Google, Facebook, Twitter etc.) that guaranteed will
 respond to SYN probe.
 
-However, in our case, we need to measure whether $Host_A$ is blocking traffic
+However, in this case, I need to measure whether $Host_A$ is blocking traffic
 from a blacklist IP($Host_B$). But there is no guarantee that these IP
-addresses are active and thus may not respond to our SYN probe. In fact, we
+addresses are active and thus may not respond to the SYN probe. In fact, we
 found that the percentage of responding IPs in a blacklist can be as low as less
-than 20\%. This dramatically reduces the candidate IPs we can sample from a
+than 20\%. This dramatically reduces the candidate IPs I can sample from a
 blacklist to test, especially for small blacklists that only have a few hundred
 IPs. Furthermore, there are many other additional constraints when shortlisting
 IPs for measurement from a blacklist.
-The requirement that blacklist IPs respond to SYN probe does not work for our
+The requirement that blacklist IPs respond to SYN probe does not work for this
 use case. 
 %\textcolor{red}{Explain the choice for only inbound blocking}
 
-In order to get around this limitation we adjust the measurement methodology.
+In order to get around this limitation I adjust the measurement methodology.
 In this new methodology, the measurement machine directly sends spoofed
 packets to the target host, as shown in Figure~\ref{fig:new_method}. In
 this case, the measurement machine first probes $Host_A$ to get the first IP ID
 $IP\mhyphen ID_1$, then it sends a spoofed packet, with source IP set to
 $Host_B$(Blacklist IP), directly to $Host_A$. Finally, it sends a second probe
-to $Host_A$ and get the second IP ID $IP\mhyphen ID_2$. Now we can use the same
+to $Host_A$ and get the second IP ID $IP\mhyphen ID_2$. Now I can use the same
 logic as before to infer whether $Host_A$ is inbound blocking $Host_B$. In this
-approach, we do not require $Host_B$ to be actively responding SYN packets, any
+approach, I do not require $Host_B$ to be actively responding SYN packets, any
 IP address can be used here to conduct the test. The drawback is that the
 spoofed packets now at times go through a different route versus the packets
 originated from $Host_B$. Some network that implement spoofed packet
-detection~\cite{ferguson2000rfc2827} could drop our spoofed packets, giving us
-a false signal of inbound blocking. Therefore, when selecting hosts we conduct
+detection~\cite{ferguson2000rfc2827} could drop the spoofed packets, giving us
+a false signal of inbound blocking. Therefore, when selecting hosts I conduct
 extensive tests to weed out hosts that have such detection logic in place. We
-find that not a lot of target hosts have such detection logic. We will talk in
+find that not a lot of target hosts have such detection logic. I will talk in
 detail about host selection in the follow sections.
 
-%Therefore, we modified the measurement so that the measurement machine  directly
-%send spoofed packets to host A, as shown in Figure~\ref{fig:new_method}. In
-%this case, the measurement machine first probes host A to get the first IP ID
-%\texttt{IP\_ID\_1}, then it sends a spoofed packet, with source IP as host B,
-%directly to A. Finally, it sends a second probe to host A and get the second
-%IP ID \texttt{IP\_ID\_2}. Now we can use the same logic as before to infer
-%whether host A is inbound blocking host B. In this approach, we do not
-%require host B to be actively responding SYN packets, any IP address can be
-%used here to conduct the test. The drawback now is that the spoofed packets
-%will likely go through a different route versus the packets originated from
-%host B. Some network that implemented spoofed packet detection~\cite{ferguson2000rfc2827}
-%could drop our spoofed packets, giving us a false
-%signal of inbound blocking. Therefore, when selecting hosts for the
-%measurement, we conduct extensive tests to make sure the hosts do not have
-%such detection logic in place. Our experiment also shows that not a lot of
-%hosts have such detection logic. We will talk in detail about host selection
-%in Section~\ref{sec:requirement_host}.
 
 \begin{figure}[t]
 \centering

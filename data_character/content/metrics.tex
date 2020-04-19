@@ -4,13 +4,13 @@
 %\note{Should explain why each of these metrics is useful.}
 The aim of this work is to develop \emph{threat intelligence metrics} that
 allow a \ti\ consumer to compare threat intelligence sources and reason about
-their fitness for a particular purpose. To this end, we propose six concrete
+their fitness for a particular purpose. To this end, I propose six concrete
 metrics: \emph{Volume}, \emph{Differential contribution}, \emph{Exclusive contribution},
 \emph{Latency}, \emph{Accuracy} and \emph{Coverage}.
 
 %\noteby{KL}{This needs to be updated to \emph{size} and \emph{rate}.}
 
-\metrics \emphpar{Volume} We define the \emph{volume} of a feed to be the total
+\metrics \emphpar{Volume} I define the \emph{volume} of a feed to be the total
 number of indicators appearing in a feed over the measurement interval. Volume
 is the simplest \ti\ metric and has an established history in prior
 work~\cite{jung2004empirical,kuhrer2014paint,
@@ -21,7 +21,7 @@ the amount of data appearing in a feed on a daily basis.
 \emph{Rationale}: To a first approximation, volume captures how much
 information a feed provides to the consumer. For a feed without false positives
 (see \emph{accuracy} below), and if every indicator has equal value to the
-consumer, we would prefer a feed of greater volume to a feed of lesser volume.
+consumer, one would prefer a feed of greater volume to a feed of lesser volume.
 Of course, indicators do not all have the same value to consumers: knowing the
 IP address of a host probing the entire Internet for decades-old
 vulnerabilities is less useful than the address of a scanner targeting
@@ -75,11 +75,10 @@ feed and its appearance in the feed in question. In the feed where an indicator
 first appeared, its latency is zero. For all other feeds, the latency indicates
 how much later the same indicators appears in those feeds. Taster's
 Choice~\cite{tasters:imc12} referred to latency as \emph{relative first appearance
-time}. (We find the term \emph{latency} to be more succinct without loss of
+time}. (I find the term \emph{latency} to be more succinct without loss of
 clarity.) Since latency is defined for one indicator, for a feed it makes sense
 to consider statistics of the distribution of indicator latencies, such as the
 median indicator latency.
-%In the rest of the paper, we use the term \emph{feed latency} as shorthand for a latency statistic.
 
 \emph{Rationale}: Latency characterizes how quickly a feed includes new
 threats: the sooner a feed includes a threat, the more effective it is at
@@ -88,27 +87,21 @@ impact of feed latency on its effectiveness at
 thwarting spam~\cite{blacklisting:weis14,ramachandran2007filtering}.
 
 The metrics above are defined without regard for the \emph{meaning} of the
-indicators in a feed. We can calculate the volume of a single feed or the
+indicators in a feed. One can calculate the volume of a single feed or the
 differential contribution of one feed with respect to another regardless of
 what the feed purports to contain. While these metrics are easy to compute,
 they do little to tell us about the fitness of a feed for a particular purpose.
-For this, we need to consider the meaning or purpose of the feed data, as
-advertised by the feed provider. We define the following two metrics.
-
-%Unfortunately, this is not always easy to do.
-%In our experience, few feeds are described in such detail as to be able to say,
-%unequivocally, whether a particular indicator should be properly included in a
-%feed or not. Nevertheless, for some feeds we can speak with some confidence
-%about the kinds of indicators they should contain. For such feeds,
-
+For this, I need to consider the meaning or purpose of the feed data, as
+advertised by the feed provider. I define the following two metrics.
 
 \metrics \emphpar{Accuracy} The \emph{accuracy} of a feed is the proportion of
 indicators in a feed that are correctly included in the feed. Feed accuracy is
 analogous to \emph{precision} in Information Retrieval. This metric presumes
 that the description of the feed is well-defined and describes a set of elements
-that should be in the feed given perfect knowledge. In practice, we have neither
+that should be in the feed given perfect knowledge. In practice, 
+researchers have neither
 perfect knowledge nor a perfect description of what a feed should contain. In
-some cases, however, we can construct a set $A^-$ of elements that should
+some cases, however, I can construct a set $A^-$ of elements that should
 definitely not be in a feed $A$. Then $\mathrm{Acc}_A \le |A\setminus A^-|/|A|$.
 
 \emph{Rationale}: The accuracy metric tells a \ti\ consumer how many false
@@ -124,7 +117,7 @@ of the intended indicators contained in a feed. Feed coverage is analogous
 to \emph{recall} in Information Retrieval. Like accuracy, coverage presumes
 that the description of the feed is sufficient to determine which elements
 should be in a feed, given perfect knowledge. In some cases, it is possible
-to construct a set $A^+$ of elements that should be in a feed. We can then
+to construct a set $A^+$ of elements that should be in a feed. I can then
 upper-bound the coverage $\mathrm{Cov}_A \le |A|/|A^+|$.
 
 
@@ -134,5 +127,5 @@ a feed will provide. For example, an organization that wants to protect itself
 from a particular botnet will want to maximize its coverage of that botnet's
 command-and-control servers or infection vectors.
 
-In the following two sections, we use these metrics to evaluate two types of
+In the following two sections, I use these metrics to evaluate two types of
 \ti: IP address feeds and file hash feeds.

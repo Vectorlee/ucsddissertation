@@ -1,7 +1,7 @@
 \section{Longitudinal Comparison}
 \label{sec:new_vs_old}
 
-In addition to the measurement period considered so far (December 1, 2017 to July 20, 2018), we also analyzed data from the same IP feeds from January 1, 2016 to August 31, 2016. These two measurement periods, 23 months apart, allow us to measure how these IP feeds have changed in two years. Table~\ref{tab:old-volume-overview-1} and
+In addition to the measurement period considered so far (December 1, 2017 to July 20, 2018), I also analyzed data from the same IP feeds from January 1, 2016 to August 31, 2016. These two measurement periods, 23 months apart, allow us to measure how these IP feeds have changed in two years. Table~\ref{tab:old-volume-overview-1} and
 Table~\ref{tab:old-volume-overview-2} summarizes the differences between these two measurement periods. \colname{Avg. Rate} shows the percentage of daily rate changed over the old feeds.
 The two columns under \colname{Unrt} show the unroutable rates of feeds in 2016 and 2018 separately. The two columns under \colname{CDN} present the number of IPs fall in CDN IP ranges in old and new data. In the table, \colname{2018} represents the current measurement period and \colname{2016} the period  January 1, 2016 to August 31, 2016.
 \input{data_character/content/longitudinal_table}
@@ -35,17 +35,10 @@ When checking the intersection with popular CDNs,
 the feeds that contain IPs in CDN ranges two years ago are also the ones that have these IPs today.
 
 \noindent\textbf{Shared indicators 2016--2018.}
-We compared the data we collected from each feed in the two time periods, and found that 30
+I compared the data I collected from each feed in the two time periods, and found that 30
 out of 43 feeds in 2018 intersect with their data from two years ago, and 9 feeds have
 an intersection rate over 10\%. Three feeds in malware category, namely {\feedfeodo},
 {\feedTSAbusech} and {\feedzeus}, have over 40\% of their data shared with the past feed,
 meaning a large percent of C\&C indicators two years ago are still
 identified by the feeds as threats today. Feeds in the botnet category, however, are very distinct from the
 past, with all feeds having no intersection with the past except {\feedetiprep}.
-
-%This ``now and past'' intersection between feeds could potentially introduce bias
-%when comparing the high-level characteristic of two datasets. Therefore, we excluded the
-%old data from each feed and redid the volume, intersection and accuracy analyses.
-%The results are essentially unchanged, indicating that the overlapping data was not
-%the cause of the consistency of our analyses over time.
-%The comparison above show the changes between feeds over the time, yet the high level characteristic

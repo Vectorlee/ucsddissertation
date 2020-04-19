@@ -1,0 +1,42 @@
+\section{Empirical Analysis of Threat Intelligence Data}
+
+Several studies have examined the effectiveness of blacklist-based 
+threat intelligence~\cite{kuhrer2014paint, ramachandran2006revealing, 
+ramachandran2007filtering, sheng2009empirical, sinha2008shades}.
+Ramachandran~\etal~\cite{ramachandran2007filtering} showed that spam 
+blacklists are both incomplete (missing 35\% of the source IPs of 
+spam emails captured in two spam traps), and slow in responding 
+(20\% of the spammers remain unlisted after 30 days).
+Sinha~\etal~\cite{sinha2008shades} further confirmed this result by 
+showing that four major spam blacklists have very high false negative
+rates, and analyzed the possible causes of the low coverage.
+Sheng~\etal~\cite{sheng2009empirical} studied the effectiveness of
+phishing blacklists, showing the lists are slow in reacting to
+highly transient phishing campaigns.
+
+Other studies have analyzed the general attributes of threat
+intelligence data. Pitsillidis~\etal~\cite{tasters:imc12} studied the
+characteristics of spam domain feeds, showing different perspectives
+of spam feeds, and demonstrated that different feeds are suitable for
+answering different questions. Thomas~\etal~\cite{thomas2016abuse}
+constructed their own threat intelligence by aggregating the abuse
+traffic received from six Google services, showing a lack of
+intersection and correlation among these different sources. 
+
+The limitations of the previous measurement works are that these 
+studies tend to only focused on specific types of threat intelligence 
+sources, like spam or phish blacklists, and they only evaluated one 
+aspect of the data characteristic, like the operational performance, 
+rather than generalize the measurement and define threat intelligence 
+metrics that can be extended beyond the work.
+
+Little work before had defines a general measurement methodology to
+examine threat intelligence across a broad set of types and categories.
+Metcalf~\etal~\cite{metcalf2015blacklist} collected and measured IP
+and domain blacklists from multiple sources, but again only focused 
+on volume and intersection analysis. One missing piece in these works
+is that they did not approach the problem from the perspective of 
+consumers of Threat Intelligence.  After all, it is the consumers that
+will support this industry, and research communities should look more
+into their needs. This is one major motivation of my work, which will
+be discussed in Chapter~\ref{chapter:data_character}.

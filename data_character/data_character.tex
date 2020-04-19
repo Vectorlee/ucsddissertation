@@ -1,58 +1,56 @@
 \chapter{Threat Intelligence Data Characteristic}
 \label{chapter:data_character}
 
-\section{Introduction}
+In this chapter, I will talk about my work on data characteristic
+study on Threat Intelligence(\ti). As described in the Introduction 
+chapter, there is a surge of Threat Intelligence products in the 
+recent years, and they all have eye-catching promises like high 
+accuracy and good coverage. However, it is unclear whether the
+existing products on the market can actually live up to the 
+promises, and there has been little empirical assessment of threat
+intelligence data or even a consensus about what such an
+evaluation would entail. 
 
-While each organization naturally collects a certain amount of threat
-intelligence data on its own (e.g., the attacks they repel, the e-mail
-spam they filter, etc.) any single entity has a limited footprint and
-few are instrumented to carefully segregate crisp signals of attacks
-from the range of ambiguity found in normal production network and
-system logs.  Thus, it is now commonly accepted that threat
-intelligence data procurement is a specialized activity whereby
-third-party firms, and/or collections of public groups, employ a range
-of monitoring techniques to aggregate, filter and curate quality
-information about current threats.  Indeed, the promised operational
-value of threat intelligence has created a thriving (multi-billion
-dollar) market~\cite{timarket}. Established security companies with
-roots in anti-virus software or network intrusion detection now offer
-threat intelligence for sale, while some vendors specialize in threat
-intelligence exclusively, often promising coverage of more
-sophisticated threats than conventional sources.
+A thorough data characteristic analysis is critical for the 
+community to understand the current status of Threat Intelligence 
+data, its patterns and limitations. After all, one need to understand
+the current situation before discussing how to improve it. 
+Another motivation for this 
+study is that since there is little empirical analysis of the 
+data before, the community do not even have a set of metrics for
+measuring and comparing different Threat Intelligence products. 
+Thus, consumers of Threat Intelligence products have limited means 
+to compare offerings or to factor the cost of such products into 
+any model of the benefit to operational security.
 
-Unfortunately, in spite of this tremendous promise, there has been
-little empirical assessment of threat intelligence data or even a
-consensus about what such an evaluation would entail.  Thus, consumers
-of \ti\ products have limited means to compare offerings
-or to factor the cost of such products into any model of the benefit
-to operational security that might be offered.
-
-This issue motivates our work to provide a grounded,
-empirical footing for addressing such questions.  In particular, this
-paper makes the following contributions:
+These issue motivates my work to provide a grounded,
+empirical footing for addressing such questions. In particular,
+this work makes the following contributions:
 \begin{prettylist}
-\item We introduce a set of basic \emph{threat intelligence metrics}
-and describe a methodology for measuring them, notably: \veryemph{Volume},
+\item Introduced a set of basic \emph{threat intelligence metrics}
+and describe a methodology for measuring them, notably: 
+\veryemph{Volume},
 \veryemph{Differential Contribution}, \veryemph{Exclusive Contribution},
 \veryemph{Latency}, \veryemph{Coverage} and \veryemph{Accuracy}.
-\item We analyze \numipfeeds\ distinct IP address \ti\ sources covering
+\item Analyze \numipfeeds\ distinct IP address \ti\ sources covering
 six categories of threats and \numhashfeeds\ distinct malware file hash
 \ti\ sources, and report their metrics.
-\item We demonstrate techniques to evaluate the accuracy and coverage of
+\item Demonstrated techniques to evaluate the accuracy and coverage of
 certain categories of \ti\ sources.
-\item We conduct the analyses in two different time periods two years apart,
-and demonstrate the strong consistency between the findings.
+\item I conduct the analyses in two different time periods two 
+years apart, and demonstrate the strong consistency between the 
+findings.
 \end{prettylist}
 
-From our analysis, we find that while a few \ti\ data sources show
+From the analysis, I find that while a few \ti\ data sources show
 significant overlap, most do not.  This result is consistent with the
 hypothesis advanced by~\cite{thomas2016abuse} that different kinds of
 monitoring infrastructure will capture different kinds of attacks, but
-we have demonstrated it in a much broader context.  We also reveal
+I demonstrated it in a much broader context. This also revealed
 that underlying this issue are broader limitations of \ti\ sources in
 terms of coverage (most indicators are unique) and accuracy (false
 positives may limit how such data can be used operationally).
-Finally, we present a longitudinal analysis suggesting that these
+Finally, I will present a longitudinal analysis suggesting that these
 findings are consistent over time.
 
 %\input{content/introduction}
@@ -63,5 +61,5 @@ findings are consistent over time.
 \input{data_character/content/new_vs_old}
 \input{data_character/content/abs_latency}
 \input{data_character/content/discussion}
-\input{data_character/content/background}
-\input{data_character/content/conclusion}
+%\input{data_character/content/background}
+%\input{data_character/content/conclusion}

@@ -20,18 +20,18 @@ blocking legitimate connections as well.  Thus, the degree of accuracy
 for a feed may preclude certain use cases.
 
 Unfortunately, determining which IPs belong in a feed and which do not
-can be extremely challenging. In fact, at any reasonable scale, we are
+can be extremely challenging. In fact, at any reasonable scale, I am
 unaware of any method for unambiguously and comprehensively
 establishing ``ground truth'' on this matter.  Instead, in this
-section we report on a proxy for accuracy that provides a
-conservative assessment of this question.  To wit, we assemble a
+section I report on a proxy for accuracy that provides a
+conservative assessment of this question.  To wit, I assemble a
 \emph{whitelist} of IP addresses that either should not reasonably be
 included in a feed, or that, if included, would cause significant
-disruption. We argue that the presence of such IPs in a feed are
+disruption. The presence of such IPs in a feed are
 clearly false positives and thus define an upper bound on a feed's
-accuracy.  We populate our list from three sources: unroutable IPs,
+accuracy.  I populate my list from three sources: unroutable IPs,
 IPs associated with top Alexa domains, and IPs of major content
-distribution networks (CDNs). The detail result for our accuracy analysis 
+distribution networks (CDNs). The detail result for the accuracy analysis 
 is presented in Table~\ref{tab:accuracy-overview-1} and 
 Table~\ref{tab:accuracy-overview-2}.
 \colname{Unrt} is fraction of unroutable addresses in each feed
@@ -54,30 +54,30 @@ unroutable addresses in a feed is not, in itself, a problem, their
 inclusion suggests a quality control issue with the feed, casting
 shade on the validity of other indicators in the feed.
 
-To allow for some delays in the feed, we check if an IP was routable
+To allow for some delays in the feed, I check if an IP was routable
 at any time in the seven days prior to its first appearance in a feed,
-and if it had, we do not count it as
+and if it had, I do not count it as
 unroutable. Table~\ref{tab:accuracy-overview-1}, column \textit{Unrt},
 shows the fraction of IP indicators that were not routable at any time
 in the seven days prior to appearing in the feed. This analysis is
-only conducted for the IPs that are added after our measurement
+only conducted for the IPs that are added after my measurement
 started. The number of such IPs is shown in column \textit{Added}, and
 the unroutable fraction shown in \textit{Unrt} is with respect to this
 number.
 
 \noindent\textbf{Alexa.} Blocking access to popular Internet sites or
 triggering alarms any time such sites are accessed would be disruptive
-to an enterprise. For our analysis, we periodically collected the
+to an enterprise. For my analysis, I periodically collected the
 Alexa top 25 thousand domains (3--4 times a month) over the course of
 the measurement period~\cite{alexa}. To address the challenge that
 such lists can have significant churn~\cite{scheitle2018long}, we
-restrict our whitelist to hold the \emph{intersection} of all these
+restrict my whitelist to hold the \emph{intersection} of all these
 top 25K lists (i.e., domains that were in the top 25K every time we
-polled Alexa over our 8-month measurement period), which left us with
-12,009 domains.   We then queried DNS for the A records, NS
+polled Alexa over the 8-month measurement period), which left us with
+12,009 domains. I then queried DNS for the A records, NS
 records and MX records of each domain, and collected the corresponding
-IP addresses. In total, we collected 42,436 IP addresses associated
-with these domains. We compute the intersection of these IPs
+IP addresses. In total, I collected 42,436 IP addresses associated
+with these domains. I compute the intersection of these IPs
 with \ti\ feeds and show the results in column \textit{Alexa} in
 Table~\ref{tab:accuracy-overview-1}.
 
@@ -87,10 +87,10 @@ sites. Although these CDN services can (and are) abused to conduct
 malicious activities~\cite{cdnabuse}, their IP addresses are not
 actionable.  Because these are fundamentally shared services,
 blocking such IP addresses will also disrupt access to benign
-sites served by these IPs.  We collected the IP ranges used by 5
+sites served by these IPs.  I collected the IP ranges used by 5
 popular CDN providers: AWS CloudFron~\cite{cloudfront},
 Cloudflare~\cite{cloudflare}, Fastly~\cite{fastly},
-EdgeCast~\cite{edgecast} and MaxCDN~\cite{maxcdn}. We then check how
+EdgeCast~\cite{edgecast} and MaxCDN~\cite{maxcdn}. I then check how
 many IPs in \ti\ feeds fall into these ranges. Column \textit{CDNs} in
 Table~\ref{tab:accuracy-overview-1} shows the result.
 
@@ -106,7 +106,7 @@ whether currently advertised or not. Thus, for feeds that explicitly
 do include unroutable IPs, their presence in the feeds should not
 necessarily be interpreted as a problem with quality control.
 
-We further checked feeds for the presence of any ``reserved IPs''
+I further checked feeds for the presence of any ``reserved IPs''
 which, as documented in RFC 8190, are not globally routable (e.g., private
 address ranges, test networks, loopback and multicast).  Indeed,
 12 feeds reported at least one reserved IP, including four of the
@@ -127,7 +127,7 @@ contains the IP address for www.dropbox.com.  {\feedalienvault}
 contains the MX record of groupon.com, and {\feedbadipssh} also
 contains the IP addresses of popular websites such as www.bing.com.
 
-Most of the feeds we evaluated do not contain IPs in CDN ranges, yet
+Most of the feeds I evaluated do not contain IPs in CDN ranges, yet
 there are a few (including multiple {\feedetiprep} feeds, Badips feeds
 and {\feedalienvault}) that have significant intersection with CDN
 IPs. {\feedalienvault} and Badips feeds primarily intersect with
@@ -140,10 +140,5 @@ correlated with its volume.  Moreover, certain classes of false
 positives (e.g., the presence of Top Alex IPs or CDN IPs) seem to
 be byproducts of how distinct feeds are collected (e.g., Badips
 feeds tend to contain such IPs, irrespective of volume).
-Unsurprisingly, we also could find not correlation between a feed's
+Unsurprisingly, I also could find not correlation between a feed's
 latency and its accuracy.
-
-
-%This error will largely distort our other analyses, so for all the other analyses in this paper, we removed the data on that days from two feeds.
-
-%Some IP threat intelligence feeds, like Spamhaus DROP list\cite{Spamhaus}, contain IP address blocks, which include all the IP addresses in a subnet. These netblocks might cause a feed to include unroutable IP addresses. To further verify this possibility, we checked all the newly added IPs of each feed on each day, and found none of the feeds have reported consecutive IP addresses that span more than 32 IP address.

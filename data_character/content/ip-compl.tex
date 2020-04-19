@@ -17,16 +17,16 @@ activities~\cite{benson2015leveraging, durumeric2014internet,
 scan filtering logic, one can obtain a comprehensive view of global
 scanning activities on the Internet.
 
-To this end, we collected three months of traffic (from January 1st to
+To this end, I collected three months of traffic (from January 1st to
 March 31st 2018) using the UCSD network telescope~\cite{telescope},
 which monitors a largely quiescent /8 network comprising over 16
-million IP addresses.  We then used the default parameters of the Bro
+million IP addresses.  I then used the default parameters of the Bro
 IDS~\cite{BroNetwork} to identify likely scanning traffic, namely
 flows in which the same source IP address is used to contact 25 unique
 destination IP addresses on the same destination port/protocol within
 5 minutes. Given the large number of addressed being monitored, any
 indiscriminate scanner observed by \ti\ feeds will likely also be seen
-in our data.  Indeed, by intersecting against this telescope data we
+in my data.  Indeed, by intersecting against this telescope data we
 are able to partially quantify the coverage of each \ti\ scanning feed.
 
 
@@ -40,7 +40,7 @@ are able to partially quantify the coverage of each \ti\ scanning feed.
 %(u'FB Basecamp Streetcred', 'scan') 0.153300600109 1.3591853285e-05
 %(u'TS Analyst', 'scan') 0.523206751055 1.19956569917e-05
 
-The scanners we collected from the telescope consist of 20,674,149 IP addresses.
+The scanners I collected from the telescope consist of 20,674,149 IP addresses.
 The total number of IPs in all the scan feeds during this period is
 425,286, which covers only 1.7\% (363,799 shared IPs) of all the telescope scan IPs.
 On the other hand, telescope scanners intersect with 85\% of all IPs in scan feeds.
@@ -51,7 +51,7 @@ of their data shared (and the rate for {\feedTSSnort} is only 8\%).
 
 
 To further understand how well each scan feed detects scanning
-activities, we measure how different sizes of scanners in the
+activities, I measure how different sizes of scanners in the
 telescope are covered by each feed. Here, \emph{scanner size} means how
 many IPs a scanner has scanned in the telescope within a
 day. Figure~\ref{fig:caida_coverage_cdf} shows the coverage rate of
@@ -71,7 +71,7 @@ are over 1K, 271,888 that are over 100K and 17,579 are over 1 million.)
 
 \finding\
 The union of all the scan IPs in the feeds covers less than
-2\% of the scanners collected by the telescope. Even if we only look
+2\% of the scanners collected by the telescope. Even if I only look
 at the scanners with sizes larger than 10,000, the overall coverage is still
 around 10\%, suggesting the coverage capability of scan feeds
 is very limited. The graph shows that, as the scanner size increases, the coverage of
@@ -79,7 +79,7 @@ each feed over the datasets also increases, and large feeds cover more percent
 of telescope scanners than small feeds. This trend aligns with the intuition that
 scan feeds tend to capture more extensive scanners.
 
-It is surprising that the small scan feeds in our collection have a smaller percentage of their
+It is surprising that the small scan feeds in my collection have a smaller percentage of their
 IPs shared with telescope scanners. This contradicts the idea that small feeds
 would contain a larger percentage of extensive scanners (that would most likely also be observed by the telescope).
 

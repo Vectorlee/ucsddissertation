@@ -2,7 +2,7 @@
 \label{sec:hash-accuracy}
 Assessing the accuracy of file hash feeds presents a problem: there is no
 universal ground truth to determine if a file is malicious or benign. Thus,
-to gauge the accuracy of the feeds, we use two metrics: a check for malicious
+to gauge the accuracy of the feeds, I use two metrics: a check for malicious
 hashes against VirusTotal, and a check for benign hashes against Shadowserver's
 Bin Check service. Note that all the percentages discussed below are based on
 the \textit{Volume} of each feed.
@@ -14,10 +14,10 @@ malware to get a base of information about a suspected file.
 Anyone can upload a file to be scanned. Upon submission, these files will be
 scanned by more than 70 antivirus scanners, which creates a report on how many
 antivirus scanners mark it malicious, among other information. In this analysis,
-we query VirusTotal for the hashes in each file hash feed and then inspect the
+I query VirusTotal for the hashes in each file hash feed and then inspect the
 percent of hashes that are marked as malicious and how many AV scanners have
 recorded them. Due to the high volume of the FB Malware feed and the query
-rate limit of VirusTotal, we randomly sampled 80,000 hashes from the feed for
+rate limit of VirusTotal, I randomly sampled 80,000 hashes from the feed for
 this analysis.
 
 Table~\ref{tab:md5-volume-2} shows a breakdown of the base detection rates 
@@ -40,7 +40,7 @@ targeted threats that are not of broader interest.
 \end{figure}
 
 To further understand how the scanners in VirusTotal report the feed's data,
-we plot a graph of what percentage of hashes in each feed are detected by how many
+I plot a graph of what percentage of hashes in each feed are detected by how many
 VirusTotal scanners. As seen in Figure~\ref{fig:vt-cdf}, each point means the proportion of indicators (Y value) in a feed that is detected by \textit{over} X number of AV scanners in VirusTotal. Four feeds have more
 than 50\% of their samples detected by over 20 scanners. PA Malware Indicators
 and PA Twitter Emotet did not experience a large detection drop before 35 scanners,
@@ -52,7 +52,7 @@ by over 20 AV scanners, showcasing a high confidence detection.
 \subsubsection{Shadowserver}
 
 To more fully gauge the accuracy of the file hash feeds,
-we also examined how each feed measured against Shadowserver's Bin Check
+I also examined how each feed measured against Shadowserver's Bin Check
 Service~\cite{shadowserver}. The service checks file hashes against NIST's
 National Software Registry List (NSRL) in addition to Shadowserver's own repository of
 known software. Table~\ref{tab:md5-volume-2} details how each feed compares with

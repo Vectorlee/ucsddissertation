@@ -1,0 +1,31 @@
+\section{Empirical Analysis on Threat Intelligence Usage}
+
+However, despite all the excitement in industry and acamedia, there is one
+important aspect of threat intelligence that little work has looked into before:
+how threat intelligence products are being used by organizations at a large scale.
+Understanding this question gives us ideas about the adoption of threat
+intelligence data, which is an essential information to know in the threat
+intelligence ecosystem. More importantly, the usage of different produts offers
+us insight into the potential impact they could cost on the Internet.
+As recent work has shown~\cite{li2019reading}, false positives are relatively
+common in threat intelligence feeds. If an organization is using one threat
+intelligence IP feed in its firewall for IP-based traffic blocking, and there
+is a false positive(a benign IP address) in this feed, then all the users in
+that organization will be affected. From another side, if one online host is
+added to an IP feed mistakenly, then this host will lose access to all the
+organizations that use this feed as a blocking ruleset. Therefore, the usage
+problem is a crucial topic that should get more attention from security community.
+
+But this problem is also a very challenging problem. The primary challenge 
+is that there are many ways people can use these data. It can be directly 
+used to block network traffic, or just raise an alarm in their Security
+Information and Event
+Management(SIEM) systems. Some use cases do not even have a well-defined
+behavior that we can quantitatively measure. The actions derived from threat
+intelligence data can also happen at different network layer. For example, an
+organization can deny access on network layer; it can also deny access on
+application layer, like HTTP 403 Forbidden. This diverse possibility of use
+cases make it hard to assess this problem as a whole. Another challenge for us
+academic researchers is that we do not have access to the commerical threat
+intelligence data, as they can be prohibitively expensive. Therefore, it is hard
+to capture the comprehensive picture on the Internet.
