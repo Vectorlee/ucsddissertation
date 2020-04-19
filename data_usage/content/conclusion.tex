@@ -1,27 +1,44 @@
-\section{Conclusion}
-Our paper describes, implements and tests a technique for inferring
+\section{Discussion}
+
+In this chapter, I implement and test a technique for inferring
 the deployment of network layer blacklisting and, further, for
 attributing the use of particular blacklists in particular networks.
-There are a range of limitations in our pilot study, most
+There are a range of limitations in this pilot study, most
 significantly including potential selection bias arising from using
-quiescent U.S. hosts running older versions of Windows as well as our
-exclusive use of public blacklist data (i.e., we do not have access to
-high-priced commercial threat intelligence feeds which could be
-distinct).  However, even given these limitations our measurements of
-220K hosts reveal a number of interesting artifacts.  First, we
-witness the widespread use of \emph{some} kind of network layer
-blocking (affecting over a third of hosts in our data set) even if it
-is not consistent with membership in any of the lists we track.
-Second, we find that there is evidence of intra-network diversity in
-traffic blocking policy.  While a number of network prefixes have
+quiescent U.S. hosts running older versions of Windows. This is a 
+limitation of the methodology itself. 
+Another limitation lies in the fact that I exclusive use public 
+blacklist data (i.e., since I do not have access to high-priced 
+commercial threat intelligence feeds which could be distinct).
+
+However, even given these limitations, the measurements of
+220K hosts reveal a number of interesting artifacts.  First, I
+discovered the widespread use of \emph{some} kind of network layer
+blocking (affecting over a third of hosts in the data set) even if it
+is not consistent with membership in any of the lists I track.
+This demonstrated the prevalence of security related blocking 
+even among machines with low security hygiene. Most most previous 
+network disruption measurement explain the reason as censorship 
+(whether nation wide or at corporate level). My work highlights 
+the prevalence of security related blocking, which serves as a
+reminder that for all the following network connectivity study,
+researchers should always keep in mind the possibility of security
+related blocking.
+
+Second, I find that there is evidence of intra-network diversity in
+traffic blocking policy. While a number of network prefixes have
 consistent blocking behavior across multiple hosts, quite a few do
 not, suggesting different network security policies are being employed
-on different subnets.  Finally, for blacklist use that can be
-precisely attributed the most widely used blacklists (Spamhaus DROP
-and eDROP and DShield Top) are also those that have extremely low
-false positives.~\footnote{The DROP and eDROP lists are a small subset
-  of Spamhaus' feed that specifically deals with address for which the
-  entire network prefix is believed to be abusive (e.g., prefix
-  hijacking).} This suggests that for many networks proactive traffic
-  blocking is gated on having lists of sufficient accuracy to remove
-  the risks of accidentally blocking legitimate traffic.
+on different subnets. This implies that when measuring network 
+behaviors, researchers should not assume the consistency within a 
+network.
+
+Finally, for blacklist use that can be precisely attributed the 
+most widely used blacklists (Spamhaus DROP and eDROP and DShield Top) 
+are also those that have extremely low false positives.
+~\footnote{The DROP and eDROP lists are a small subset
+of Spamhaus' feed that specifically deals with address for which the
+entire network prefix is believed to be abusive (e.g., prefix
+hijacking).} This suggests that for many networks proactive traffic
+blocking is gated on having lists of sufficient accuracy to remove
+the risks of accidentally blocking legitimate traffic.

@@ -1,16 +1,18 @@
 \chapter{Conclusion}
 \label{chapter:conclusion}
 
-This paper has focused on the simplest, yet fundamental, metrics about
-threat intelligence data. Using the proposed metrics, we measured a broad
-set of \ti\ sources, and reported the characteristics and limitations of
-\ti\ data. In addition to the individual findings mentioned in each section, here
-we highlight the high-level lessons we learned from our study:
-
-%---effectively investigating the extent to which disparate
-%sources are measuring the same underlying empirical phenomena and can
-%be meaningfully used to directly anticipate future attacks.  Thus far
-%the evidence for this goal is spartan at best.
+This dissertation focuses on using empirical approach to study 
+problems surrounding Threat Intelligence. 
+In Chapter~\ref{chapter:data_character}, I proposed 
+a set of simple but also fundamental metrics, and measured a broad
+set of Threat Intelligence(\ti) sources, and reported the 
+characteristics and limitations of \ti\ data. In 
+Chapter~\ref{chapter:data_usage}, I designed a method and conducted 
+a large scale measurement on how online hosts are using Threat 
+Intelligence data. To summarize, I will highlight the lessons I 
+learned from my studies, and then discuss the takeaways of my
+study for the community. Here are the high-level lessons from my 
+Threat Intelligence research:
 
 \begin{itemize}
 	\item \ti\ feeds, far from containing
@@ -40,56 +42,70 @@ we highlight the high-level lessons we learned from our study:
     intersection rates of only 10\%. Moreover, when comparing with broad
     sensor data in known categories with broad effect (e.g., random
     scanning) fewer than 2\% of observed scanner addresses appear in most of
-    the data sources we analyzed; indeed, even when focused on the largest
+    the data sources I analyzed; indeed, even when focused on the largest
     and most prolific scanners, coverage is still limited to 10\%. There
     are similar results for file hash-based sources with little overlap
     among them.
+    
+    \item Security related network blocking is relative prevalent on the
+    Internet. The measurement has shown that people are blocking network 
+    traffic based on Threat Intelligence data, or part of the data. When
+    studying network connectivity disruption, researchers should not ignore 
+    the effect of these security related blocking, instead, we should model 
+    these behavior when conducting measurements and analyzing the results.
+    
+    \item The network behaviors within a subnet are not always the same, 
+    different hosts in the same network can have different behavior, and 
+    these cases are not neglectable. Researchers should not make such 
+    assumptions when measuring the behaviors of a network, and one should
+    always be careful when trying to conclude a behavior with only a few
+    vantage points in a network.
+    
 \end{itemize}
 
 The low intersection and coverage of \ti\ feeds could be the result of
-%Taken together these suggest
-several non-exclusive possibilities.
-First is that the underlying space of indicators (both IP addresses
-and malicious file hashes) is large and each individual data source
-can at best sample a small fraction thereof.  It is almost certain
-that this is true to some extent.  Second, different collection
-methodologies---even for the same threat category---will select for
-different sub distributions of the underlying ground truth data.
+several non-exclusive possibilities. First is that the underlying space 
+of indicators (both IP addresses and malicious file hashes) is large and 
+each individual data source can at best sample a small fraction thereof.  
+It is almost certain that this is true to some extent. Second, different collection methodologies---even for the same threat category---will select 
+for different sub distributions of the underlying ground truth data.
 Third, this last effect is likely exacerbated by the fact that not all
 threats are experienced uniformly across the Internet and, thus,
 different methodologies will skew to either favor or disfavor targeted
 attacks.
 
+There are many ways people can use threat intelligence data.
+It can be used to \emph{enrich} other information
+(e.g., for investigating potential explanations of a security
+incident), as a probabilistic canary (i.e., identifying an overall
+site vulnerability via a single matching indicator may have value even
+if other attacks of the same kind are not detected) or in providing a
+useful source of ground truth data for supervised machine learning
+systems. However, even given such diverse purposes, organizations still 
+need some way to prioritize which Threat Intelligence products to invest 
+in. The metrics I proposed in Chapter~\ref{chapter:data_character} 
+provide some direction for such choices. For example, an analyst who 
+expects to use \ti\ interactively during incident response would be better
+served by feeds with higher coverage, but can accommodate poor accuracy, 
+while an organization trying to automatically label malicious instances 
+for training purposes (e.g., brute force attacks) will be better served by 
+the converse.
 
-\begin{comment}
-While resolving this question is of academic interest, it seems clear
-that blindly using \ti\ data---even if one could afford to acquire
-many such sources---is unlikely to be effective.  Proactive defenses,
-such as blocking network connections or file executions that match
-\ti\ indicators, are predicated on knowing, in advance, a large
-fraction of the universe of future indicators; the evidence is that
-this is not currently possible.  While there may be some utility in
-doing this even for the small percentage of malicious traffic that may
-be identified, this must be balanced against the costs of obtaining
-and managing \ti\ data as well as the risks associated with false
-positives.
-\end{comment}
-
-
-Based on our experience analyzing \ti\ data, we try to provide several
-recommendations for the security community on this topic moving forward:
+Based on my experience analyzing \ti\ data and how people are using it, 
+I try to provide several recommendations for the security community on this
+topic moving forward:
 
 \begin{itemize}
     \item The threat intelligence community should standardize data labeling,
-    with a clear definition of what the data means and how the data is collected. Security experts can then assess
-    whether the data fit their need and the type of action should be taken
-    on this data.
+    with a clear definition of what the data means and how the data is 
+    collected. Security experts can then assess whether the data fit their 
+    need and the type of action should be taken on this data.
 
     \item There are few rules of thumb in selecting among \ti\ feeds,
     as there is not a clear correlation between different feed properties.
-    Consumers need empirical metrics, such as those we describe, to
-    meaningfully differentiate data sources, and to prioritize certain metrics
-    based on their specific need.
+    Consumers need empirical metrics, such as those I describe, to
+    meaningfully differentiate data sources, and to prioritize certain 
+    metrics based on their specific need.
 
     \item Blindly using \ti\ data---even if one could afford to acquire
     many such sources---is unlikely to provide better coverage and is
@@ -97,33 +113,21 @@ recommendations for the security community on this topic moving forward:
     need to be always aware of these issues when deciding what action
     should be taken on this data.
 
-    \item Besides focusing on the \ti\ data itself, future work should investigate
-    the operational uses of threat intelligence in industry, as
-    the true value of \ti\ data can only be understood in operational scenarios.
-    Moreover, the community should explore more potential ways of using the data,
-    which will extend our understanding of threat intelligence and also influence
-    how vendors are curating the data and providing the services.
+    \item Besides focusing on the \ti\ data itself, future work should 
+    investigate the operational uses of threat intelligence in industry, 
+    as the true value of \ti\ data can only be understood in operational
+    scenarios. Moreover, the community should explore more potential ways 
+    of using the data, which will extend people's understanding of threat 
+    intelligence and also influence how vendors are curating the data and
+    providing the services.
+
+    \item Follow up on the previous point, it is also important to for the
+    community to study the potential impact of people using Threat 
+    Intelligence. Since this is security related data, certain use cases,
+    like blocking network traffic (either IP or DNS), could have broader
+    impact on the Internet. As Threat Intelligence getting more and more
+    popular, researchers should always follow the impact of these products,
+    so we can spot problems early on and make changes before heavy damage
+    being made.
 
 \end{itemize}
-
-
-%However, this is only one potential use of threat intelligence data.
-There are many ways we can use threat intelligence data.
-It can be used to \emph{enrich} other information
-(e.g., for investigating potential explanations of a security
-incident), as a probabilistic canary (i.e., identifying an overall
-site vulnerability via a single matching indicator may have value even
-if other attacks of the same kind are not detected) or in providing a
-useful source of ground truth data for supervised machine learning
-systems. However, even given
-such diverse purposes, organizations still need some way to prioritize which
-\ti\ sources to invest in.  Our metrics provide some direction for
-such choices. For example, an analyst who expects to use \ti\ interactively
-during incident response would be better served by feeds with higher coverage,
-but can accommodate poor accuracy, while an organization trying to
-automatically label malicious instances for training purposes (e.g.,
-brute force attacks) will be better served by the converse.  Thus, if
-there is hope for demonstrating that threat intelligence can
-materially impact operational security practices, we believe it will
-be found in these more complex uses cases and that is where future
-research will be most productive.

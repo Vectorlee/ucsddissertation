@@ -19,13 +19,31 @@ problem is a crucial topic that should get more attention from security communit
 But this problem is also a very challenging problem. The primary challenge 
 is that there are many ways people can use these data. It can be directly 
 used to block network traffic, or just raise an alarm in their Security
-Information and Event
-Management(SIEM) systems. Some use cases do not even have a well-defined
-behavior that we can quantitatively measure. The actions derived from threat
-intelligence data can also happen at different network layer. For example, an
-organization can deny access on network layer; it can also deny access on
-application layer, like HTTP 403 Forbidden. This diverse possibility of use
-cases make it hard to assess this problem as a whole. Another challenge for us
-academic researchers is that we do not have access to the commerical threat
-intelligence data, as they can be prohibitively expensive. Therefore, it is hard
-to capture the comprehensive picture on the Internet.
+Information and Event Management(SIEM) systems. Some use cases do not even 
+have a well-defined behavior that we can quantitatively measure. 
+The actions derived from threat intelligence data can also happen at different
+network layer. For example, an organization can deny access on network layer; 
+it can also deny access on application layer, like HTTP 403 Forbidden. 
+This diverse possibility of use cases make it hard to assess this problem as 
+a whole. Another challenge for us academic researchers is that we do not have 
+access to the commerical threat intelligence data, as they can be prohibitively
+expensive. Therefore, it is hard to capture the comprehensive picture on the
+Internet.
+
+Little work has been done to try and understand how threat
+intelligence data is being used on a large scale. The only work that tries to
+look at threat intelligence data from this perspective are industrial surveys
+-- wherein organizations fill out questionnaires. One such survey conducted by
+the Ponemon Institute~\cite{ponemon2018cti}, surveyed 1,200 IT and IT
+security practitioners, asking if they use threat intelligence products, and
+if they do what tools do they use that utilize the threat intelligence data.
+The survey also asked their user experience. SANS Institute did a
+similar study~\cite{shackleford2017cyber} where they surveyed 600
+participants from a diverse industry background and asked questions about
+their threat intelligence usage. These works are limited in terms
+of scale, and their results are all in a very high-level. Although they offered
+some useful insight, they can not provide us a concrete understanding
+about the use of threat intelligence data on a large scale. My measurement,
+which will be discussed in Chapter~\ref{chapter:data_usage},
+is the first work that systematically looks at the problem of inferring use
+of threat intelligence data on a large scale, and explore its implications.
