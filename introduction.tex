@@ -144,32 +144,32 @@ research directions are:
     
     \item Algorithm exploration related to Threat Intelligence usages: \\
     Designing better methods to use threat intelligence during system and 
-    network defense, like increasing coverage, reducing false positives, and
+    network defense(e.g. increasing coverage, reducing false positives),
     explore new ways to use threat intelligence data, such as using the 
     data as machine learning training data, etc.
 \end{prettylist}
 
-In this dissertation, I will discuss two of my research work 
-that contribute to the overall Threat Intelligence research. In the first
-work, which will be discussed in Chapter~\ref{chapter:data_character}, 
-I studied the data characteristics of existing Threat Intelligence products.
+In this dissertation, I take an empirical approach and explore the 
+\textit{Data} and \textit{Operation} problems of Threat Intelligence.
+I focus on thoroughly understanding the current status of Threat 
+Intelligence and will then discuss my takeaways from these analyses.
+In the study of \textit{Data}, which will be discussed in Chapter~\ref{chapter:data_character}, 
+I analyzed the data characteristics of existing Threat Intelligence products.
 I designed mathematics metrics for Threat Intelligence data evaluation,
 and with these metrics, I studied \numipfeeds\ distinct IP address 
 data feeds, covering six categories of threats, and \numhashfeeds\ distinct
 malware file hash feeds, and measured their data characteristic. Through this
 work, I revealed the limitation of existing Threat Intelligence data and 
-discussed the potential improvements based on my findings. In the second
-work, which will be discussed in Chapter~\ref{chapter:data_usage}, I 
-studied how Threat Intelligence data is being used on a large scale. 
+discussed the potential improvements based on my findings. In the study of
+\textit{Operation}, which will be discussed in Chapter~\ref{chapter:data_usage},
+I measured how Threat Intelligence data is being used on a large scale. 
 I designed a method using IP ID side channel that can measure the 
 connectivity between two Internet hosts from a third point. With this 
 method, I conducted a large scale Internet measurement over {\reflroughnum} 
 U.S. hosts and uncovered their uses of {\blacklistnum} popular public IP
 blacklists. I further investigated a broader use of blacklists among the 
 hosts, and discovered over 73K hosts has shown blacklist related blocking 
-behavior. Both works looked at Threat Intelligence from an empirical
-approach, and they tackled the \textit{Data} and \textit{Operation} problems
-respectively. Together, my work provided an in-depth look into the current
+behavior. Together, my work provided an in-depth look into the current
 status of Threat Intelligence and augmented the knowledge of our community
 on this topic.
 
