@@ -1,0 +1,123 @@
+\subsection{Intrusion Detection}
+
+One direct way to capture threat is to identify the attacker when a
+system in use is under attack or compromised, so we can capture the 
+attacker in action. The threat actors recorded this way will not be 
+many, but the data would have very high accuracy, since they are
+directly recorded from real attacks. The technique we use here is also 
+the technique to protect the system in the first place:
+\textit{Intrusion Detection}.
+
+Intrusion Detection aims to detect attacks on network or system on the
+fly. The techniques involved can generally be classified as two 
+categories: misuse-based detection and anomaly-based detection.
+Misuse-based approaches utilize pre-defined patterns and signatures
+of malicious behaviors, and dynamically compare the behavior of the
+system against these patterns to spot potential intrusion. On the another
+hand, anomaly-based detection construct a model for the normal behavior 
+of a system, then check if the current behavior is deviating from the 
+``normal'' behavior.
+
+The performance of misuse-based detection methods depends on the quality
+of the pre-defined attack patterns (or detect policies), and these 
+patterns are usually provided manually by security experts. Since 
+different attack vectors vary a lot on their approaches and system 
+component they touch, the 
+patterns provided by the detection system must be able to cover a 
+diverse set of behavior, also to be extendable, as new attacking
+methods are keep showing up. Therefore, early work on this technique like
+Bro~\cite{paxson1999bro}, Snort~\cite{roesch1999snort}, 
+P-BEST~\cite{lindqvist1999detecting}, and STAT~\cite{vigna2003designing}
+all emphasize on the providing a powerful threat modeling language, which
+can express a broad set of threat, also easy to program to include new 
+patterns. Recent works like~\cite{bugiel2012towards} move to new
+system environment (e.g. mobile system like Android), but still focus
+on providing a expressive modeling language to build detect policies. 
+These misuse-based detection methods is generally accurate, since the
+pre-defined attack patterns are usually well defined by security experts. 
+The main disadvantage of this technique is that it can only detect 
+modeled attacks. For new type of attacks where there are no pattern
+written, misuse-based system will miss them completely.
+
+As a complementary, anomaly-based detection methods try to detect if
+the behavior of an application or system is different from its benign
+behaviors. This technique relies on modeling the normal behavior of a 
+system in question, and since there are so many possible things a program 
+can do, we need to simplify the ``behavior'' to precisely reason about 
+it. Forrest et. al.~\cite{forrest1996sense} first proposed to use
+syscall sequence of a program as its behavior, since a program can only
+affect the operating system with syscalls, and from the security 
+perspective, these would be the only behaviors that matters. Follow up
+works like ~\cite{lee1998data, warrender1999detecting, mutz2006anomalous}
+explored different data model to better distinguish abnormal sequences
+from benign ones, using method like data mining, Bayesian network and 
+neural network. Recent works like~\cite{du2017deeplog} also try to 
+utilize more data sources and experiment with more advanced machine
+learning algorithm for the detection. The advantage of these approaches 
+is that it can capture previously unknown attacks. However, it tends
+to suffer more false positives, since a normal program can show abnormal
+behaviors once a long while, and it is very hard to capture these
+cases when we first build the ``normal'' behavior set for a program.
+
+\subsection{Causality Analysis}
+Intrusion detection techniques described before detects threats 
+when abnormal behavior is observed. But for many advanced 
+attacks, especially the APTs(Advanced Persistent Threats), it 
+is not always obvious to trace from the malicious behavior, e.g.
+a running malware, to the source of the attacks, e.g. a phish 
+URL that distributes the malware. This is mainly because sophisticated
+attacks often take precautions to hide their traces by deleting
+system or application logs, they can also prolong the attacks, 
+creating a large window from the time they break into victims' 
+machines till the time they actually carry out malicious activities. 
+All of these can create difficulties for administrators to diagnose
+the intrusion and trace the source. In the context of Threat 
+Intelligence, it is important to uncover the source of 
+an attack, so we can provide valuable intelligence for the community 
+to defense the same attack in an early stage.
+
+The analysis, which tracks causal relationships between files and 
+processes to diagnose attack provenances and consequences, is called
+\textit{Attack Causality Analysis}. It is an critical technique
+during Threat Intelligence hunting. The pioneering work in this field
+is done by King and Chen~\cite{king2003backtracking}. They first defined
+the event dependency graph, where the nodes represent processes and files
+and edges represent the events between process and files, for example,
+a process spawn another process, or a process read or write to a 
+file. Given a detection point, like a suspicious files or a running
+process, the system builds a dependency graph from this points by
+processing event logs, then using the timestamp of each events and 
+their causal relationship, we can trace back to the source and identify
+the original intrusion point.
+
+A simple idea as it seems, it captured the fundamental logic behind 
+causality analysis: information flow tracking. However, this simple
+solution quickly runs into a problem in a complex system: 
+\textit{dependence explosion}~\cite{goel2005taser}, where there are 
+so many processes and files involved in this dependency graph, together
+with large amount inter-relations, that it is very hard identify the
+real attack from the haystack. The case become even more true when there
+are long-running programs, like a server program. The dependency 
+associated with these program will grow enormously over 
+time~\cite{lee2013high}, making the dependency graph even more 
+complicated.
+
+Many work have tried to tackle this problem. Some heuristics have been 
+proposed to prune the graph, like in~\cite{king2005enriching}, the 
+authors utilized the fact that worms try to exploit from host to host,
+so the traffic from a host who already has an IDS alert is more likely
+associated with worm attacks. Liu et al.~\cite{liu2018towards} uses
+the rareness of events as a metric to prioritize searching on dependency
+graphs. Other work try to break the entities on the graph into smaller 
+granularity, so we can pinpoint the causal relationship between objects.
+For example, Goel et al.~\cite{goel2005taser} use the separate socket
+reads to partition the execution of a program into different segments, 
+so the monitoring system can figure out which action of that program
+is corresponded with which exact network request. Lee et 
+al.~\cite{lee2013high} use the prevalence of event-loops in programs to
+partition the execution of the program based on each loop iteration,
+and then associates events with specific loop iterations. Binary taint
+tracking has also been utilize to provide richer semantic information, 
+like demonstrated in~\cite{ma2016protracer}. This topic is still an 
+active topic today and researcher are trying to solve this from different
+angle.
