@@ -2,65 +2,69 @@
 \label{chapter:background}
 
 \section{Threat Hunting}
+\textit{Threat Hunting} is the process of generating Threat Intelligence
+data. It is the beginning of Threat Intelligence data. Data providers 
+can generate these data from many different sources, like specially
+deployed infrastructures, including honeypot and Internet telescope, or
+directly collect from end users, like anti-virus vendors collecting 
+potential malicious executable from their customers. However, as one can
+imagine, the raw data usually contains a lot of noises and can hardly
+serve as meaningful ``intelligence''. Threat hunting aims to use domain 
+knowledge and specialized algorithms to detect threat and identify
+attackers from the raw data, therefore providing real valuable 
+information about different attacks. By definition, this process involves
+detecting all possible attacks and covers all detection oriented 
+techniques. In this section, I will go through previous research work 
+on several representative threat categories and the techniques to detect
+them.
+
 \input{background/intrusion_detection.tex}
 \input{background/malware_analysis.tex}
-
-\subsection{Spam Detection}
-Spam email, also referred as unsolicited bulk email or junk mail, is 
-Internet mail that is sent to a group of recipients who have no intention 
-to receive it. They are particularly harmful, as these emails jams users' 
-mailboxes, engulf important personal mail, waste network bandwidth and 
-can even crash mail-servers. Spam emails also serve as an important
-way of advertising products in underground market, like prescription drugs, 
-illegal porn, replica of other brands etc. It is an old yet still popular
-threat on the Internet. Threat Intelligence spam data contains domains, 
-from which spammers send the spam email, and IP addresses, where spammers' 
-mail servers are located. Organizations, and even ISPs, tend to use these 
-data to block the incoming mail traffic.
-
-Email providers, ISPs or anti-spam organizations usually set up 
-\textit{Spamtrap} to capture spam emails. Spamtrap are the email addresses
-that are created not for communication, but rather to lure spam. These
-email addresses do not belong to any person and will not involve in any
-kind of communication. These addresses will not be revealed openly online,
-so only unsolicited spammers, who tend to collect target email addresses
-by crawling the Internet, or go through all possible lexical combinations
-for email names, will hit these addresses. The Spamtrap here serve as a 
-bait to capture spammers. People also recycle long out-of-date email 
-addresses as Spamtrap addresses. 
-
-However, simply regarding all emails received in Spamtrap as spam emails 
-will create a substantial amount of false positives, since legitimate senders with poor data hygiene or acquisition practices end up hit the traps as 
-well. To further distinguish spam emails and consequently identify the
-senders, one needs to look at the content of emails themselves. Numerous 
-statistical algorithms have been proposed by researchers to filter spam
-emails from legitimate ones. At its core, spam filtering can be viewed as
-a text categorization task: given the full text content of an email, 
-decide whether it is spam email or benign email. A variety of supervised
-machine learning techniques have been tested for spam filtering. Like the
-naive Bayes classifier~\cite{androutsopoulos2000evaluation, sahami1998bayesian, schneider2003comparison}, 
-RIPPER rule induction algorithm~\cite{cohen1996learning},
-Support Vector Machine~\cite{drucker1999support}, memory-based learning
-~\cite{androutsopoulos2000learning}, AdaBoost~\cite{carreras2001boosting},
-and maximum entropy model~\cite{zhang2003filtering}. These algorithms all
-convert email headers and body into features for the machine learning model,
-and different feature reduction and weight assignment strategy have been
-explored. These models can all achieve decent accuracy, and have been tested
-and deployed in real-world. 
-
-Email providers also get help from the customers to identify spams. Since
-customers can mark an email as spam manually, having a large customer base
-enables the email provider to collect a large amount of spam emails with high
-accuracy, and therefore track down the domains and IP addresses used by the 
-spammers.
-
-\subsection{Phishing Detection}
-\textbf{TODO}
+\input{background/spam_detection}
+\input{background/phish_detection}
 
 
+\section{Threat Intelligence Sharing}
+How much threat one can capture is largely depend on the scope he is
+observing on the Internet. Organizations with higher scope of observation,
+like bigger Internet telescope or larger number of customers, tend to
+capture more threat. However, no entity has the capability to monitor
+the entire Internet, and with so many activities going on in the cyber
+world these days, each individual entities is only able to monitor a
+tiny fraction of what is happening. 
 
-\section{Threat Intelligence Specifications and Sharing Systems}
-\textbf{TODO}
+This encouraged \textit{Threat Intelligence Sharing}, where different 
+entities collect threat information individually and share the data
+with each other, so every one will get a higher coverage on potential 
+threat. Many Threat Intelligence providers are offering the platform
+for threat intelligence sharing, including IBM X-Force 
+Exchange~\cite{ibmxforce}, AlienVault Open Threat 
+Exchange~\cite{alienvaultotx}, Facebook 
+ThreatExchange~\cite{facebookthreatexchange} etc. These platforms
+enable companies (not necessarily security companies), organizations 
+or individual security researchers to contribute threat intelligence 
+they collected. Companies are also forming alliance and exchange their
+intelligence data within the group, like Cyber Threat
+Alliance~\cite{cyberthreatalliance}.
+
+One problem during Threat Intelligence sharing is data specification.
+Since different entities could collect data in different ways and
+also record the data in different format. Without a clear unified
+data format, the data being shared will provide little benefit to
+the recipients, since they will not be able to understand and utilize
+the data. This is a nontrivial task, since this unified data format
+has to indicate clearly what does the data ``mean''. If one entity
+just shares a list IPs and claims these IPs are malicious IPs, it
+does not help much since it is crucial for the recipient to know
+exactly why they are malicious, e.g, because they are massively 
+scanning the Internet, trying to brute-force log in to SSH servers,
+or they serve as C2 servers for malware. Since companies have different 
+security hygiene, they will use the data differently based on its
+meanings. So it is critical to specify clearly the meaning of the
+data during sharing. Because of this, standard Threat Intelligence 
+formats have been proposed and developed, 
+notably IODEF~\cite{IODEF}, CybOX~\cite{CybOX} and STIX~\cite{STIX}, 
+that try to standardize the threat intelligence presentation and sharing. 
 
 \input{background/empirical_data.tex}
 \input{background/empirical_usage.tex}
