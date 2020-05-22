@@ -1,21 +1,21 @@
 \section{Threat Intelligence Uses}
 
-Threat Intelligence data, at a high-level, promises that by compiling up-to-date 
+Threat intelligence data, at a high-level, promises that by compiling up-to-date 
 information about known threats (i.e., IP addresses, domain names, file hashes, 
 etc.), recipients of the data will be able to better defend their systems from 
-future attacks. Therefore, the primary use cases of Threat Intelligence is 
+future attacks. Therefore, the primary use cases of threat intelligence is 
 during defenses. Intrusion detection systems or firewall can directly put 
 the data in the system and block the corresponding IP or DNS traffic. Popular 
 open source projects like Snort~\cite{snortids}, Zeek~\cite{zeekids} all provide 
 these functionalities. Commercial products like Palo Alto Network
 firewall~\cite{paloaltofirewall}, Fortinet firewall~\cite{fortinetfirewall}, 
-Cisco firewall~\cite{ciscofirewall} also incorporate Threat Intelligence data in 
+Cisco firewall~\cite{ciscofirewall} also incorporate threat intelligence data in 
 their defense systems. 
 
-Besides directly taking actions, Threat Intelligence can also be used in security
+Besides directly taking actions, threat intelligence can also be used in security
 monitoring and post forensic analysis. In these cases, the system raises alarms
-when there are matches between network activities and Threat Intelligence data.
-Threat Intelligence data usually come with confidence and severity level for each
+when there are matches between network activities and threat intelligence data.
+Threat intelligence data usually come with confidence and severity level for each
 individual data item. When investigating these alarms, administrators can 
 prioritize the investigation based on the severity level. The system that in 
 charge of collecting and organization security alarms are called Security 
@@ -23,18 +23,18 @@ Information and Event Management system, or SIEM system. Popular SIEM systems
 include Splunk~\cite{splunk}, Sumo Logic~\cite{sumologic} and LogRhythm NextGen 
 SIEM~\cite{logrhythm} etc.
 
-In academic research, Threat Intelligence data is usually used as extra source 
+In academic research, threat intelligence data is usually used as extra source 
 data to assist their study, or to evaluate the performance of their systems or
 algorithms. For example, Hao et. al.~\cite{hao2016predator} explored using the
 characteristic domains during domain registration to detect potential malicious
 domains. In the study, the authors use Spamhaus domain blacklist, URIBL to check 
 the accuracy of their prediction. Singh et. al.~\cite{singh2017characterizing} 
 studied the characteristic of Tor exit blocking in the wild, and use public and
-private Threat Intelligence sources to see how much of Tor exit IPs are listed
+private threat intelligence sources to see how much of Tor exit IPs are listed
 on these sources. These are experimental use cases researchers have explored 
-with Threat Intelligence data. 
+with threat intelligence data. 
 
-One question that has not been investigated is that how Threat Intelligence 
+One question that has not been investigated is that how threat intelligence 
 products are actually being used by organizations currently in the industry.
 Understanding the real-world use cases gives us ideas about the adoption of threat
 intelligence data, which is an essential information to know in the threat

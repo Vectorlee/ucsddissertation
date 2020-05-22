@@ -2,20 +2,20 @@
 \label{chapter:conclusion}
 
 This dissertation focuses on using empirical approach to study 
-problems surrounding Threat Intelligence. 
+problems surrounding threat intelligence. 
 In Chapter~\ref{chapter:data_character}, I proposed 
 a set of simple but also fundamental metrics, and measured a broad
-set of Threat Intelligence(\ti) sources, and reported the 
+set of threat intelligence sources, and reported the 
 characteristics and limitations of \ti\ data. In 
 Chapter~\ref{chapter:data_usage}, I designed a method and conducted 
-a large scale measurement on how online hosts are using Threat 
-Intelligence data. To summarize, I will highlight the lessons I 
-learned from my studies, and then discuss the takeaways of my
+a large scale measurement on how online hosts are using threat 
+intelligence data. To summarize, I will first highlight the lessons 
+I learned from my studies, and then discuss the takeaways of my
 study for the community. Here are the high-level lessons from my 
-Threat Intelligence research:
+threat intelligence study:
 
 \begin{itemize}
-	\item \ti\ feeds, far from containing
+	\item Threat intelligence feeds, far from containing
     homogeneous samples of some underlying truth, vary tremendously in the
     kinds of data they capture based on the particularities of their
     collection approach. Unfortunately, few \ti\ vendors explain the
@@ -48,8 +48,9 @@ Threat Intelligence research:
     among them.
     
     \item Security related network blocking is relative prevalent on the
-    Internet. The measurement has shown that people are blocking network 
-    traffic based on Threat Intelligence data, or part of the data. When
+    Internet. The measurement has shown that many online hosts, even with 
+    our biased selection of low security hygiene hosts, are blocking network 
+    traffic based on threat intelligence data, or part of the data. When
     studying network connectivity disruption, researchers should not ignore 
     the effect of these security related blocking, instead, we should model 
     these behavior when conducting measurements and analyzing the results.
@@ -82,7 +83,7 @@ site vulnerability via a single matching indicator may have value even
 if other attacks of the same kind are not detected) or in providing a
 useful source of ground truth data for supervised machine learning
 systems. However, even given such diverse purposes, organizations still 
-need some way to prioritize which Threat Intelligence products to invest 
+need some way to prioritize which threat intelligence products to invest 
 in. The metrics I proposed in Chapter~\ref{chapter:data_character} 
 provide some direction for such choices. For example, an analyst who 
 expects to use \ti\ interactively during incident response would be better
@@ -122,12 +123,12 @@ topic moving forward:
     providing the services.
 
     \item Follow up on the previous point, it is also important to for the
-    community to study the potential impact of people using Threat 
-    Intelligence. Since this is security related data, certain use cases,
+    community to study the potential impact of people using threat 
+    intelligence. Since this is security related data, certain use cases,
     like blocking network traffic (either IP or DNS), could have broader
-    impact on the Internet. As Threat Intelligence getting more and more
-    popular, researchers should always follow the impact of these products,
+    impact on the Internet. As threat intelligence getting more and more
+    popular, researchers should closely follow the impact of these products,
     so we can spot problems early on and make changes before heavy damage
-    being made.
+    is made.
 
 \end{itemize}

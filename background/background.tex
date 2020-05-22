@@ -2,21 +2,27 @@
 \label{chapter:background}
 
 \section{Threat Hunting}
-\textit{Threat Hunting} is the process of generating Threat Intelligence
-data. It is the beginning of Threat Intelligence data. Data providers 
-can generate these data from many different sources, like specially
-deployed infrastructures, including honeypot and Internet telescope, or
-directly collect from end users, like anti-virus vendors collecting 
-potential malicious executable from their customers. However, as one can
+\textit{Threat Hunting} is the process of generating threat intelligence
+data. Cyber-attacks are happening very day on the Internet, with vantage 
+points, data providers can effectively capture these attacks and generate 
+indicator-of-compromises. These vantage points can be specially
+deployed infrastructures, including honeypot and Internet telescope; data
+providers can also directly collect data from from end-users, like 
+anti-virus vendors collecting potential malicious executable from their
+customers. 
+
+However, as one can
 imagine, the raw data usually contains a lot of noises and can hardly
 serve as meaningful ``intelligence''. Threat hunting aims to use domain 
-knowledge and specialized algorithms to detect threat and identify
+knowledge and specialized algorithms to detect threats and identify
 attackers from the raw data, therefore providing real valuable 
 information about different attacks. By definition, this process involves
 detecting all possible attacks and covers all detection oriented 
-techniques. In this section, I will go through previous research work 
-on several representative threat categories and the techniques to detect
-them.
+techniques. In this chapter, I will go through previous research works
+on several representative threat categories and discuss the techniques to 
+detect these threats. These works fall into the algorithmic direction on
+threat intelligence data, base on the definition in 
+Chapter~\ref{chapter:introduction}.
 
 \input{background/intrusion_detection.tex}
 \input{background/malware_analysis.tex}
@@ -25,8 +31,9 @@ them.
 
 
 \section{Threat Intelligence Sharing}
-How much threat one can capture is largely depend on the scope he is
-observing on the Internet. Organizations with higher scope of observation,
+How much cyber-threat one can capture is largely depend on the scope of
+vantage points he has on the Internet. Organizations with higher scope of 
+observation,
 like bigger Internet telescope or larger number of customers, tend to
 capture more threat. However, no entity has the capability to monitor
 the entire Internet, and with so many activities going on in the cyber
@@ -36,7 +43,7 @@ tiny fraction of what is happening.
 This encouraged \textit{Threat Intelligence Sharing}, where different 
 entities collect threat information individually and share the data
 with each other, so every one will get a higher coverage on potential 
-threat. Many Threat Intelligence providers are offering the platform
+threat. Many threat intelligence providers are offering the platform
 for threat intelligence sharing, including IBM X-Force 
 Exchange~\cite{ibmxforce}, AlienVault Open Threat 
 Exchange~\cite{alienvaultotx}, Facebook 
@@ -47,7 +54,7 @@ they collected. Companies are also forming alliance and exchange their
 intelligence data within the group, like Cyber Threat
 Alliance~\cite{cyberthreatalliance}.
 
-One problem during Threat Intelligence sharing is data specification.
+One problem during threat intelligence sharing is data specification.
 Since different entities could collect data in different ways and
 also record the data in different format. Without a clear unified
 data format, the data being shared will provide little benefit to
@@ -61,7 +68,7 @@ scanning the Internet, trying to brute-force log in to SSH servers,
 or they serve as C2 servers for malware. Since companies have different 
 security hygiene, they will use the data differently based on its
 meanings. So it is critical to specify clearly the meaning of the
-data during sharing. Because of this, standard Threat Intelligence 
+data during sharing. Because of this, standard threat intelligence 
 formats have been proposed and developed, 
 notably IODEF~\cite{IODEF}, CybOX~\cite{CybOX} and STIX~\cite{STIX}, 
 that try to standardize the threat intelligence presentation and sharing. 

@@ -1,11 +1,11 @@
 \subsection{Intrusion Detection}
 
 One direct way to capture threat is to identify the attacker when a
-system in use is under attack or compromised, so we can capture the 
+system in use is under attack, so we can capture the 
 attacker in action. These systems can be specially deployed systems
 just for luring attackers, like honeypot; they can also be real systems
 with real users, where people deploy detection system and capture 
-attack when it is happening. The technique we use here is also 
+attacks when they are happening. The technique we use here is also 
 the technique to protect the system in the first place:
 \textit{Intrusion Detection}.
 
@@ -74,13 +74,13 @@ machines till the time they actually carry out malicious activities.
 All of these can create difficulties for administrators to diagnose
 the intrusion and trace the source. In the context of Threat 
 Intelligence, it is important to uncover the source of 
-an attack, so we can provide valuable intelligence for the community 
-to defense the same attack in an early stage.
+an attack, so we can provide valuable indicator-of-compromise for the 
+community to defense the same attack in an early stage.
 
 The analysis, which tracks causal relationships between files and 
 processes to diagnose attack provenances and consequences, is called
 \textit{Attack Causality Analysis}. It is an critical technique
-during Threat Intelligence hunting. The pioneering work in this field
+during threat intelligence hunting. The pioneering work in this field
 is done by King and Chen~\cite{king2003backtracking}. They first defined
 the event dependency graph, where the nodes represent processes and files
 and edges represent the events between process and files, for example,
