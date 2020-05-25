@@ -3,37 +3,40 @@
 Threat Intelligence, both as a concept and a product, has been increasingly
 gaining prominence in the security industry. At a high-level, it is the 
 ``knowledge'' that helps organizations understand and mitigate cyber-attacks.
-Most commonly, it refers to the collection of known threats---IP addresses, 
-domain names, file hashes, etc. that known to be associated with attacks.
-By compiling up-to-date information about these known threats, threat 
-intelligence data promises that the recipients will be able to better 
+Most commonly, it refers to the collection of threat indicators---IP 
+addresses, domain names, file hashes, etc. known to be associated with 
+attacks. By compiling and distributing this information, it is believed 
+that recipients will be able to better 
 defend their systems from future attacks. Thus, there are now hundreds of
 vendors offering their threat intelligence solutions as a mix of public and
 commercial products. 
 
-However, our understanding of this data, its characterization and the
+However, our understanding of this data, its characterization, and the
 extent to which it can meaningfully support its intended uses, is
 still quite limited. Furthermore, how the data is being used by
-organizations, how popular it is and what impact it could have 
-on the Internet are also not clean to our community. 
-It is important to first understand the current status of threat 
-intelligence, then can we reasonably talk about how to make improvements.
+organizations, how popular it is, and what impact it could have on the 
+Internet are also not clear to our community. We lack an empirical 
+assessment of real-world threat intelligence, both in terms of the data
+itself and its usage, and it is important to first understand the current 
+status of threat intelligence, then can we reasonably discuss how to make
+improvements.
 
 In this dissertation, I take an empirical approach to study threat 
-intelligence. In particular, I explore this topic from two perspectives:
-the characteristic of data itself and how people are using it in the real-world.
-In the data characteristic study, I formally defined a set of metrics for 
-analyzing threat intelligence data feeds and using these measures to 
+intelligence and try to address these gaps. In particular, I explore 
+this topic from two perspectives: 1) the characteristic and dynamics of 
+threat intelligence data feeds and 2) how they are used in the 
+real-world. In particular, I formally defined a set of metrics for 
+analyzing threat intelligence data feeds and use these measures to 
 systematically characterize a broad range of public and commercial feeds. 
 Further, I ground my quantitative assessments using external measurements 
-to qualitatively investigate issues of coverage and accuracy. In the study
-of real-world uses, I designed a method using the IP ID side channel to test 
-if a remote host is blocking traffic from a given IP address. Using this
-technique, I measured over {\reflroughnum} U.S. hosts and test whether they 
+to qualitatively investigate issues of coverage and accuracy. Finally, I
+designed a method using the IP ID side channel to test if a remote host 
+is blocking traffic from a given IP address. Using this technique, I 
+measure over {\reflroughnum} U.S. hosts and test whether they 
 consistently block connections with IPs identified on popular IP blacklists. 
-Beyond these blacklists, I also demonstrated the evidence for more widespread 
+Beyond these blacklists, I also demonstrate the evidence for more widespread 
 use of other blacklists for traffic blocking. Together, my work provides
-an in-depth look into the current status of threat intelligence and augment
+an in-depth look into the current picture of threat intelligence and augments
 the knowledge of our community on this topic.
 
 \end{dissertationabstract}
