@@ -92,30 +92,29 @@ works~\cite{tounsi2018survey}, covering topics from data characteristic,
 effectiveness evaluation to design better sharing systems and protocols.
 
 From a high level, there are two major aspects of threat intelligence: 
-\textit{Data} and \textit{Operation}. \textit{Data} represents the content 
+\textit{Data} and \textit{Operations}. \textit{Data} represents the content 
 of threat intelligence---the actual information provided in different threat
-intelligence products. \textit{Operation} represents the usage of 
+intelligence products. \textit{Operations} represents the usage of 
 data---different ways people can use threat intelligence to help. This
 generalization is common for all data-based products. Therefore,
 all research surrounding threat intelligence can be categorized into
 these two areas: research related to threat intelligence data itself, or 
 studying ways to use the data.
 
-When looking at these two general problems, one can further 
+When looking at these two general aspects, one can further 
 take two different research approaches: \textit{Empirical} and 
-\textit{Algorithmic}. \textit{Empirical} approach focuses on understanding
-the current ecosystem of threat intelligence, including studying the 
-data characteristic, measuring different use cases, discover potential 
-shortcomings, etc. This approach emphasizes on thoroughly understanding
-existing solutions, uncovering patterns and underlying logic, 
-so the community can gain valuable insights.
-\textit{Algorithmic} approach, on the other hand, 
-focuses on designing new algorithms and new tools to 
-improve current solutions, like new threat hunting algorithms to improve 
+\textit{Algorithmic}. The \textit{Empirical} approach focuses on 
+understanding the current threat intelligence ecosystem, characterizing 
+the data, measuring different use cases, discover potential 
+shortcomings, etc. This approach emphasizes thoroughly understanding
+existing solutions, uncovering patterns and underlying logic, so the 
+community can gain valuable insights. The \textit{Algorithmic} approach, 
+on the other hand, focuses on designing new algorithms and new tools to 
+improve current solutions, such as new threat hunting algorithms to improve 
 threat intelligence data quality, or better ways to utilize these data 
-during operation, etc. This approach emphasizes on designing new solutions 
-to improve existing ones, so the community can have better algorithms and
-tools to work with threat intelligence.
+during operation, etc. This approach emphasizes designing new tools,
+techniques and approaches to help the community better generate, share, 
+and use threat intelligence data.
 
 \begin{figure}
 \centering
@@ -125,52 +124,59 @@ topics in each direction.}
 \label{fig:threat_intel_overview}
 \end{figure}
 
-Therefore, research related to threat intelligence can be 
-viewed in four general directions, as illustrated in
-Figure~\ref{fig:threat_intel_overview}. More specifically, the four 
-research directions are: 
+To summarize, threat intelligence research can be divided into four 
+different directions (as illustrated in Figure
+~\ref{fig:threat_intel_overview}). These are:
 \begin{prettylist}
-    \item Empirical analysis on threat intelligence data: \\
-    Understanding the characteristic of threat intelligence data, studying different
-    data generation systems and their performance, measuring different threat 
-    sharing strategies and how are they being used in the real-world, etc.
+    \item Empirical analysis of threat intelligence data: \\
+    Characterizing and understanding threat intelligence data, profiling the 
+    systems and techniques used to generate such data, measuring different 
+    threat sharing strategies and their effectiveness, etc.
     
     \item Algorithm exploration related to threat intelligence data: \\
     Designing algorithms for threat hunting (threat intelligence generation),
-    define specification for data description and protocols for data sharing, etc.
+    defining specification for data description and protocols for data 
+    sharing, etc.
     
-    \item Empirical analysis on threat intelligence usage: \\
-    Measuring how organizations are using threat intelligence, the problems 
-    when using these data and the impact on the Internet, etc.
+    \item Empirical analysis of threat intelligence usage: \\
+    Measuring how organizations use threat intelligence, and understanding
+    the impact such uses on the Internet, etc.
     
     \item Algorithm exploration related to threat intelligence usages: \\
     Designing better methods to use threat intelligence during system and 
     network defense(e.g. increasing coverage, reducing false positives),
-    exploring new ways to use threat intelligence data, such as using the 
-    data as machine learning training data, etc.
+    exploring new ways to use threat intelligence data, such as for machine
+    learning training data, etc.
 \end{prettylist}
 
+There have been many previous research works covering various topics in these
+four directions. Most of the works focus on threat intelligence generation
+techniques(all threat detection techniques, such as malware detection, phish 
+detection, causality analysis, etc.) and threat sharing methods(data formats, 
+sharing protocols and sharing platforms, etc.). However, few works have taken
+the empirical approach and systematically evaluate the current status threat
+intelligence, both in terms of the data itself and its usage. Our community 
+lacks a concrete understanding of threat intelligence in the real-world.
+
 In this dissertation, I take the empirical approach and explore both the 
-\textit{Data} and \textit{Operation} problems in threat intelligence.
-I focus on thoroughly understanding the current status of threat 
-intelligence and will then discuss my takeaways from these analyses.
-In the study of \textit{Data}, which will be discussed in Chapter~\ref{chapter:data_character}, 
-I analyzed the data characteristics of existing threat intelligence products.
-I designed mathematics metrics for threat intelligence data evaluation,
-and with these metrics, I studied \numipfeeds\ distinct IP address 
-data feeds, covering six categories of threats, and \numhashfeeds\ distinct
-malware file hash feeds, and measured their data characteristic. Through this
-work, I revealed the limitation of existing threat intelligence data and 
-discussed the potential improvements based on my findings. In the study of
-\textit{Operation}, which will be discussed in Chapter~\ref{chapter:data_usage},
+\textit{Data} and \textit{Operation} aspects of the threat intelligence
+domain. In exploring threat intelligence Data (described in
+Chapter~\ref{chapter:data_character}), I analyzed the characteristics of
+existing threat intelligence products. In particular, I designed formal 
+metrics for evaluating threat intelligence data and I used these tools to 
+evaluate {\numipfeeds} distinct IP address IoC feeds and {\numhashfeeds}
+distinct malware IoC feeds. Through this work, I revealed the limitation of
+existing threat intelligence data and discussed potential improvements 
+based on my findings. In exploring threat intelligence operations 
+(described in Chapter~\ref{chapter:data_usage}),
 I measured how threat intelligence data is being used on a large scale. 
-I designed a method using IP ID side channel that can measure the 
-connectivity between two Internet hosts from a third point. With this 
+I designed a method using IP ID side channel to infer the connectivity 
+between two Internet hosts from a third point. Using this 
 method, I conducted a large scale Internet measurement over {\reflroughnum} 
-U.S. hosts and uncovered their uses of {\blacklistnum} popular public IP
+U.S. hosts and established their use of {\blacklistnum} popular public IP
 blacklists. I further investigated a broader use of blacklists among the 
-hosts, and discovered over 73K hosts has shown blacklist related blocking 
-behavior. Together, my work provided an in-depth look into the current
+hosts, and discovered over 73K hosts have shown blacklist related blocking 
+behavior. Together, my work has provided an in-depth look into the current
 status of threat intelligence and augmented the knowledge of our community
 on this topic.
 
