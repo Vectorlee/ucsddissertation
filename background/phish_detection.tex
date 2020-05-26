@@ -1,19 +1,19 @@
 \subsection{Phishing Detection}
-Phishing attacks is a type of social engineering attack, where attackers 
+Phishing attacks are a type of social engineering attack, where attackers 
 disguise as trusted entities and lure victims to click on malicious links, 
 download attachments, or provide sensitive information like credit card
-numbers or online credentials. These attack can have devastating results. 
+numbers or online credentials. These attacks can have devastating results. 
 For individuals, this includes unauthorized access to their online 
-accounts, the stealing of money in their bank, or identify theft for illegal
+accounts, the stealing of money in their bank, or identity theft for illegal
 activities. Moreover, phishing is often used to gain a foothold in corporate 
 or governmental networks as a part of a larger attack, such as an 
 advanced persistent threat (APT) event. This could result in significant
-financial losses, leakage of user data and protected technologies. Hence,
+financial losses, leakage of user data, and protected technologies. Hence,
 phishing related data is an important part of threat intelligence. These data
-covers phishing domains and URLs, as well as IP addresses that host these
+include phishing domains and URLs, as well as IP addresses that host these
 websites. 
 
-Phishing attacks are often launched through a phish email, so researchers
+Phishing attacks are often launched through phish emails, so researchers
 have looked into different methods to identify these phish emails. Phish emails
 are quite different spam emails. Spam emails are usually easy to identify,
 since they just try to advertise certain goods and don't try to conceal 
@@ -21,18 +21,18 @@ their identities. Phish emails, however, can be hard to distinguish by
 everyday people, since these emails deliberately pretend they are
 from legitimate sources, and they use multiple tactics to lure recipients
 to click on the link. For example, attackers exploit HTML emails and
-provide a HREF where the actually link is different from what is being 
+provide a HREF where the actual link is different from what is being 
 displayed, like \texttt{<a href="badsite.com">paypal.com</a>}. Therefore,
-when analyzing if an email is a phish email, researchers uses text content
-of the email (like in spam email detection) together with phishing specific 
-features, like the one listed above, to build machine learning model. 
+when analyzing if an email is a phish email, researchers use text content
+of the email (like in spam email detection) together with phishing-specific 
+features, like the one listed above, to build machine learning models. 
 Examples works such as Fette et. al~\cite{fette2007learning}, Abu-Nimeh 
 et. al~\cite{abu2007comparison}, and Chandrasekaran et. al
 ~\cite{chandrasekaran2006phishing}.
 
 Since phishing attacks mostly require victims to click on a link, the URLs 
 and the corresponding webpages also provide us clues from which we can 
-determine whether it is phish related. For example, in early days, many
+determine whether it is phish related. For example, in the early days, many
 phish URL will have IP address in it, like \texttt{http://135.12.44.20/index.php}. This feature is extremely rare for
 legitimate websites. Another characteristic is that phish domains tend to
 relatively long, containing multiple segments. For example, 9794.myonlineaccounts2.abbeynational.co.uk.syrialand.com. The idea is that
@@ -45,11 +45,11 @@ to assist the detection. Another source to look at is the phishing
 webpage. Phishing attacks usually try to mimic other trusted websites and
 make people think they are visiting the original legitimate websites. They
 also frequently ask people to type their credentials or provide payment
-information, since the goal of the attackers is to steal these information.
+information, since the goal of the attackers is to steal this information.
 Researchers have used the content of the webpages as the feature to further
 enhance their algorithms. Zhang et. al.~\cite{zhang2007cantina} has used 
 the word frequency on the webpage(TF-IDF) to classify the webpages. Wardman 
-et. al.~\cite{wardman2008automating} compared the content on target webpage
+et. al.~\cite{wardman2008automating} compared the content on the target webpage
 with other popular webpages to see if the webpages in question are trying
 to mimic those legitimate ones. All these resources provide additional
 confidence to people when deciding if a URL is a phish URL.

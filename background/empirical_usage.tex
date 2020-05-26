@@ -1,10 +1,11 @@
 \section{Threat Intelligence Uses}
+\label{sec:threat_intel_uses}
 
 Threat intelligence data, at a high-level, promises that by compiling up-to-date 
 information about known threats (i.e., IP addresses, domain names, file hashes, 
 etc.), recipients of the data will be able to better defend their systems from 
 future attacks. Therefore, the primary use cases of threat intelligence is 
-during defenses. Intrusion detection systems or firewall can directly put 
+network defense. Intrusion detection systems or firewalls can directly put 
 the data in the system and block the corresponding IP or DNS traffic. Popular 
 open source projects like Snort~\cite{snortids}, Zeek~\cite{zeekids} all provide 
 these functionalities. Commercial products like Palo Alto Network
@@ -12,7 +13,7 @@ firewall~\cite{paloaltofirewall}, Fortinet firewall~\cite{fortinetfirewall},
 Cisco firewall~\cite{ciscofirewall} also incorporate threat intelligence data in 
 their defense systems. 
 
-Besides directly taking actions, threat intelligence can also be used in security
+Besides directly taking action, threat intelligence can also be used in security
 monitoring and post forensic analysis. In these cases, the system raises alarms
 when there are matches between network activities and threat intelligence data.
 Threat intelligence data usually come with confidence and severity level for each
@@ -34,10 +35,10 @@ private threat intelligence sources to see how much of Tor exit IPs are listed
 on these sources. These are experimental use cases researchers have explored 
 with threat intelligence data. 
 
-One question that has not been investigated is that how threat intelligence 
+One question that has not been investigated is how threat intelligence 
 products are actually being used by organizations currently in the industry.
 Understanding the real-world use cases gives us ideas about the adoption of threat
-intelligence data, which is an essential information to know in the threat
+intelligence data, which is essential information to know in the threat
 intelligence ecosystem. More importantly, the usage of different products offers
 us insight into the potential impact they could cost on the Internet. As 
 discussed in Chapter~\ref{chapter:data_character}, false positives are relatively 
@@ -48,7 +49,7 @@ that organization will be affected. From another side, if one online host is
 added to an IP feed mistakenly, then this host will lose access to all the
 organizations that use this feed as a blocking ruleset. Therefore, the actual
 usage of the data in industry is a crucial topic that should get more attention
-from security community.
+from the security community.
 
 But this problem is also a very challenging problem. The primary challenge 
 is that there are many ways people can use these data. It can be directly 
@@ -58,11 +59,8 @@ have a well-defined behavior that we can quantitatively measure.
 The actions derived from threat intelligence data can also happen at different
 network layers. For example, an organization can deny access on network layer; 
 it can also deny access on application layer, like HTTP 403 Forbidden. 
-This diverse possibility of use cases make it hard to assess this problem as 
-a whole. Another challenge for us academic researchers is that we do not have 
-access to the commerical threat intelligence data, as they can be prohibitively
-expensive. Therefore, it is hard to capture the comprehensive picture on the
-Internet.
+This diverse possibility of use cases makes it hard to assess this problem as 
+a whole. 
 
 Little work has been done to try and understand how threat
 intelligence data is being used on a large scale. The only work that tries to
@@ -75,9 +73,9 @@ The survey also asked their user experience. SANS Institute did a
 similar study~\cite{shackleford2017cyber} where they surveyed 600
 participants from a diverse industry background and asked questions about
 their threat intelligence usage. These works are limited in terms
-of scale, and their results are all in a very high-level. Although they offered
+of scale, and their results are all at a very high-level. Although they offered
 some useful insight, they can not provide us a concrete understanding
-about the use of threat intelligence data on a large scale. My measurement,
+of threat intelligence uses on a large scale. My measurement,
 which will be discussed in Chapter~\ref{chapter:data_usage},
-is the first work that systematically looks at the problem of inferring use
-of threat intelligence data on a large scale, and explore its implications.
+is the first work that systematically looks at the problem of inferring
+threat intelligence uses and explore its implications.
