@@ -4,7 +4,7 @@ Internet mail that is sent to a group of recipients who have no intention
 to receive it. They are particularly harmful, as these emails jam users' 
 mailboxes, engulf important personal mail, waste network bandwidth and 
 can even crash mail-servers. Spam emails also serve as an important
-way of advertising products in the underground market, like prescription drugs, 
+way of advertising products in the underground market, such as prescription drugs, 
 illegal porn, replica of other brands, etc. It is an old yet still popular
 threat on the Internet. Threat intelligence spam data contains email address 
 used by the spammers, domains and IP addresses where spammers' mail servers 
@@ -12,10 +12,10 @@ are located. Organizations, and even ISPs, tend to use these data to block
 the incoming mail traffic.
 
 Email providers, ISPs or anti-spam organizations usually set up 
-\textit{Spamtrap} to capture spam emails. Spamtrap are the email addresses
+\textit{Spamtraps} to capture spam emails. Spamtraps are the email addresses
 that are created not for communication, but rather to lure spam. These
 email addresses do not belong to any person and will not involve in any
-kind of communication. These addresses will not be revealed openly online,
+kind of communication. These addresses will not be publicly announced,
 so only unsolicited spammers, who tend to collect target email addresses
 by crawling the Internet, or go through all possible lexical combinations
 for email names, will hit these addresses. The Spamtrap here serve as a 
@@ -24,14 +24,14 @@ addresses as Spamtrap addresses.
 
 However, simply regarding all emails received in Spamtrap as spam emails 
 will create a substantial amount of false positives, since legitimate 
-senders with poor data hygiene or acquisition practices end up hit the traps 
+senders with poor data hygiene or acquisition practices can hit the traps 
 as well. To further distinguish spam emails and consequently identify the
 senders, one needs to look at the content of emails themselves. Numerous 
 statistical algorithms have been proposed by researchers to filter spam
 emails from legitimate ones. At its core, spam filtering can be viewed as
 a text categorization task: given the full text content of an email, 
 decide whether it is spam email or benign email. A variety of supervised
-machine learning techniques have been tested for spam filtering. Like the
+machine learning techniques have been tested for spam filtering. Including the
 naive Bayes classifier~\cite{androutsopoulos2000evaluation, sahami1998bayesian, schneider2003comparison}, 
 RIPPER rule induction algorithm~\cite{cohen1996learning},
 Support Vector Machine~\cite{drucker1999support}, memory-based learning
@@ -43,7 +43,7 @@ and different feature reduction and weight assignment strategy have been
 explored. These models can all achieve decent accuracy, and have been tested
 and deployed in the real-world. 
 
-Email providers also get help from the customers to identify spams. Since
+Email providers also get help from the customers to identify spam emails. Since
 customers can mark an email as spam manually, having a large customer base
 enables the email provider to collect a large number of spam emails with high
 accuracy, and therefore track down the domains and IP addresses used by the 

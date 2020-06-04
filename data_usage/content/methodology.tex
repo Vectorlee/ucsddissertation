@@ -178,14 +178,6 @@ the 7 vantage points, and later collect responses at each vantage point.
 I only select the {\reflectors} that send responses to all 7
 vantage points, meaning they did not drop spoofed packets on these network paths.
 
-Eventually, I identified {\reflcount} IP addresses in US that meet the
-requirements.\footnote{I initially discovered more than 300K {\reflectors}, 
-but during my experiments some hosts became inactive. The number reported 
-here is the final number after I finished all the experiments.} For the 
-purpose of this chapter, here I treat each individual IP address as a 
-distinct {\reflector}. Detailed numbers are presented in
-Table~\ref{tab:target-hosts}.
-
 \begin{table}[t]
 \centering
 \caption{The number of {\reflectors} (IP addresses) identified in the United States, and the
@@ -203,6 +195,37 @@ corresponding count of /24 prefixes and Autonomous Systems.}
 %% and organizations (One organization can have multiple ASes)}
 \label{tab:target-hosts}
 \end{table}
+
+
+Eventually, I identified {\reflcount} IP addresses in US that meet the
+requirements.\footnote{I initially discovered more than 300K {\reflectors}, 
+but during my experiments some hosts became inactive. The number reported 
+here is the final number after I finished all the experiments.} For the 
+purpose of this chapter, here I treat each individual IP address as a 
+distinct {\reflector}. Detailed numbers are presented in
+Table~\ref{tab:target-hosts}.
+
+By construction, the set of reflectors we use will necessarily
+have certain biases. To understand what fraction of networks
+of potential interest to others this might cover, we queried
+the Alexa top 100K domains as of Dec. 17th, 2019 for their
+A records and MX records and obtained their corresponding
+IP addresses. Of these, we identified a total of 94,846 IPs
+that are located in the US, covering 34,083 /24s. While no
+attempt was made to find reflectors of these networks \textit{a priori},
+our selection methodology identified at least one reflector
+in 16.9\% of these /24s. When only looking at the top 10K
+domains, our data set covers 13.2\% of US /24s.
+
+We also checked the WHOIS record of each reflector and
+identified all hosts associated with education institutions. In
+total, our data set includes 4,370 education IPs, ranging across
+181 different institutions, and covers 40 out of the top 100
+US universities based on the US News ranking~\cite{usnewsranking}. 
+Thus, while there may be networks without a suitable reflector for
+one reason or another, our technique is applicable to a large
+number of existing networks.
+
 
 \subsection{Choosing the Blacklists}
 \label{sec:methblkl}

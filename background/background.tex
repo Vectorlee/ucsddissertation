@@ -5,36 +5,36 @@ In this chapter, I will go through background knowledge and related work
 in all four research directions defined in Chapter~\ref{chapter:introduction}.
 More specifically, I first introduce several threat intelligence 
 generation techniques in section~\ref{sec:threat_intel_generation}, covering 
-different algorithms researchers have explored for each threat category. I
-then discuss threat intelligence sharing and its core challenges in Section~\ref{sec:threat_intel_sharing}. The research works discussed in these
-two sections belong to the algorithmic research on threat intelligence data. In 
-Section~\ref{sec:threat_intel_data}, I discuss previous characteristic studies
-on existing threat intelligence feeds. These works fall into the direction of empirical analysis on the data, although they are severely limited in terms of 
-scale and lack formal methodologies. Finally, I talk about the usage
-of threat intelligence in Section~\ref{sec:threat_intel_uses}, and also
-go through previous algorithmic explorations and empirical surveys on the data
-usage.
+different algorithms researchers have proposed for each threat category. I
+then discuss threat intelligence sharing and its core challenges in 
+Section~\ref{sec:threat_intel_sharing}. The research works discussed in these
+two sections belong to the algorithmic exploration on threat intelligence data. 
+In Section~\ref{sec:threat_intel_data}, I discuss previous characteristic studies
+on existing threat intelligence feeds. These works fall into the direction of 
+empirical analysis on the data, although they are severely limited in terms of 
+scale and lack formal methodologies. Finally, I talk about the usage of threat 
+intelligence in Section~\ref{sec:threat_intel_uses}, and also go through 
+previous algorithmic exploration and empirical surveys on the data usage.
 
-\section{Threat Intelligence Computing}
+\section{Threat Intelligence Collection}
 \label{sec:threat_intel_generation}
 
-\textit{Threat Intelligence Computing} is the process of generating threat 
-intelligence data. Cyber-attacks are happening very day on the Internet.
+\textit{Threat Intelligence Collection} is the process of generating threat 
+intelligence data. Cyber-attacks are happening everyday on the Internet.
 With vantage points, data providers can effectively capture these attacks 
-and generate indicator-of-compromises. These vantage points can be specially
-deployed infrastructures, including honeypot and Internet telescope; data
-providers can also directly collect data from from end-users, like 
+and generate indicators of compromise. These vantage points can be specially
+deployed infrastructure, including honeypots and Internet telescopes; Data
+providers can also directly collect data from from end-users, such as 
 anti-virus vendors collecting potential malicious executable from their
 customers. 
 
-However, as one can imagine, the raw data usually contains a lot of noises 
+However, as one can imagine, the raw data usually contains a lot of noise 
 and can hardly serve as meaningful ``intelligence''. Threat intelligence 
-computing aims to use domain 
-knowledge and specialized algorithms to detect threats and identify
-attackers from the raw data, therefore providing real valuable 
-information about different attacks. By definition, this process involves
-detecting all possible attacks and covers all detection oriented 
-techniques. In this chapter, I will go through previous research works
+collection aims to use domain knowledge and specialized algorithms to detect 
+threats and identify attackers from the raw data, providing real valuable 
+information about different attacks. By definition, threat detection
+techniques on all threat categories can be used during threat intelligence 
+collecting. In this chapter, I will go through previous research works
 on several representative threat categories and discuss the techniques to 
 detect these threats. These works fall into the algorithmic direction on
 threat intelligence data, base on the definition in 
@@ -49,23 +49,22 @@ Chapter~\ref{chapter:introduction}.
 \section{Threat Intelligence Sharing}
 \label{sec:threat_intel_sharing}
 
-How much cyber-threat one can capture is largely depending on the scope of
-vantage points he has on the Internet. Organizations with a larger scope of 
+How much threat one can capture is largely depending on the scope of
+vantage points one has on the Internet. Organizations with a larger scope of 
 observation,
 like bigger Internet telescopes or a larger number of customers, tend to
 capture more threats. However, no entity has the capability to monitor
-the entire Internet, and with so many activities going on in the cyber
-world these days, each individual entity is only able to monitor a
+the entire Internet, and each individual entity is only able to monitor a
 tiny fraction of what is happening. 
 
-This encouraged \textit{Threat Intelligence Sharing}, where different 
+This encouraged \textit{threat intelligence sharing}, where different 
 entities collect threat information individually and share the data
-with each other, so every one will get a higher coverage on potential 
+with each other, so every one will get a higher coverage of potential 
 threat. Many threat intelligence providers are offering the platform
 for threat intelligence sharing, including IBM X-Force 
 Exchange~\cite{ibmxforce}, AlienVault Open Threat 
 Exchange~\cite{alienvaultotx}, Facebook 
-ThreatExchange~\cite{facebookthreatexchange} etc. These platforms
+ThreatExchange~\cite{facebookthreatexchange}, etc. These platforms
 enable companies (not necessarily security companies), organizations 
 or individual security researchers to contribute threat intelligence 
 they collected. Companies are also forming alliances and exchange their

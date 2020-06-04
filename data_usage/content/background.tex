@@ -1,19 +1,19 @@
 \section{Related Work}
 
 \subsection{Internet Connection Blocking}
-In this study, I focus on one specific way of how organizations are using 
+In this study, I focus on one specific way of how organizations use 
 threat intelligence data: use threat intelligence IP feeds as direct rule-set 
 to block network traffic. This behavior is very similar to other forms of
-Internet connection blocking, most notable examples are Internet censorship,
+Internet connection blocking, notably Internet censorship,
 geo-blocking and Tor blocking.
 
-Many previous work has studied Internet censorship~\cite{aryan2013internet,
+Previous works have studied Internet censorship~\cite{aryan2013internet,
 park2010empirical,anderson2012splinternet,zittrain2003internet,
 clayton2006ignoring}, geo-blocking~\cite{opennetsurvey, mcdonald2018403,afroz2018exploring}, 
 and Tor blocking~\cite{singh2017characterizing, khattak2016you}. However, 
 these measurement studies all rely on having vantage points in the target 
 regions, so the researchers can directly measure the network effects and 
-acquire the results. There are serval public projects that facility such 
+acquire the results. There are several public projects that facility such 
 studies by providing access points around the global, like RIPE
 Atlas~\cite{ripeatlas}, OONI~\cite{ooni} and ICLab~\cite{iclab}.
 For Tor blocking, it is also not hard for the researchers to get access 
@@ -22,21 +22,19 @@ measurement from that node. But these studies are restrained by the vantage
 points they could get, as it is hard to get these vantage points in large
 quantities, and these points are also heavily biased towards certain networks.
 For country-wide censorship or geo-blocking measurement, this is not a big
-issue. But in this case, I want to conduct large scale measurements over a 
-broad set of online hosts, it is very difficult to acquire vantage points 
+issue. But in this case, since I want to conduct large scale measurements over 
+a broad set of online hosts, it is very difficult to acquire vantage points 
 that can meet my requirements.
 
-Recent work by Ensafi et al~\cite{ensafi2014detecting} and Pearce et 
-al~\cite{pearce2017augur}. demonstrated the method to use IP ID side 
+Recent work by Ensafi~\etal~\cite{ensafi2014detecting} and Pearce~\etal~\cite{pearce2017augur} demonstrated the method to use IP ID side 
 channel to measure Internet connectivity. This is an indirect method 
-and allow an observer to measurement the connectivity between two hosts 
-without having access to either of the hosts. In this study, I do not 
-have access to either threat intelligence feeds, or large amount of 
-online hosts, this method is an ideal method for this measurement. But 
-I need to modify the original method to better suit this experiment, 
-and I also need to take extra effort to eliminate the interfering 
-signals. I will establish on the methodology in more detail in
-Section~\ref{sec:methodology}.
+that allows an observer to measure the connectivity between two hosts 
+without having access to either of the hosts. In this study, since I do not 
+have access to either the hosts on blacklists, this method is an ideal 
+method for this measurement. But I need to modify the original method 
+to better suit this experiment, and I also need to take extra effort 
+to eliminate the interfering signals. I will establish on the methodology 
+in more detail in Section~\ref{sec:methodology}.
 
 % First Paragraph: Explain what is IP ID
 \subsection{IP ID Side Channel}

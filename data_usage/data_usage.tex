@@ -1,18 +1,18 @@
 \chapter{Threat Intelligence Uses}
 \label{chapter:data_usage}
 
-In the last chapter, I talked about the data characteristic of 
+In the previous chapter, I talked about the data characteristics of 
 existing threat intelligence products and their limitations. Given
-the current status of threat intelligence, another side of the coin is:
-how people are actually using the data currently. This question belong 
-to the empirical study on data usage, as I listed in the 
+the current status of threat intelligence, another side of the coin is
+how people are actually using the data currently. This question belongs 
+to the empirical study of data usage, as I listed in the 
 introduction chapter.
 
 As one can see, threat intelligence data can be used in a number
 of different ways. It can be used forensically during incident response
 (i.e., to better understand and attribute a threat after it has gained
 access to a network), it can be used reactively to generate alerts
-of suspicious activity in a SIEM system. 
+of suspicious activity in a SIEM system 
 (i.e., to raise awareness of a potential threat
 that is currently active), or it can be used proactively to block
 traffic (and hence block the associated threats). This last category
@@ -42,15 +42,15 @@ In this chapter, I will take the first step towards understanding this
 question. In particular, this study seeks to better understand the extent 
 to which network administrators make use of threat intelligence IP feeds
 (more commonly known as IP blacklists) to proactively block network 
-traffic and, if they do, which kinds of data sources are they using for 
+traffic and, if they do, which kinds of data sources they are using for 
 that purpose.
 
 The principal challenge in pursuing this question is that such
 decisions are largely invisible: a network choosing to block IP
-address x, is indistinguishable from one that does not, except to the
-owner of IP address x.  Moreover, for operational security reasons,
+address x, is externally indistinguishable from one that does not, except 
+to the owner of IP address x.  Moreover, for operational security reasons,
 few organizations are willing to publicly document the details of
-their network defenses. Thus, there is no crisp mechanism to
+their network defenses. Thus, there is no simple mechanism to
 determine if a network blocks certain traffic, let alone a means to
 determine the data source driving such a decision.
 

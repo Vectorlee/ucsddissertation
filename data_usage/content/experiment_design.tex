@@ -191,6 +191,14 @@ it is harder to capture a period with no other traffic when the time window
 is longer. Thus, the choice of 5 probe packets with 5 spoofed packets in
 between is a trade-off between multiple factors.
 
+Here we use a different mathematical model than the sequential hypothesis testing proposed in previous work~\cite{pearce2017augur}.
+We choose this simple and stringent method primarily because we try to be extremely conservative. Also, we like to
+keep each trial “short”—with only 5 seconds— to make the
+overall experiment faster, as we intend to use this technique
+for a large scale measurement. Using a statistical model could
+potentially cover more hosts, but there will not be a fundamental difference, since in either case we still rely on the fact
+that reflectors having a minimum amount of extra traffic.
+
 %I choose to send 5 probe packets because it is a balance between getting
 %enough sample point of IP ID to see the changes, and not sending too many
 %packets to the {\reflector} that might affect the host, as I need to repeat
@@ -232,19 +240,57 @@ measurement, and remove them from the total reflector set.
 \subsection{Ethical Considerations}
 \label{sec:ethics}
 
-In general, I believe the measurement would not cause much harm, as I only 
-send TCP SYN-ACK packets to these hosts, without any other communication. Since
-the reflectors are all active hosts on the public Internet, I believe it is
-unlikely that any dramatic action will be taken if they only received SYN-ACK
-packets but no other communication from blacklist IPs. I limited my
-measurement within the United States to further reduce the potential impact.
-However, admittedly the experiment may trigger security alerts, causing 
-network administrators to spend time looking into these unnecessary alerts.
-But to be further cautious, I take effort to minimize the
-measurement packets I send to each reflector, as described in
-Section~\ref{sec:methtrain}. Moreover, I will not disclose the exact
-identity of any reflector in this chapter, and only report aggregated
-numbers.
+In our experiments, we send spoofed packets to reflectors
+impersonating traffic from other IPs to infer the presence of
+network-layer blocking based on IP blacklists.  
+A key ethical concern with this kind of
+measurement is the extent to which either receiving such packets or
+being seen to have received such packets would put the recipients at
+undue risk.  Indeed, this is particularly problematic in censorship 
+measurements~\cite{ensafi2014detecting, pearce2017augur}
+because of the potential to inadvertently cause a host to be 
+associated with content that is politically dangerous in their country.
+However, our work operates in a context that is substantially less
+risky, and we have further designed multiple aspects of our protocol 
+to minimize the likelihood of risk. In particular, our methodology 
+incorporates the following approaches to minimize risk:
+
+%\begin{itemize}
+\textbf{Restriction in Scope}:  We have specifically restricted our
+  measurements to only {\reflectors} within the United States, which
+  affords relatively robust free speech rights and
+  considerable transparency around criminal proceedings. Indeed, from
+  our conversations with both network operators and law enforcement,
+  we are unaware of a realistic scenario where the mere receipt of a
+  packet, regardless of its declared origin, has led to criminal or civil liability.
+
+\textbf{Conventional sources}:  Unlike in censorship studies, the source
+  IP addresses being spoofed are those that have been used to mount wide-spread
+  abusive activity such as spamming, port scanning,
+  etc. and these represent precisely the kinds of traffic that a
+  typical host on the Internet would \emph{expect} to receive 
+  (This is the very theory behind using such blacklists).  Thus, 
+  while the traffic we generate may appear malicious, it will be
+  precisely the kind of malicious traffic we all experience via
+  typical Internet background radiation~\cite{pang2004characteristics}.
+
+\textbf{Inbound, connection-free probes}:  Our measurements are
+  constructed to be inbound only and connection free; that is, a
+  network monitor could witness traffic consistent with an
+  \emph{external} scan of one of their hosts, but will never witness a
+  completed connection or any data transmission. The
+  only traffic ever sent \emph{by} {\reflectors} are RST packets.  
+  From our discussions with network operators and network security 
+  equipment vendors, we could not identify 
+  a scenario where the mere receipt of the packets we send would be 
+  sufficient to drive an incident response team to action.
+
+\textbf{Minimal use of end-host resources}: Our scans are purposely
+  constructed with SYN-ACK packets to ensure that no state is created
+  on the {\reflector}.  Moreover, our peak probing rate per {\reflector} 
+  is 6 min-sized packets per second, but even that rate only persists for
+  two seconds in each test, and in the following pilot study, 
+  we probe each {\reflector} no more than once every 3 minutes.
 
 %\subsection{Tor Blacklist Placeholder}
 %Note that the {\ettor} includes IPs from all nodes involved in Tor

@@ -25,18 +25,18 @@ of current attacker behaviors.
 
 This abstract problem has given rise to a concrete demand for
 contemporary threat data sources that are frequently collectively
-referred to as \emph{threat intelligence}. threat intelligence 
+referred to as \emph{threat intelligence}. Threat intelligence 
 is the \emph{knowledge} that allows organizations to understand and 
 mitigate cyber-attacks. This ``knowledge'' involves a wide variety 
 of things. It can be vulnerability reports, where system and 
 network administrators can learn the vulnerabilities and the potential
 impact on their systems. It can also be IP or domain blacklists,
 which report the sources where attacks originate from, so people
-can take precautions against these indicators. It can even be some 
+can take precautions against these indicators. It can even be an 
 online discussion thread in an underground forum, so security 
-experts can track what malicious actors are discussing about. 
-All of these knowledge capture contemporary information of potential 
-threats, and therefore help organizations better defend 
+experts can track what malicious actors are discussing. 
+All of this knowledge captures contemporary information about potential 
+threats, and therefore helps organizations better defend 
 against them.
 
 By far the most common form of threat intelligence are so-called 
@@ -56,7 +56,7 @@ associated with attacks. The most notable examples are:
 
 The presence of such indicators in a system or network is a symptom 
 that alerts an organization to a problem. For example, if one 
-machine in an organization communicated with a domain that known to be
+machine in an organization communicated with a domain known to be
 associated with malware Command-and-Control servers, it is a strong
 indication that this machine is probably infected with the 
 corresponding malware. Part of an organization's defenses 
@@ -79,24 +79,23 @@ information about current threats.  Indeed, the promised operational
 value of threat intelligence has created a thriving (multi-billion
 dollar) market~\cite{timarket}. 
 
-Most established security firms, like Cisco Security~\cite{ciscotalos}, 
-Palo Alto Networks~\cite{panautofocus}, Fortinet~\cite{fortinet} etc, 
-and many specialized companies, like CrowdStrike~\cite{crowdstrike}, 
-Anomali ThreatStream~\cite{anomali}, Recorded Future~\cite{recordedfuture}
-etc,. are all offering threat intelligence solutions. Public threat
+Most established security firms, such as Cisco Security~\cite{ciscotalos}, 
+Palo Alto Networks~\cite{panautofocus}, Fortinet~\cite{fortinet}, 
+and many specialized companies, including CrowdStrike~\cite{crowdstrike}, 
+Anomali ThreatStream~\cite{anomali}, Recorded Future~\cite{recordedfuture}, 
+are all offering threat intelligence solutions. Public threat
 intelligence providers like Spamhaus, Abuse.ch, Dshield etc, are also 
-getting more and more attentions. The global threat intelligence market is
+getting more and more attention. The global threat intelligence market is
 predicated to surpass \$13 Billion in 2025~\cite{tipredict2018}. With the
 industry thriving, there is also a rapid increase in the related research
-works~\cite{tounsi2018survey}, covering topics from data characteristic,
-effectiveness evaluation to design better sharing systems and protocols.
+works~\cite{tounsi2018survey}, covering topics from data characteristics,
+effectiveness evaluation to designing better sharing systems and protocols.
 
 From a high level, there are two major aspects of threat intelligence: 
 \textit{Data} and \textit{Operations}. \textit{Data} represents the content 
 of threat intelligence---the actual information provided in different threat
 intelligence products. \textit{Operations} represents the usage of 
-data---different ways people can use threat intelligence to help. This
-generalization is common for all data-based products. Therefore,
+data---different ways people can use threat intelligence to help. Therefore,
 all research surrounding threat intelligence can be categorized into
 these two areas: research related to threat intelligence data itself, or 
 studying ways to use the data.
@@ -142,17 +141,17 @@ different directions (as illustrated in Figure
     Measuring how organizations use threat intelligence, and understanding
     the impact such uses on the Internet, etc.
     
-    \item Algorithm exploration related to threat intelligence usages: \\
+    \item Algorithm exploration related to threat intelligence usage: \\
     Designing better methods to use threat intelligence during system and 
-    network defense(e.g. increasing coverage, reducing false positives),
+    network defense (e.g. increasing coverage, reducing false positives),
     exploring new ways to use threat intelligence data, such as for machine
     learning training data, etc.
 \end{prettylist}
 
 There have been many previous research works covering various topics in these
 four directions. Most of the works focus on threat intelligence generation
-techniques(all threat detection techniques, such as malware detection, phish 
-detection, causality analysis, etc.) and threat sharing methods(data formats, 
+techniques (all threat detection techniques, such as malware detection, phish 
+detection, causality analysis, etc.) and threat sharing methods (data formats, 
 sharing protocols and sharing platforms, etc.). However, few works have taken
 the empirical approach and systematically evaluate the current status threat
 intelligence, both in terms of the data itself and its usage. Our community 
@@ -160,24 +159,24 @@ lacks a concrete understanding of threat intelligence in the real-world.
 
 In this dissertation, I take the empirical approach and explore both the 
 \textit{Data} and \textit{Operation} aspects of the threat intelligence
-domain. In exploring threat intelligence Data (described in
-Chapter~\ref{chapter:data_character}), I analyzed the characteristics of
-existing threat intelligence products. In particular, I designed formal 
+domain. In exploring threat intelligence data (described in
+Chapter~\ref{chapter:data_character}), I conduct a comparative analysis on
+existing threat intelligence products. In particular, I design formal 
 metrics for evaluating threat intelligence data and I used these tools to 
 evaluate {\numipfeeds} distinct IP address IoC feeds and {\numhashfeeds}
-distinct malware IoC feeds. Through this work, I revealed the limitation of
-existing threat intelligence data and discussed potential improvements 
+distinct malware IoC feeds. Through this chapter, I reveal the limitation of
+existing threat intelligence data and discuss potential improvements 
 based on my findings. In exploring threat intelligence operations 
 (described in Chapter~\ref{chapter:data_usage}),
-I measured how threat intelligence data is being used on a large scale. 
-I designed a method using IP ID side channel to infer the connectivity 
+I measure how threat intelligence data is being used on a large scale. 
+I design a method using IP ID side channel to infer the connectivity 
 between two Internet hosts from a third point. Using this 
-method, I conducted a large scale Internet measurement over {\reflroughnum} 
-U.S. hosts and established their use of {\blacklistnum} popular public IP
-blacklists. I further investigated a broader use of blacklists among the 
+method, I conduct a large scale Internet measurement over {\reflroughnum} 
+U.S. hosts and establish their use of {\blacklistnum} popular public IP
+blacklists. I further investigate a broader use of blacklists among the 
 hosts, and discovered over 73K hosts have shown blacklist related blocking 
-behavior. Together, my work has provided an in-depth look into the current
-status of threat intelligence and augmented the knowledge of our community
+behavior. Together, my work provides an in-depth look into the current
+status of threat intelligence and augments the knowledge of our community
 on this topic.
 
 %\verb!\mainmatter! macro because it should start on page~1.

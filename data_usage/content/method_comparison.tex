@@ -1,4 +1,4 @@
-\subsection{Compare with Previous Method}
+\subsection{Comparison with Previous Method}
 
 At a high level, the objective of the measurement is to determine, from a third
 point, if a {\reflector} blocks a blacklist IP. The blocking behavior that we
@@ -75,11 +75,18 @@ IP address can be used here to conduct the test. The drawback is that the
 spoofed packets now at times go through a different route versus the packets
 originated from $Host_B$. Some network that implement spoofed packet
 detection~\cite{ferguson2000rfc2827} could drop the spoofed packets, giving us
-a false signal of inbound blocking. Therefore, when selecting hosts I conduct
+a false signal of inbound blocking. Therefore, when selecting hosts, I conduct
 extensive tests to weed out hosts that have such detection logic in place. We
 find that not a lot of target hosts have such detection logic. I will talk in
 detail about host selection in the follow sections.
 
+The disadvantage of this approach is that we cannot detect outbound 
+blocking — wherein the spoofed packet reaches the reflectors but 
+the responses are blocked when going out of the network
+~\cite{pearce2017augur}. Based on our experience talking with several 
+security companies, most customers deploy inbound blocking or 
+bi-directional traffic blocking, so we do not think missing outbound 
+blocking is a major concern.
 
 \begin{figure}[t]
 \centering

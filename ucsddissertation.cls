@@ -595,6 +595,7 @@ command!}{Uh oh}}
 % Set double spacing throughout the document except where otherwise
 % noted.
 \doublespacing
+%\singlespacing
 
 \endinput
 % vim: filetype=tex

@@ -4,11 +4,11 @@
 Threat intelligence data, at a high-level, promises that by compiling up-to-date 
 information about known threats (i.e., IP addresses, domain names, file hashes, 
 etc.), recipients of the data will be able to better defend their systems from 
-future attacks. Therefore, the primary use cases of threat intelligence is 
+future attacks. Therefore, a primary use case of threat intelligence is 
 network defense. Intrusion detection systems or firewalls can directly put 
 the data in the system and block the corresponding IP or DNS traffic. Popular 
-open source projects like Snort~\cite{snortids}, Zeek~\cite{zeekids} all provide 
-these functionalities. Commercial products like Palo Alto Network
+open source projects such as Snort~\cite{snortids}, Zeek~\cite{zeekids} all provide 
+these functionalities. Commercial products, including Palo Alto Network
 firewall~\cite{paloaltofirewall}, Fortinet firewall~\cite{fortinetfirewall}, 
 Cisco firewall~\cite{ciscofirewall} also incorporate threat intelligence data in 
 their defense systems. 
@@ -26,10 +26,10 @@ SIEM~\cite{logrhythm} etc.
 
 In academic research, threat intelligence data is usually used as extra source 
 data to assist their study, or to evaluate the performance of their systems or
-algorithms. For example, Hao et. al.~\cite{hao2016predator} explored using the
+algorithms. For example, Hao~\etal~\cite{hao2016predator} explored using the
 characteristic domains during domain registration to detect potential malicious
-domains. In the study, the authors use Spamhaus domain blacklist, URIBL to check 
-the accuracy of their prediction. Singh et. al.~\cite{singh2017characterizing} 
+domains. In the study, the authors use the Spamhaus domain blacklist and URIBL to check 
+the accuracy of their prediction. Singh~\etal~\cite{singh2017characterizing} 
 studied the characteristic of Tor exit blocking in the wild, and use public and
 private threat intelligence sources to see how much of Tor exit IPs are listed
 on these sources. These are experimental use cases researchers have explored 
@@ -40,11 +40,11 @@ products are actually being used by organizations currently in the industry.
 Understanding the real-world use cases gives us ideas about the adoption of threat
 intelligence data, which is essential information to know in the threat
 intelligence ecosystem. More importantly, the usage of different products offers
-us insight into the potential impact they could cost on the Internet. As 
+us insight into the potential impact they could have on the Internet. As 
 discussed in Chapter~\ref{chapter:data_character}, false positives are relatively 
 common in threat intelligence feeds. If an organization is using one threat
 intelligence IP feed in its firewall for IP-based traffic blocking, and there
-is a false positive(a benign IP address) in this feed, then all the users in
+is a false positive (a benign IP address) in this feed, then all the users in
 that organization will be affected. From another side, if one online host is
 added to an IP feed mistakenly, then this host will lose access to all the
 organizations that use this feed as a blocking ruleset. Therefore, the actual
