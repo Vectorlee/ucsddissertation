@@ -88,26 +88,27 @@ intelligence providers like Spamhaus, Abuse.ch, Dshield etc, are also
 getting more and more attention. The global threat intelligence market is
 predicated to surpass \$13 Billion in 2025~\cite{tipredict2018}. With the
 industry thriving, there is also a rapid increase in the related research
-works~\cite{tounsi2018survey}, covering topics from data characteristics,
+works~\cite{tounsi2018survey}, covering topics from data characterizing,
 effectiveness evaluation to designing better sharing systems and protocols.
 
 From a high level, there are two major aspects of threat intelligence: 
-\textit{Data} and \textit{Operations}. \textit{Data} represents the content 
+\textit{Data} and \textit{Usage}. \textit{Data} represents the content 
 of threat intelligence---the actual information provided in different threat
-intelligence products. \textit{Operations} represents the usage of 
-data---different ways people can use threat intelligence to help. Therefore,
-all research surrounding threat intelligence can be categorized into
-these two areas: research related to threat intelligence data itself, or 
-studying ways to use the data.
+intelligence products. \textit{Usage}, on the other hand, represents 
+different ways people can use threat intelligence to help. Therefore, 
+all research surrounding threat intelligence can be categorized into 
+these two areas: research related to threat intelligence data itself, 
+and studies on different ways to use the data. They are the two sides 
+of the same coin.
 
 When looking at these two general aspects, one can further 
-take two different research approaches: \textit{Empirical} and 
-\textit{Algorithmic}. The \textit{Empirical} approach focuses on 
-understanding the current threat intelligence ecosystem, characterizing 
-the data, measuring different use cases, discover potential 
-shortcomings, etc. This approach emphasizes thoroughly understanding
-existing solutions, uncovering patterns and underlying logic, so the 
-community can gain valuable insights. The \textit{Algorithmic} approach, 
+take two different research approaches: \textit{Empirical Study} and 
+\textit{Algorithm Exploration}. Empirical study focuses on 
+understanding the current threat intelligence: analyzing patterns 
+in existing data, measuring different use cases, discover shortcomings 
+in current data format design, etc. This approach emphasizes measuring 
+existing solutions, uncovering patterns and limitations, so the 
+community can gain valuable insights. Algorithm exploration, 
 on the other hand, focuses on designing new algorithms and new tools to 
 improve current solutions, such as new threat hunting algorithms to improve 
 threat intelligence data quality, or better ways to utilize these data 
@@ -117,13 +118,13 @@ and use threat intelligence data.
 
 \begin{figure}
 \centering
-\includegraphics[width=0.8\textwidth]{threat_intel_research_overview.pdf}
+\includegraphics[width=0.8\textwidth]{threat_intel_overview_v2.pdf}
 \caption{Threat Intelligence research overview and example research
 topics in each direction.}
 \label{fig:threat_intel_overview}
 \end{figure}
 
-To summarize, threat intelligence research can be divided into four 
+Therefore, threat intelligence research can be divided into four 
 different directions (as illustrated in Figure
 ~\ref{fig:threat_intel_overview}). These are:
 \begin{prettylist}
@@ -153,12 +154,12 @@ four directions. Most of the works focus on threat intelligence generation
 techniques (all threat detection techniques, such as malware detection, phish 
 detection, causality analysis, etc.) and threat sharing methods (data formats, 
 sharing protocols and sharing platforms, etc.). However, few works have taken
-the empirical approach and systematically evaluate the current status threat
+the empirical approach and systematically evaluate the existing threat
 intelligence, both in terms of the data itself and its usage. Our community 
 lacks a concrete understanding of threat intelligence in the real-world.
 
 In this dissertation, I take the empirical approach and explore both the 
-\textit{Data} and \textit{Operation} aspects of the threat intelligence
+\textit{Data} and \textit{Usage} aspects of the threat intelligence
 domain. In exploring threat intelligence data (described in
 Chapter~\ref{chapter:data_character}), I conduct a comparative analysis on
 existing threat intelligence products. In particular, I design formal 
