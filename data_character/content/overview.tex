@@ -25,29 +25,30 @@ to employ.
 %that feeds -> sources}
 
 \subsection{Data Set and Collection}
-
 I use several sources of \ti\ data for my analysis:
 
-\emphpar{Facebook ThreatExchange (FB)~\cite{FBThreatExchange}}
+\begin{itemize}
+\item \emphpar{Facebook ThreatExchange (FB)~\cite{FBThreatExchange}}
     This is a closed-community platform that allows hundreds of companies and
     organizations to share and interact with various types of labeled threat data.
     As part of an agreement with Facebook, I collected all its data that it shared broadly.
     In subsequent analyses, sources with
     prefix ``FB'' indicate a unique contributor on the Facebook ThreatExchange.
 
-\emphpar{Paid Feed Aggregator (PA)} This is a commercial paid threat intelligence data aggregation
+\item \emphpar{Paid Feed Aggregator (PA)} This is a commercial paid threat intelligence data aggregation
     platform. It contains data collected from over a hundred other
     threat intelligence sources, public or private, together with its own threat data.
     In subsequent analyses all data sources with prefix ``PA''
     are from unique data sources originating from this aggregator.
 
-\emphpar{\feedetiprep\ Service} This commercial service provides an
+\item \emphpar{\feedetiprep\ Service} This commercial service provides an
     hourly-updated blacklist of known bad IP addresses across different attack categories.
 
-\emphpar{Public Blacklists and Reputation Feeds} I collected indicators from public
+\item \emphpar{Public Blacklists and Reputation Feeds} I collected indicators from public
     blacklists and reputation data sources, including well-known
     sources such as AlienVault~\cite{Alienvault}, Badips~\cite{Badips}, Abuse.ch~\cite{Abuse-ch}
     and Packetmail~\cite{Packetmail}.
+\end{itemize}
 
 Threat Intelligence indicators include different types of data, such as IP address, malicious file hash, Domain,
 URL, etc. In this chapter, I focus the analysis on sources that provide IP addresses and file hashes,
